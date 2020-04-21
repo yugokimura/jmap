@@ -1,0 +1,1204 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <!--[if !IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <title>Jmap Plugin</title>
+    <meta name="description" content="jmap plugin">
+    <meta name="keywords" content="日本地図,jQuery Plugin,jQuery プラグイン,Japan Map">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <!-- https://highlightjs.org/static/demo/ -->
+    <!-- https://cdnjs.com/libraries/highlight.js/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
+    <script src="./jmap.js?100"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#jmap1').jmap();
+
+            $('#jmap2').jmap({
+                width: '100%',
+                height: '600px',
+                lineColor: 'green',
+                lineWidth: 2,
+                backgroundColor: '#EFEFEF',
+                backgroundRadius: '0.5rem',
+                backgroundPadding: '0.5rem',
+                showPrefectureName: true,
+                prefectureNameType: 'full',
+                prefectureBackgroundColor: '#BFEAB5',
+                prefectureBackgroundHoverColor: '#DFFFD5',
+                fontSize: '0.6rem',
+                fontColor: '#467E36'
+            });
+
+            $('#jmap3').jmap({
+                height: '600px',
+                lineColor: '#bfbfbf',
+                lineWidth: 1,
+                backgroundRadius: '0.3rem',
+                backgroundPadding: '1rem',
+                backgroundColor: '#ff000000',
+                fontSize: '1vw',
+                fontColor: '#000',
+                prefectureClass: 'prefecture',
+                prefectureLineColor: '#ffffff',
+                prefectureLineWidth: 1,
+                prefectureLineHoverColor: '#fff',
+                areas: [{
+                    code: 1,
+                    name: "北海道",
+                    color: "#7f7eda",
+                    hoverColor: "#b3b2ee"
+                }, {
+                    code: 2,
+                    name: "青森",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 3,
+                    name: "岩手",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 4,
+                    name: "宮城",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 5,
+                    name: "秋田",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 6,
+                    name: "山形",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 7,
+                    name: "福島",
+                    color: "#759ef4",
+                    hoverColor: "#98b9ff"
+                }, {
+                    code: 8,
+                    name: "茨城",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 9,
+                    name: "栃木",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 10,
+                    name: "群馬",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 11,
+                    name: "埼玉",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 12,
+                    name: "千葉",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 13,
+                    name: "東京",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 14,
+                    name: "神奈川",
+                    color: "#7ecfea",
+                    hoverColor: "#b7e5f4"
+                }, {
+                    code: 15,
+                    name: "新潟",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 16,
+                    name: "富山",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 17,
+                    name: "石川",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 18,
+                    name: "福井",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 19,
+                    name: "山梨",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 20,
+                    name: "長野",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 21,
+                    name: "岐阜",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 22,
+                    name: "静岡",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 23,
+                    name: "愛知",
+                    color: "#7cdc92",
+                    hoverColor: "#aceebb"
+                }, {
+                    code: 24,
+                    name: "三重",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 25,
+                    name: "滋賀",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 26,
+                    name: "京都",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 27,
+                    name: "大阪",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 28,
+                    name: "兵庫",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 29,
+                    name: "奈良",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 30,
+                    name: "和歌山",
+                    color: "#ffe966",
+                    hoverColor: "#fff19c"
+                }, {
+                    code: 31,
+                    name: "鳥取",
+                    color: "#ffcc66",
+                    hoverColor: "#ffe0a3"
+                }, {
+                    code: 32,
+                    name: "島根",
+                    color: "#ffcc66",
+                    hoverColor: "#ffe0a3"
+                }, {
+                    code: 33,
+                    name: "岡山",
+                    color: "#ffcc66",
+                    hoverColor: "#ffe0a3"
+                }, {
+                    code: 34,
+                    name: "広島",
+                    color: "#ffcc66",
+                    hoverColor: "#ffe0a3"
+                }, {
+                    code: 35,
+                    name: "山口",
+                    color: "#ffcc66",
+                    hoverColor: "#ffe0a3"
+                }, {
+                    code: 36,
+                    name: "徳島",
+                    color: "#fb9466",
+                    hoverColor: "#ffbb9c"
+                }, {
+                    code: 37,
+                    name: "香川",
+                    color: "#fb9466",
+                    hoverColor: "#ffbb9c"
+                }, {
+                    code: 38,
+                    name: "愛媛",
+                    color: "#fb9466",
+                    hoverColor: "#ffbb9c"
+                }, {
+                    code: 39,
+                    name: "高知",
+                    color: "#fb9466",
+                    hoverColor: "#ffbb9c"
+                }, {
+                    code: 40,
+                    name: "福岡",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 41,
+                    name: "佐賀",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 42,
+                    name: "長崎",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 43,
+                    name: "熊本",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 44,
+                    name: "大分",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 45,
+                    name: "宮崎",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 46,
+                    name: "鹿児島",
+                    color: "#ff9999",
+                    hoverColor: "#ffbdbd"
+                }, {
+                    code: 47,
+                    name: "沖縄",
+                    color: "#eb98ff",
+                    hoverColor: "#f5c9ff"
+                }, ],
+                onLoad: function(e, data) {
+                    $(this).html('<strong>' + data.name + '</strong>');
+                },
+                onSelect: function(e, data) {
+                    $('#prefectureModal').find('#prefectureModalTitle')
+                        .html(data.area8.name + " - " + data.area11.name + " - " + data.name + data.full)
+                        .end().find('.modal-code')
+                        .html(JSON.stringify(data, null, 4))
+                        .end().modal('show');
+                },
+                onHover: function(e, data) {}
+            });
+
+            $('#jmap4').jmap({
+                heatmap: true,
+                heatmapType: 'HRed',
+                areas: [{
+                    code: 1,
+                    name: "北海道",
+                    number: 5320
+                }, {
+                    code: 2,
+                    name: "青森",
+                    number: 1278
+                }, {
+                    code: 3,
+                    name: "岩手",
+                    number: 1255
+                }, {
+                    code: 4,
+                    name: "宮城",
+                    number: 2323
+                }, {
+                    code: 5,
+                    name: "秋田",
+                    number: 996
+                }, {
+                    code: 6,
+                    name: "山形",
+                    number: 1102
+                }, {
+                    code: 7,
+                    name: "福島",
+                    number: 1882
+                }, {
+                    code: 8,
+                    name: "茨城",
+                    number: 2892
+                }, {
+                    code: 9,
+                    name: "栃木",
+                    number: 1957
+                }, {
+                    code: 10,
+                    name: "群馬",
+                    number: 1960
+                }, {
+                    code: 11,
+                    name: "埼玉",
+                    number: 7310
+                }, {
+                    code: 12,
+                    name: "千葉",
+                    number: 6246
+                }, {
+                    code: 13,
+                    name: "東京",
+                    number: 13724
+                }, {
+                    code: 14,
+                    name: "神奈川",
+                    number: 9159
+                }, {
+                    code: 15,
+                    name: "新潟",
+                    number: 2267
+                }, {
+                    code: 16,
+                    name: "富山",
+                    number: 1056
+                }, {
+                    code: 17,
+                    name: "石川",
+                    number: 1147
+                }, {
+                    code: 18,
+                    name: "福井",
+                    number: 779
+                }, {
+                    code: 19,
+                    name: "山梨",
+                    number: 823
+                }, {
+                    code: 20,
+                    name: "長野",
+                    number: 2076
+                }, {
+                    code: 21,
+                    name: "岐阜",
+                    number: 2008
+                }, {
+                    code: 22,
+                    name: "静岡",
+                    number: 3675
+                }, {
+                    code: 23,
+                    name: "愛知",
+                    number: 7525
+                }, {
+                    code: 24,
+                    name: "三重",
+                    number: 1800
+                }, {
+                    code: 25,
+                    name: "滋賀",
+                    number: 1413
+                }, {
+                    code: 26,
+                    name: "京都",
+                    number: 2599
+                }, {
+                    code: 27,
+                    name: "大阪",
+                    number: 8823
+                }, {
+                    code: 28,
+                    name: "兵庫",
+                    number: 5503
+                }, {
+                    code: 29,
+                    name: "奈良",
+                    number: 1348
+                }, {
+                    code: 30,
+                    name: "和歌山",
+                    number: 945
+                }, {
+                    code: 31,
+                    name: "鳥取",
+                    number: 565
+                }, {
+                    code: 32,
+                    name: "島根",
+                    number: 685
+                }, {
+                    code: 33,
+                    name: "岡山",
+                    number: 1907
+                }, {
+                    code: 34,
+                    name: "広島",
+                    number: 2829
+                }, {
+                    code: 35,
+                    name: "山口",
+                    number: 1383
+                }, {
+                    code: 36,
+                    name: "徳島",
+                    number: 743
+                }, {
+                    code: 37,
+                    name: "香川",
+                    number: 967
+                }, {
+                    code: 38,
+                    name: "愛媛",
+                    number: 1364
+                }, {
+                    code: 39,
+                    name: "高知",
+                    number: 714
+                }, {
+                    code: 40,
+                    name: "福岡",
+                    number: 5107
+                }, {
+                    code: 41,
+                    name: "佐賀",
+                    number: 824
+                }, {
+                    code: 42,
+                    name: "長崎",
+                    number: 1354
+                }, {
+                    code: 43,
+                    name: "熊本",
+                    number: 1765
+                }, {
+                    code: 44,
+                    name: "大分",
+                    number: 1152
+                }, {
+                    code: 45,
+                    name: "宮崎",
+                    number: 1089
+                }, {
+                    code: 46,
+                    name: "鹿児島",
+                    number: 1626
+                }, {
+                    code: 47,
+                    name: "沖縄",
+                    number: 1443
+                }, ]
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand mb-0 h1" href="#">Jmap</a>
+        </nav>
+    </header>
+
+    <main role="main" class="mt-5 pt-5 mb-5 pb-5">
+        <div class="jumbotron container">
+            <h1 class="display-4">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="70" height="70" viewBox="0 0 48 48" style=" fill:#000000;"><circle cx="24" cy="24" r="20" fill="#fff"></circle><path fill="#d50000" d="M33,24c0,4.969-4.031,9-9,9s-9-4.031-9-9s4.031-9,9-9S33,19.031,33,24z"></path></svg>                Jmap jQuery plugin</h1>
+            <p class="lead">日本地図 jQuery プラグイン - <small>Released under the MIT license</small></p>
+            <hr class="my-4">
+            <p>Jmap jQuery pluginはHTMLコーダーやCSSデザイナーも地図を利用したアプリケーションの開発に出来るようHTMLとCSSで構成されたシンプルな日本地図を表示することができます。 CanvasやSVNのPath、画像へのmap、area要素を用いたリンク設定など手間のかかる地図を簡単に作成できます。</p>
+            <!-- <p>jQuery plugin to draw Japanese prefectures with HTML and CSS.</p> -->
+        </div>
+
+        <div class="container">
+
+            <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">1</span> クイックスタート - <small class="text-muted">最初の一歩</small></h2>
+            <p class="lead">最初の一歩は驚くほど簡単です。</p>
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Start!</h4>
+                        <p>最初の一歩はJmapのサイト上からJmap jQuery pluginをダウンロードする所からはじめましょう。</p>
+                        <a class="btn btn-success" href="#">Jmap jQuery Plugin ダウンロード</a>
+                    </div>
+                    <p>ファイルのダウンロードが完了したらHTMLファイルを作成し、その中でjQueryと、ダウンロードしてきたJmap jQuery pluginを読み込みましょう。</p>
+                    <h5 class="h5">jQueryとJmapの読み込みコード</h5>
+                    <pre class="border rounded-lg"><code class="html">
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./jmap.js&quot;&gt;&lt;/script&gt;
+                    </code></pre>
+                    <p>チュートリアル作成時のjQuery最新版は<mark>3.4.1</mark>です。最新のものを利用したい場合は以下リンクからURLを取得してください。</p>
+                    <a class="btn btn-info" href="https://developers.google.com/speed/libraries" target="_blank">Google Hosted Libraries</a>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg"><code class="html">
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Jmap jQuery Example&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./jmap.js&quot;&gt;&lt;/script&gt;
+    &lt;script type = &quot;text/javascript&quot;&gt;
+        $(document).ready(function() {
+            // これ以降「Example」に記載するエリア
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- id=&quot;xxx&quot; の「xxx」部分は必要に応じて変更 --&gt;
+    &lt;div id=&quot;jmap&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div id="jmap1" style="height:450px"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Tips!</h4>
+                        <p>HTMLの要素に jmap メソッドを適用するだけで、デフォルトの地図が表示されます。</p>
+                    </div>
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg"><code class="javascript">
+$('#jmap').jmap();
+                    </code></pre>
+                </div>
+            </div>
+
+            <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">2</span> ステップアップ　- <small class="text-muted">カスタマイズ</small></h2>
+            <p class="lead">その一味は大きな変化を生み出します。</p>
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div id="jmap2" style="height:610px"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Tips!</h4>
+                        <p>Jmapには地図をカスタマイズするのに必要な様々なパラメータが用意されています。</p>
+                        <hr>
+                        <a class="btn btn-primary btn-sm" href="#parameters">パラメーター</a>
+                    </div>
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg"><code class="javascript">
+$('#jmap').jmap({
+    width: '100%',      // 横幅
+    height: '600px',    // 縦幅
+    lineColor: 'green', // 地図背景の枠線幅
+    lineWidth: 2,       // 地図背景の枠線色
+    backgroundColor: '#EFEFEF', // 地図背景の色
+    backgroundRadius: '0.5rem',   // 地図背景の角丸
+    backgroundPadding: '0.5rem',  // 地図背景の余白
+    showPrefectureName: true,   // 都道府県名の有無
+    prefectureNameType: 'full', // 都道府県名の表示形式
+    prefectureBackgroundColor: '#BFEAB5',   // 地図の色
+    prefectureBackgroundHoverColor: '#DFFFD5',  // 地図ホバー色
+    fontSize: '0.6rem',     // フォントサイズ
+    fontColor: '#467E36'    // フォント色
+});
+                    </code></pre>
+                </div>
+            </div>
+
+
+            <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">3</span> アドバンス　- <small class="text-muted">高度な設定</small></h2>
+            <p class="lead">世界に一つしかない地図を生み出そう。</p>
+
+            <div class="row mb-5">
+                <div class="w-100 mb-5">
+                    <div id="jmap3"></div>
+                </div>
+                <div class="w-100">
+                    <p>この地図では各都道府県別に色を設定し、都道府県をタップするとその都道府県の情報がモーダルで表示されます。</p>
+                    <h5 class="h5">Example</h5>
+                    <ul class="nav nav-tabs" id="codeTab1" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#html" role="tab" aria-controls="html" aria-selected="true">HTML</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#css" role="tab" aria-controls="css" aria-selected="false">CSS</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#javascript" role="tab" aria-controls="javascript" aria-selected="false">Javascript</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content overflow-auto mt-3 border rounded-lg" id="codeTab1Content" style="height: 600px;">
+                        <div class="tab-pane fade show active" id="html" role="tabpanel" aria-labelledby="html-tab">
+                            <pre><code class="javascript">
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Jmap jQuery Example&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css&quot; integrity=&quot;sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T&quot; crossorigin=&quot;anonymous&quot;&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js&quot; integrity=&quot;sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./jmap.js&quot;&gt;&lt;/script&gt;
+    &lt;script type = &quot;text/javascript&quot;&gt;
+        // ここに「Javascript」に記載する内容
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Jmap表示位置 --&gt;
+    &lt;div id=&quot;jmap&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- モーダル用HTML --&gt;
+    &lt;div class=&quot;modal fade&quot; id=&quot;prefectureModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;prefectureModalCenterTitle&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;h5 class=&quot;modal-title&quot; id=&quot;prefectureModalTitle&quot;&gt;&lt;/h5&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;
+                        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body overflow-auto&quot; style=&quot;height:350px;&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;閉じる&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                            </code></pre>
+                        </div>
+                        <!-- <div class="tab-pane fade" id="css" role="tabpanel" aria-labelledby="css-tab">1</div> -->
+                        <div class="tab-pane fade" id="javascript" role="tabpanel" aria-labelledby="javascript-tab">
+                            <pre><code class="javascript">
+$(document).ready(function() {
+    $('#jmap').jmap({
+        height: '600px',
+        lineColor: '#bfbfbf',
+        lineWidth: 1,
+        backgroundRadius: '0.3rem',
+        backgroundPadding: '1rem',
+        backgroundColor: '#ff000000',
+        prefectureClass: 'prefecture',
+        prefectureLineColor: '#ffffff',
+        prefectureLineWidth: 1,
+        prefectureLineHoverColor : '#fff',
+        fontSize: '1vw',
+        fontColor: '#000',
+        areas: [
+        {code : 1, name: "北海道", color: "#7f7eda", hoverColor: "#b3b2ee" },
+        {code : 2, name: "青森", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 3, name: "岩手", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 4, name: "宮城", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 5, name: "秋田", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 6, name: "山形", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 7, name: "福島", color: "#759ef4", hoverColor: "#98b9ff" },
+        {code : 8, name: "茨城", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 9, name: "栃木", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 10, name: "群馬", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 11, name: "埼玉", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 12, name: "千葉", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 13, name: "東京", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 14, name: "神奈川", color: "#7ecfea", hoverColor: "#b7e5f4" },
+        {code : 15, name: "新潟", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 16, name: "富山", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 17, name: "石川", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 18, name: "福井", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 19, name: "山梨", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 20, name: "長野", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 21, name: "岐阜", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 22, name: "静岡", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 23, name: "愛知", color: "#7cdc92", hoverColor: "#aceebb" },
+        {code : 24, name: "三重", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 25, name: "滋賀", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 26, name: "京都", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 27, name: "大阪", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 28, name: "兵庫", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 29, name: "奈良", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 30, name: "和歌山", color: "#ffe966", hoverColor: "#fff19c" },
+        {code : 31, name: "鳥取", color: "#ffcc66", hoverColor: "#ffe0a3" },
+        {code : 32, name: "島根", color: "#ffcc66", hoverColor: "#ffe0a3" },
+        {code : 33, name: "岡山", color: "#ffcc66", hoverColor: "#ffe0a3" },
+        {code : 34, name: "広島", color: "#ffcc66", hoverColor: "#ffe0a3" },
+        {code : 35, name: "山口", color: "#ffcc66", hoverColor: "#ffe0a3" },
+        {code : 36, name: "徳島", color: "#fb9466", hoverColor: "#ffbb9c" },
+        {code : 37, name: "香川", color: "#fb9466", hoverColor: "#ffbb9c" },
+        {code : 38, name: "愛媛", color: "#fb9466", hoverColor: "#ffbb9c" },
+        {code : 39, name: "高知", color: "#fb9466", hoverColor: "#ffbb9c" },
+        {code : 40, name: "福岡", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 41, name: "佐賀", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 42, name: "長崎", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 43, name: "熊本", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 44, name: "大分", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 45, name: "宮崎", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 46, name: "鹿児島", color: "#ff9999", hoverColor: "#ffbdbd" },
+        {code : 47, name: "沖縄", color: "#eb98ff", hoverColor: "#f5c9ff" }
+        ],
+        onLoad: function(e, data) {
+            $(this).html('&lt;strong&gt;' + data.name + '&lt;/strong&gt;');
+        },
+        onSelect: function(e, data) {
+            $('#prefectureModal').find('#prefectureModalTitle')
+            .html(data.area8.name + " - " + data.area11.name + " - " + data.name + data.full)
+            .end().find('.modal-body')
+            .html(JSON.stringify(data, null, 4))
+            .end().modal('show');
+        },
+        onHover: function(e, data) {
+            console.log(data);
+        }
+    });
+});
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">4</span> ビジュアライズ - <small class="text-muted">高度な設定</small></h2>
+            <p class="lead">これまで見えなかった世界を可視化しよう。</p>
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div id="jmap4" style="height:450px"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Heatmap</h4>
+                        <p>Heatmapパラメーターを有効にし、areasの都道府県オブジェクトに <kbd>number</kbd>を指定するとヒートマップ地図が表示されます。</p>
+                    </div>
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg overflow-auto" style="height:250px;"><code class="javascript">
+$('#jmap').jmap({
+    heatmap: true,
+    heatmapType: 'HRed',
+    areas: [
+    {code: 1,name: "北海道",number: 5320},
+    {code: 2,name: "青森",number: 1278},
+    {code: 3,name: "岩手",number: 1255},
+    {code: 4,name: "宮城",number: 2323},
+    {code: 5,name: "秋田",number: 996},
+    {code: 6,name: "山形",number: 1102},
+    {code: 7,name: "福島",number: 1882},
+    {code: 8,name: "茨城",number: 2892},
+    {code: 9,name: "栃木",number: 1957},
+    {code: 10,name: "群馬",number: 1960},
+    {code: 11,name: "埼玉",number: 7310},
+    {code: 12,name: "千葉",number: 6246},
+    {code: 13,name: "東京",number: 13724},
+    {code: 14,name: "神奈川",number: 9159},
+    {code: 15,name: "新潟",number: 2267},
+    {code: 16,name: "富山",number: 1056},
+    {code: 17,name: "石川",number: 1147},
+    {code: 18,name: "福井",number: 779},
+    {code: 19,name: "山梨",number: 823},
+    {code: 20,name: "長野",number: 2076},
+    {code: 21,name: "岐阜",number: 2008},
+    {code: 22,name: "静岡",number: 3675},
+    {code: 23,name: "愛知",number: 7525},
+    {code: 24,name: "三重",number: 1800},
+    {code: 25,name: "滋賀",number: 1413},
+    {code: 26,name: "京都",number: 2599},
+    {code: 27,name: "大阪",number: 8823},
+    {code: 28,name: "兵庫",number: 5503},
+    {code: 29,name: "奈良",number: 1348},
+    {code: 30,name: "和歌山",number: 945},
+    {code: 31,name: "鳥取",number: 565},
+    {code: 32,name: "島根",number: 685},
+    {code: 33,name: "岡山",number: 1907},
+    {code: 34,name: "広島",number: 2829},
+    {code: 35,name: "山口",number: 1383},
+    {code: 36,name: "徳島",number: 743},
+    {code: 37,name: "香川",number: 967},
+    {code: 38,name: "愛媛",number: 1364},
+    {code: 39,name: "高知",number: 714},
+    {code: 40,name: "福岡",number: 5107},
+    {code: 41,name: "佐賀",number: 824},
+    {code: 42,name: "長崎",number: 1354},
+    {code: 43,name: "熊本",number: 1765},
+    {code: 44,name: "大分",number: 1152},
+    {code: 45,name: "宮崎",number: 1089},
+    {code: 46,name: "鹿児島",number: 1626},
+    {code: 47,name: "沖縄",number: 1443}
+    ]
+});
+                    </code></pre>
+                </div>
+            </div>
+
+            <h2 class="h3 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> リファレンス - <small class="text-muted">パラメーター</small></h2>
+            <p class="lead">豊富なパラメーターが用意されています。</p>
+
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Parameter<br><small>パラメーター</small></th>
+                            <th scope="col">Description<br><small>説明</small></th>
+                            <th scope="col">Default<br><small>初期値</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>width</th>
+                            <td>地図の横幅　値の単位を入力しない場合は、<kbd>px</kbd> が適用されます</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th>height</th>
+                            <td>地図の縦幅　値の単位を入力しない場合は、<kbd>px</kbd> が適用されます</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th>backgroundColor</th>
+                            <td>地図背景の色　地図背景の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
+                            <td>transparent</td>
+                        </tr>
+                        <tr>
+                            <th>backgroundRadius</th>
+                            <td>地図背景の角丸　地図背景の角丸を指定できます</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>backgroundPadding</th>
+                            <td>地図背景の余白　地図背景と地図の余白を指定できます</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>lineWidth</th>
+                            <td>地図背景枠線の幅　地図背景の枠線幅を指定できます</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>lineColor</th>
+                            <td>地図背景枠線の色　地図背景の枠線の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>指定できます</td>
+                            <td>transparent</td>
+                        </tr>
+                        <tr>
+                            <th>lineStyle</th>
+                            <td>地図背景枠線の書式　地図背景の枠線の書式をCSSの　<kbd>border-style</kbd> の形式で指定できます</td>
+                            <td>solid</td>
+                        </tr>
+                        <tr>
+                            <th>showIslandDivider</th>
+                            <td>遠島区切り線の有無　沖縄の区切り線の有無を指定できます</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <th>dividerWidth</th>
+                            <td>遠島区切り線の幅　沖縄の区切り線の幅を指定できます</td>
+                            <td>1px</td>
+                        </tr>
+                        <tr>
+                            <th>dividerColor</th>
+                            <td>遠島区切り線の色　沖縄の区切り線の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>指定できます</td>
+                            <td>#bfbfbf</td>
+                        </tr>
+                        <tr>
+                            <th>dividerStyle</th>
+                            <td>遠島区切り線の書式　沖縄の区切り線の書式をCSSの　<kbd>border-style</kbd> の形式で指定できます</td>
+                            <td>solid</td>
+                        </tr>
+                        <tr>
+                            <th>fontSize</th>
+                            <td>都道府県名フォントのサイズ　都道府県名のフォントの大きさを指定できます</td>
+                            <td>12px</td>
+                        </tr>
+                        <tr>
+                            <th>fontColor</th>
+                            <td>都道府県名フォントの色　都道府県名のフォントの色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>指定できます</td>
+                            <td>#fff</td>
+                        </tr>
+                        <tr>
+                            <th>showPrefectureName</th>
+                            <td>都道府県名の有無　都道府県名表示の有無を指定できます</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureNameType</th>
+                            <td>都道府県名の表示形式　都道府県名の書式を、都府県なし: <kbd>short</kbd>、都府県あり: <kbd>full</kbd>、アルファベット: <kbd>alphabet</kbd> から指定できます</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureClass</th>
+                            <td>都道府県の共通CSSクラス　指定できます</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureBackgroundColor</th>
+                            <td>都道府県の色　指都道府県の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
+                            <td>#333</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureBackgroundHoverColor</th>
+                            <td>都道府県マウスオーバ―時の色　都道府県マウスオーバ―時の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
+                            <td>#666</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureLineWidth</th>
+                            <td>都道府県枠線の幅　都道府県の枠線幅を指定できます</td>
+                            <td>1px</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureLineColor</th>
+                            <td>都道府県枠線の色　指都道府県の枠線の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
+                            <td>#fff</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureLineHoverColor</th>
+                            <td>都道府県マウスオーバ―時の枠線の色　都道府県マウスオーバ―時の枠線の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
+                            <td>#aa1a00</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureLineStyle</th>
+                            <td>都道府県枠線の書式　都道府県の枠線書式をCSSの　<kbd>border-style</kbd> の形式で指定できます</td>
+                            <td>solid</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureRadius</th>
+                            <td>都道府県枠の角丸　都道府県枠の角丸を指定できます</td>
+                            <td>3px</td>
+                        </tr>
+                        <tr>
+                            <th>heatmap</th>
+                            <td>都道府県のヒートマップ表示　areas が指定され、都道府県のオブジェクトに number が指定されている際に、numberの最大値に対する各都道府県のnumberの比率でヒートマップ表示されます</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <th>heatmapColors</th>
+                            <td>都道府県のヒートマップ色配列　ヒートマップの色配列10色を指定できます
+                                <div>
+                                    <small class="text-muted">参考例</small>
+                                    <code>
+                                        heatmapColors: ["#BFC7CE", "#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c", "#08306b"]
+                                    </code>
+                                </div>
+                            </td>
+                            <td>[]</td>
+                        </tr>
+                        <tr>
+                            <th>heatmapFontColors</th>
+                            <td>都道府県のヒートマップフォント色配列　ヒートマップフォント色の配列10色を指定できます
+                                <div>
+                                    <small class="text-muted">参考例</small>
+                                    <code>
+                                        heatmapFontColors: ["#000", "#000", "#000", "#000", "#000", "#fff", "#fff", "#fff", "#fff", "#fff"]
+                                    </code>
+                                </div>
+                            </td>
+                            <td>[]</td>
+                        </tr>
+                        <tr>
+                            <th>heatmapType</th>
+                            <td>都道府県のヒートマップタイプ　ヒートマップの色を36種類から指定できます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">種別</th>
+                                            <th scope="col">色の範囲
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HRed</td>
+                                            <td style="background: linear-gradient(90deg,#FAE1E1, #CC3333);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>HBlue</td>
+                                            <td style="background: linear-gradient(90deg,#F7FBFF, #08306B);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>OrRd</td>
+                                            <td style="background: linear-gradient(90deg,#fff7ec, #7f0000);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PuBu</td>
+                                            <td style="background: linear-gradient(90deg,#fff7fb, #023858);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>BuPu</td>
+                                            <td style="background: linear-gradient(90deg,#f7fcfd, #4d004b);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oranges</td>
+                                            <td style="background: linear-gradient(90deg,#fff5eb, #7f2704);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>BuGn</td>
+                                            <td style="background: linear-gradient(90deg,#f7fcfd, #00441b);"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>その他</td>
+                                            <td>36種類</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>HRed</td>
+                        </tr>
+                        <tr>
+                            <th>onLoad</th>
+                            <td>地図が読み込まれた際に呼び出されます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">引数</th>
+                                            <th scope="col">値</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>第1引数</td>
+                                            <td>Event Object</td>
+                                            <td>イベントオブジェクト</td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2引数</td>
+                                            <td>Prefecture Data Object</td>
+                                            <td>都道府県情報が格納されたオブジェクトが返却されます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <th>onSelect</th>
+                            <td>都道府県が選択された際に呼び出されます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">引数</th>
+                                            <th scope="col">値</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>第1引数</td>
+                                            <td>Event Object</td>
+                                            <td>イベントオブジェクト</td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2引数</td>
+                                            <td>Prefecture Data Object</td>
+                                            <td>都道府県情報が格納されたオブジェクトが返却されます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <th>onHover</th>
+                            <td>都道府県にマウスオーバーした際に呼び出されます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">引数</th>
+                                            <th scope="col">値</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>第1引数</td>
+                                            <td>Event Object</td>
+                                            <td>イベントオブジェクト</td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2引数</td>
+                                            <td>Prefecture Data Object</td>
+                                            <td>都道府県情報が格納されたオブジェクトが返却されます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <th>areas</th>
+                            <td>都道府県別のオブジェクトを配列に格納すればオブジェクト内の47都道府県コード(code)を元に、独自の名前(name)、背景色(color)、ホバー時の背景色(hoverColor)を指定できます。
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">必須</th>
+                                            <th scope="col">パラメーター</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>必須</td>
+                                            <td>code</td>
+                                            <td>47都道府県コード</td>
+                                        </tr>
+                                        <tr>
+                                            <td>任意</td>
+                                            <td>name</td>
+                                            <td>枠に表示する名前</td>
+                                        </tr>
+                                        <tr>
+                                            <td>任意</td>
+                                            <td>color</td>
+                                            <td>背景色</td>
+                                        </tr>
+                                        <tr>
+                                            <td>任意</td>
+                                            <td>hoverColor</td>
+                                            <td>マウスオーバ―時の背景色</td>
+                                        </tr>
+                                        <tr>
+                                            <td>任意</td>
+                                            <td>number</td>
+                                            <td>heatmap パラメータを true に設定している場合、numberの値を元に計算が行われます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>[]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </main>
+    <footer class="footer">
+        <div class="container p-3 bg-light">
+            <small class="text-muted">
+                 <cite title="Source Title">Copyright (c) Yugo Kimura - Released under the MIT license</cite>
+              </small>
+        </div>
+    </footer>
+
+    <!-- Prefecture Modal -->
+    <div class="modal fade" id="prefectureModal" tabindex="-1" role="dialog" aria-labelledby="prefectureModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prefectureModalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+                                                </button>
+                </div>
+                <div class="modal-body overflow-auto" style="height:350px;">
+                    <pre class="modal-code border rounded-lg"><code class="json">
+                        
+                    </code></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
