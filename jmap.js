@@ -161,6 +161,7 @@
             dividerStyle: 'solid',
             fontSize: '12px',
             fontColor: '#fff',
+            font: 'inherit',
             textNowrap: false,
             showIslandDivider: true,
             showInfobox: false,
@@ -222,6 +223,7 @@
         var css = {
             'display': 'grid; display:-ms-grid',
             'position': 'relative',
+            'font-family': params.font,
             'width': params.width,
             'height': params.height,
             'grid-template-rows': 'repeat(22%c4.545%)',

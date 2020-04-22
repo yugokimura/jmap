@@ -49,6 +49,7 @@
                 backgroundColor: '#ff000000',
                 fontSize: '0.8rem',
                 fontColor: '#000',
+                font: 'serif',
                 prefectureClass: 'prefecture',
                 prefectureLineColor: '#ffffff',
                 prefectureLineWidth: 1,
@@ -701,6 +702,7 @@ $(document).ready(function() {
         prefectureLineHoverColor : '#fff',
         fontSize: '0.8rem',
         fontColor: '#000',
+        font: 'serif',
         areas: [
         {code : 1, name: "北海道", color: "#7f7eda", hoverColor: "#b3b2ee" },
         {code : 2, name: "青森", color: "#759ef4", hoverColor: "#98b9ff" },
@@ -967,6 +969,11 @@ $('#jmap').jmap({
                             <th>dividerStyle</th>
                             <td>遠島区切り線の書式　沖縄の区切り線の書式をCSSの　<kbd>border-style</kbd> の形式で指定できます</td>
                             <td>solid</td>
+                        </tr>
+                        <tr>
+                            <th>font</th>
+                            <td>都道府県名フォント　都道府県名のフォントを<kbd>border-family</kbd> の形式で指定できます</td>
+                            <td>inherit</td>
                         </tr>
                         <tr>
                             <th>fontSize</th>
