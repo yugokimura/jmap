@@ -188,6 +188,7 @@
             heatmapFontColors: [],
             viewType: 'map',
             gridNumber: 6,
+            selectable: true,
             areas: [],
             onSelect: function(e, data) {},
             onHover: function(e, data) {},
@@ -388,18 +389,20 @@
         stylers.push(selector + style);
 
         // Prefecture Common Hover
-        var css = {
-            'background-color': params.prefectureBackgroundHoverColor,
-            'border-width': params.prefectureLineWidth,
-            'border-color': params.prefectureLineHoverColor,
-            'border-style': params.prefectureLineStyle,
-            'box-shadow': '0 0 5px #333',
-            'transform': 'scale(1.01)',
-            'z-index': 2
-        };
-        var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-        var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
-        stylersPrimal.push(selector + style);
+        if (params.selectable) {
+            var css = {
+                'background-color': params.prefectureBackgroundHoverColor,
+                'border-width': params.prefectureLineWidth,
+                'border-color': params.prefectureLineHoverColor,
+                'border-style': params.prefectureLineStyle,
+                'box-shadow': '0 0 5px #333',
+                'transform': 'scale(1.01)',
+                'z-index': 2
+            };
+            var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
+            var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+            stylersPrimal.push(selector + style);
+        }
 
         // Loop prefectures
         var heatmapMax = null;
@@ -477,25 +480,27 @@
             stylers.push(selector + style);
 
             // Prefecture Indivisual Hover
-            if (option.hoverColor) {
+            if (params.selectable) {
+                if (option.hoverColor) {
 
-                var css = {
-                    'background-color': option.hoverColor
-                };
-                var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
-                var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
-                stylersPrimal.push(selector + style);
+                    var css = {
+                        'background-color': option.hoverColor
+                    };
+                    var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+                    var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+                    stylersPrimal.push(selector + style);
 
-            } else if (params.showHeatmap && option.number) {
+                } else if (params.showHeatmap && option.number) {
 
-                var css = {
-                    'background-color': option.color,
-                    'opacity': '0.8'
-                };
-                var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
-                var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
-                stylersPrimal.push(selector + style);
+                    var css = {
+                        'background-color': option.color,
+                        'opacity': '0.8'
+                    };
+                    var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+                    var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+                    stylersPrimal.push(selector + style);
 
+                }
             }
 
             // Prefecture

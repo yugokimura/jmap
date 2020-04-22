@@ -15,7 +15,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?130"></script>
+    <script src="./jmap.js?140"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -510,6 +510,7 @@
                 height: '200px',
                 backgroundPadding: '1rem',
                 showPrefectureName: false,
+                selectable: false,
                 prefectureLineWidth: '0.04vw',
                 prefectureRadius: 'none',
                 showHeatmap: true,
@@ -947,7 +948,7 @@ $('#jmap').jmap({
                             31.1 }, {code: 46,name: "鹿児島",number: 30.8}, {code: 47,name: "沖縄",number: 21.0} ];
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">都高年化率</h5>
+                            <h5 class="card-title">高年化率</h5>
                         </div>
                     </div>
                 </div>
@@ -1083,6 +1084,11 @@ $('#jmap').jmap({
                             <th>fontColor</th>
                             <td>都道府県名フォントの色　都道府県名のフォントの色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>指定できます</td>
                             <td>#fff</td>
+                        </tr>
+                        <tr>
+                            <th>selectable</th>
+                            <td>都道府県マウスホバーの有無　都道府県のマウスホバー時のエフェクト有無を指定できます</td>
+                            <td>true</td>
                         </tr>
                         <tr>
                             <th>showPrefectureName</th>
