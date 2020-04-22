@@ -15,7 +15,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?100"></script>
+    <script src="./jmap.js?120"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -304,7 +304,8 @@
 
             $('#jmap4').jmap({
                 height: '450px',
-                heatmap: true,
+                showHeatmap: true,
+                showHeatlabel: true,
                 heatmapType: 'HRed',
                 areas: [{
                     code: 1,
@@ -767,7 +768,10 @@ $(document).ready(function() {
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap4"></div>
+                    <div id="jmap4">
+                        <div class="jmap-infobox">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-warning" role="alert">
@@ -778,8 +782,9 @@ $(document).ready(function() {
                     <pre class="border rounded-lg overflow-auto" style="height:250px;"><code class="javascript">
 $('#jmap').jmap({
     height: "450px",
-    heatmap: true,
+    showHeatmap: true,
     heatmapType: 'HRed',
+    showHeatlabel: true,
     areas: [
     {code: 1,name: "北海道",number: 5320},
     {code: 2,name: "青森",number: 1278},
@@ -1006,8 +1011,13 @@ $('#jmap').jmap({
                             <td>3px</td>
                         </tr>
                         <tr>
-                            <th>heatmap</th>
+                            <th>showHeatmap</th>
                             <td>都道府県のヒートマップ表示　areas が指定され、都道府県のオブジェクトに number が指定されている際に、numberの最大値に対する各都道府県のnumberの比率でヒートマップ表示されます</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <th>showHeatlabel</th>
+                            <td>都道府県のヒートラベル表示　ヒートマップの10段階の色調変化バーを表示します</td>
                             <td>false</td>
                         </tr>
                         <tr>

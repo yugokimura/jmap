@@ -168,6 +168,8 @@
             containerClass: 'jmap-container',
             dividerClass: 'jmap-divider',
             infoboxClass: 'jmap-infobox',
+            infoboxContent: '',
+            infoboxBackgroundColor: 'transparent',
             prefectureNameType: 'short',
             prefectureClass: 'jmap-pref',
             prefectureRadius: '3px',
@@ -177,7 +179,8 @@
             prefectureLineColor: '#fff',
             prefectureLineHoverColor: '#aa1a00',
             prefectureLineStyle: 'solid',
-            heatmap: false,
+            heatmap: null, // Deprecated
+            showHeatmap: false,
             heatmapType: 'HRed',
             heatmapColors: [],
             heatmapFontColors: [],
@@ -191,18 +194,28 @@
         }, options);
 
         var unit = '/px|vw|vh|rem|%|em|ex|ch|vmin|vmax|cm|mm|in|pt|pc/';
+        params.width = (String(params.width).match(unit)) ? params.width : parseInt(params.width) + 'px';
+        params.height = (String(params.height).match(unit)) ? params.height : parseInt(params.height) + 'px';
+        params.lineWidth = (String(params.lineWidth).match(unit)) ? params.lineWidth : parseInt(params.lineWidth) + 'px';
         params.backgroundRadius = (String(params.backgroundRadius).match(unit)) ? params.backgroundRadius : parseInt(params.backgroundRadius) + 'px';
-        params.prefectureLineWidth = (String(params.prefectureLineWidth).match(unit)) ? params.prefectureLineWidth : parseInt(params.prefectureLineWidth) + 'px';
-        params.lineWidth = (String(params.lineWidth).match(unit)) ? params.lineWidt : parseInt(params.lineWidth) + 'px';
+        params.backgroundPadding = (String(params.backgroundPadding).match(unit)) ? params.backgroundPadding : parseInt(params.backgroundPadding) + 'px';
         params.dividerWidth = (String(params.dividerWidth).match(unit)) ? params.dividerWidth : parseInt(params.dividerWidth) + 'px';
         params.fontSize = (String(params.fontSize).match(unit)) ? params.fontSize : parseInt(params.fontSize) + 'px';
         params.prefectureRadius = (String(params.prefectureRadius).match(unit)) ? params.prefectureRadius : parseInt(params.prefectureRadius) + 'px';
+        params.prefectureLineWidth = (String(params.prefectureLineWidth).match(unit)) ? params.prefectureLineWidth : parseInt(params.prefectureLineWidth) + 'px';
 
         if (params.heatmapColors.length <= 0)
             params.heatmapColors = conf.heatmap[params.heatmapType];
 
         if (params.heatmapFontColors.length <= 0)
             params.heatmapFontColors = conf.heatmap['Font'];
+
+        // // Deprecated
+        if (params.heatmap)
+            params.showHeatmap = heatmap;
+
+        if (params.showHeatmap)
+            params.showInfobox = true;
 
         // Jmap container
         var css = {
@@ -283,19 +296,66 @@
                 'grid-row': '%d1 / %d2'.replace('%d1', infobox.cordinate.y).replace('%d2', infobox.cordinate.y + infobox.size.y),
                 '-ms-grid-row': '%d1'.replace('%d1', infobox.cordinate.y),
                 '-ms-grid-row-span': '%d1'.replace('%d1', infobox.size.y),
-                // 'border-width': params.lineWidth,
-                // 'border-color': params.lineColor,
-                // 'border-style': params.lineStyle
+                'background-color': params.infoboxBackgroundColor
+                    // 'border-width': params.lineWidth,
+                    // 'border-color': params.lineColor,
+                    // 'border-style': params.lineStyle
             };
             var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.infoboxClass).replace('%s2', uniqClass + "-infobox");
             var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
             stylers.push(selector + style);
 
-            var infoboxDiv = $('<div>')
-                .attr('jmap-uniq', uniqClass + "-infobox")
-                .addClass(params.infoboxClass)
-                .appendTo(jmapDiv);
+            var infoboxDiv = $(this).find('.jmap-infobox');
+            if (infoboxDiv.length > 0) {
+                console.log('YES');
+                infoboxDiv.attr('jmap-uniq', uniqClass + "-infobox")
+                    .addClass(params.infoboxClass)
+                    .appendTo(jmapDiv);
+            } else {
+                infoboxDiv = $('<div>')
+                    .attr('jmap-uniq', uniqClass + "-infobox")
+                    .addClass(params.infoboxClass)
+                    .html(params.infoboxContent)
+                    .appendTo(jmapDiv);
+            }
 
+            if (params.showHeatmap) {
+
+                var css = {
+                    'padding': 0,
+                    'margin': 0,
+                    'max-width': '250px'
+                };
+                var selector = '.%s1[jmap-uniq="%s2"]'.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+                stylers.push(selector + style);
+
+                var css = {
+                    'border-radius': '3px 0 0 3px'
+                };
+                var selector = '.%s1[jmap-uniq="%s2"] li:first-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+                stylers.push(selector + style);
+
+                var css = {
+                    'border-radius': '0 3px 3px 0'
+                };
+                var selector = '.%s1[jmap-uniq="%s2"] li:last-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+                stylers.push(selector + style);
+
+                var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', uniqClass + "-heatlabel")
+                for (var index = 0, l = params.heatmapColors.length; index < l; index++) {
+                    $('<li>').css({
+                        'display': 'inline-block',
+                        'width': '10%',
+                        'height': '30px',
+                        'background-color': params.heatmapColors[index],
+                    }).appendTo(heatmapUl);
+                }
+                infoboxDiv.append(heatmapUl)
+
+            }
         }
 
         // Prefecture Common
@@ -338,10 +398,8 @@
         stylersPrimal.push(selector + style);
 
         // Loop prefectures
-        var heatmapMin = 0;
         var heatmapMax = 0;
-        var heatmapTotal = 0;
-        if (params.heatmap) {
+        if (params.showHeatmap) {
             for (var index in params.areas) {
                 var area = params.areas[index];
                 if (!area.number)
@@ -349,11 +407,6 @@
 
                 if (area.number > heatmapMax)
                     heatmapMax = area.number;
-
-                if (area.number < heatmapMin)
-                    heatmapMin = area.number;
-
-                heatmapTotal += area.number;
             }
         }
 
@@ -378,7 +431,7 @@
             }
 
             // Heatmap settings
-            if (params.heatmap) {
+            if (params.showHeatmap) {
                 if (option.number) {
                     // var index = Math.ceil(option.number / heatmapTotal * 10);
                     var index = Math.round(option.number / heatmapMax * 10);
@@ -389,6 +442,7 @@
 
                     if (option.hoverColor)
                         delete option.hoverColor;
+
                 }
             }
 
@@ -422,7 +476,7 @@
                 var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
                 stylersPrimal.push(selector + style);
 
-            } else if (params.heatmap && option.number) {
+            } else if (params.showHeatmap && option.number) {
 
                 var css = {
                     'background-color': option.color,
