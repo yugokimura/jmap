@@ -47,7 +47,7 @@
                 backgroundRadius: '0.3rem',
                 backgroundPadding: '1rem',
                 backgroundColor: '#ff000000',
-                fontSize: '1.5vw',
+                fontSize: '0.8rem',
                 fontColor: '#000',
                 prefectureClass: 'prefecture',
                 prefectureLineColor: '#ffffff',
@@ -303,7 +303,7 @@
             });
 
             $('#jmap4').jmap({
-                width: '450px',
+                height: '450px',
                 heatmap: true,
                 heatmapType: 'HRed',
                 areas: [{
@@ -618,7 +618,7 @@ $('#jmap').jmap({
             <p class="lead">世界に一つしかない地図を生み出そう。</p>
 
             <div class="row mb-5">
-                <div class="w-100 mb-5">
+                <div class="col-md-12 mb-5">
                     <div id="jmap3"></div>
                 </div>
                 <div class="w-100">
@@ -680,7 +680,7 @@ $('#jmap').jmap({
                             <pre><code class="javascript">
 $(document).ready(function() {
     $('#jmap').jmap({
-        height: '4500px',
+        height: '450px',
         lineColor: '#bfbfbf',
         lineWidth: 1,
         backgroundRadius: '0.3rem',
@@ -690,7 +690,7 @@ $(document).ready(function() {
         prefectureLineColor: '#ffffff',
         prefectureLineWidth: 1,
         prefectureLineHoverColor : '#fff',
-        fontSize: '1.4vw',
+        fontSize: '0.8rem',
         fontColor: '#000',
         areas: [
         {code : 1, name: "北海道", color: "#7f7eda", hoverColor: "#b3b2ee" },
@@ -777,7 +777,7 @@ $(document).ready(function() {
                     <h5 class="h5">Example</h5>
                     <pre class="border rounded-lg overflow-auto" style="height:250px;"><code class="javascript">
 $('#jmap').jmap({
-    width: "450px",
+    height: "450px",
     heatmap: true,
     heatmapType: 'HRed',
     areas: [
