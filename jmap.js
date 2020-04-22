@@ -298,9 +298,6 @@
                 '-ms-grid-row': '%d1'.replace('%d1', infobox.cordinate.y),
                 '-ms-grid-row-span': '%d1'.replace('%d1', infobox.size.y),
                 'background-color': params.infoboxBackgroundColor
-                    // 'border-width': params.lineWidth,
-                    // 'border-color': params.lineColor,
-                    // 'border-style': params.lineStyle
             };
             var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.infoboxClass).replace('%s2', uniqClass + "-infobox");
             var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
@@ -308,18 +305,22 @@
 
             var infoboxDiv = $(this).find('.jmap-infobox');
             if (infoboxDiv.length > 0) {
-                console.log('YES');
+
                 infoboxDiv.attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .appendTo(jmapDiv);
+
             } else {
+
                 infoboxDiv = $('<div>')
                     .attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .html(params.infoboxContent)
                     .appendTo(jmapDiv);
+
             }
 
+            // Heatmap
             if (params.showHeatmap && params.showHeatlabel) {
 
                 var css = {
@@ -412,21 +413,23 @@
         }
 
         $.each(conf.prefectures, function(index, pref) {
-            var pref = pref;
+            var pref = $.extend({ option: {} }, pref);
+
             var option = params.areas.filter(function(_pref) {
                 return pref.code == _pref.code;
             })[0] || {};
+            pref.option = $.extend(pref.option, option);
 
             for (var index in conf.area8) {
                 if (conf.area8[index].code == pref.area8) {
-                    pref.area8 = conf.area8[index];
+                    pref.area8 = $.extend(pref.area8, conf.area8[index]);
                     break;
                 }
             }
 
             for (var index in conf.area11) {
                 if (conf.area11[index].code == pref.area11) {
-                    pref.area11 = conf.area11[index];
+                    pref.area11 = $.extend(pref.area11, conf.area11[index]);
                     break;
                 }
             }
@@ -460,8 +463,6 @@
 
             if (option.fontColor)
                 css['color'] = option.fontColor;
-
-
 
             var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
             var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
