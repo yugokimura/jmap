@@ -795,6 +795,9 @@ $('#jmap').jmap({
     showHeatmap: true,
     heatmapType: 'HRed',
     showHeatlabel: true,
+    onSelect: function(e, data) {
+        alert('人口は：%d 人です。'.replace('%d', (data.option.number * 1000).toLocaleString());
+    },
     areas: [
     {code: 1,name: "北海道",number: 5320},
     {code: 2,name: "青森",number: 1278},
