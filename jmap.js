@@ -181,6 +181,7 @@
             prefectureLineStyle: 'solid',
             heatmap: null, // Deprecated
             showHeatmap: false,
+            showHeatlabel: false,
             heatmapType: 'HRed',
             heatmapColors: [],
             heatmapFontColors: [],
@@ -214,7 +215,7 @@
         if (params.heatmap)
             params.showHeatmap = heatmap;
 
-        if (params.showHeatmap)
+        if (params.showHeatmap && params.showHeatlabel)
             params.showInfobox = true;
 
         // Jmap container
@@ -319,7 +320,7 @@
                     .appendTo(jmapDiv);
             }
 
-            if (params.showHeatmap) {
+            if (params.showHeatmap && params.showHeatlabel) {
 
                 var css = {
                     'padding': 0,
