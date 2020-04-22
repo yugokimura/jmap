@@ -189,6 +189,7 @@
             viewType: 'map',
             gridNumber: 6,
             selectable: true,
+            cursor: 'pointer',
             areas: [],
             onSelect: function(e, data) {},
             onHover: function(e, data) {},
@@ -219,6 +220,9 @@
 
         if (params.showHeatmap && params.showHeatlabel)
             params.showInfobox = true;
+
+        if (!params.selectable)
+            params.cursor = 'default';
 
         // Jmap container
         var css = {
@@ -367,7 +371,7 @@
         var css = {
             'position': 'relative',
             'display': 'flex',
-            'cursor': 'pointer',
+            'cursor': params.cursor,
             'border-width': params.prefectureLineWidth,
             'border-color': params.prefectureLineColor,
             'border-style': params.prefectureLineStyle,

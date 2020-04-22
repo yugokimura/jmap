@@ -554,7 +554,6 @@
             <p class="lead">日本地図 jQuery プラグイン - <small>Released under the MIT license</small></p>
             <hr class="my-4">
             <p>Jmap jQuery pluginは、情報配信に適したシンプルな形状の日本地図を表示することができます。 出力される地図はHTMLコーダーやCSSデザイナーも気軽に利用できるようHTMLとCSSのシンプルな構造となっており、カスタマイズ性に優れかつ便利な機能を複数備えています。</p>
-            <!-- <p>jQuery plugin to draw Japanese prefectures with HTML and CSS.</p> -->
         </div>
 
         <div class="container">
@@ -1089,6 +1088,12 @@ $('#jmap').jmap({
                             <th>selectable</th>
                             <td>都道府県マウスホバーの有無　都道府県のマウスホバー時のエフェクト有無を指定できます</td>
                             <td>true</td>
+                        </tr>
+                        <tr>
+                            <th>cursor</th>
+                            <td>都道府県マウスホバーのカーソル　都道府県のマウスホバー時のカーソルを指定できます　尚、
+                                <kbd>selectable</kbd>の値が false だった場合、<kbd>default</kbd> が適用されます。</td>
+                            <td>pointer</td>
                         </tr>
                         <tr>
                             <th>showPrefectureName</th>
