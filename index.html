@@ -303,6 +303,7 @@
             });
 
             $('#jmap4').jmap({
+                width: '450px',
                 heatmap: true,
                 heatmapType: 'HRed',
                 areas: [{
@@ -582,7 +583,7 @@ $('#jmap').jmap();
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap2" style="height:610px"></div>
+                    <div id="jmap2"></div>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-primary" role="alert">
@@ -766,7 +767,7 @@ $(document).ready(function() {
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap4" style="height:450px"></div>
+                    <div id="jmap4"></div>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-warning" role="alert">
@@ -776,6 +777,7 @@ $(document).ready(function() {
                     <h5 class="h5">Example</h5>
                     <pre class="border rounded-lg overflow-auto" style="height:250px;"><code class="javascript">
 $('#jmap').jmap({
+    width: "450px",
     heatmap: true,
     heatmapType: 'HRed',
     areas: [
