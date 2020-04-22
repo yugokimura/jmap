@@ -630,7 +630,7 @@ $('#jmap').jmap();
                         <h4 class="alert-heading">Tips!</h4>
                         <p>Jmapには地図をカスタマイズするのに必要な様々なパラメータが用意されています。</p>
                         <hr>
-                        <a class="btn btn-primary btn-sm" href="#parameters">パラメーター</a>
+                        <a class="btn btn-primary" href="#parameters">パラメーターのリファレンス</a>
                     </div>
                     <h5 class="h5">Example</h5>
                     <pre class="border rounded-lg"><code class="javascript">
@@ -817,7 +817,7 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Heatmap</h4>
                         <p>Heatmapパラメーターを有効にし、areasの都道府県オブジェクトに <kbd>number</kbd>を指定するとヒートマップ地図が表示されます。</p>
                     </div>
@@ -1002,7 +1002,7 @@ $('#jmap').jmap({
             <h2 class="h3 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> リファレンス - <small class="text-muted">パラメーター</small></h2>
             <p class="lead">豊富なパラメーターが用意されています。</p>
 
-            <div class="table-responsive">
+            <div class="table-responsive mb-5">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -1373,7 +1373,25 @@ $('#jmap').jmap({
                     </tbody>
                 </table>
             </div>
+
+            <h2 class="h3 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> 互換性 - <small class="text-muted">他プラグイン</small></h2>
+            <p class="lead">Japan Map ( jQuery plugin )との互換性</p>
+
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Japan Mapとの互換性</h4>
+                        <p>Jmapはデータのビジュアライズやシンプルな構造にする事で扱いやすさを重視した日本地図プラグインです。より正確な日本地図を利用したい場合は下記のJapan Map(jQuery plugin)をおすすめします。</p>
+                        <p>Jmapは、Japan Map(jQuery plugin)とある程度の互換性をもっています。Japan Mapのメソッド名 <kbd>japanMap</kbd> を<kbd>jmap</kbd>に書き換えるだけでそのまま利用する事が可能です。一部対応していない設定は無視されます。</p>
+                        <hr>
+                        <p>jQuery plugin to show clickable map of prefectures (or area) of Japan. </p>
+                        <a class="btn btn-warning" href="https://takemaru-hirai.github.io/japan-map/">Japan Map ( jQuery plugin )</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </main>
     <footer class="footer">
         <div class="container p-3 bg-light">
