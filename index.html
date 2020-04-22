@@ -770,6 +770,8 @@ $(document).ready(function() {
                 <div class="col-md-6 mb-5">
                     <div id="jmap4">
                         <div class="jmap-infobox">
+                            <h5 class="h5">情報表示エリア</h5>
+                            <p><kbd>showHeatlabel</kbd> を指定するとヒートマップラベルを表示します</p>
                         </div>
                     </div>
                 </div>
@@ -972,7 +974,7 @@ $('#jmap').jmap({
                         </tr>
                         <tr>
                             <th>prefectureClass</th>
-                            <td>都道府県の共通CSSクラス　指定できます</td>
+                            <td>都道府県の共通CSSクラス　都道府県の共通CSSクラスを指定できます</td>
                             <td>true</td>
                         </tr>
                         <tr>
@@ -1009,6 +1011,21 @@ $('#jmap').jmap({
                             <th>prefectureRadius</th>
                             <td>都道府県枠の角丸　都道府県枠の角丸を指定できます</td>
                             <td>3px</td>
+                        </tr>
+                        <tr>
+                            <th>showInfobox</th>
+                            <td>情報表示エリアの有無　情報表示エリアの表示有無を指定できます</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <th>infoboxClass</th>
+                            <td>情報表示エリアのCSSクラス　情報表示エリアのCSSクラスを指定できます</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <th>infoboxContent</th>
+                            <td>情報表示エリアのコンテンツ　情報表示エリアのコンテンツを直接指定できます</td>
+                            <td>空</td>
                         </tr>
                         <tr>
                             <th>showHeatmap</th>
