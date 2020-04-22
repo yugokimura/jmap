@@ -505,6 +505,36 @@
                         .end().modal('show');
                 }
             });
+
+            var base = {
+                height: '200px',
+                backgroundPadding: '1rem',
+                showPrefectureName: false,
+                prefectureLineWidth: '0.04vw',
+                prefectureRadius: 'none',
+                showHeatmap: true,
+                showHeatlabel: true,
+            }
+            var jmap10 = base;
+            jmap10.heatmapType = 'Oranges';
+            jmap10.areas = eval($('#jmap10').text());
+            $('#jmap10').jmap(jmap10);
+
+            var jmap11 = base;
+            jmap11.heatmapType = 'Blues';
+            jmap11.areas = eval($('#jmap11').text());
+            $('#jmap11').jmap(jmap11);
+
+            var jmap12 = base;
+            jmap12.heatmapType = 'YlGn';
+            jmap12.areas = eval($('#jmap12').text());
+            $('#jmap12').jmap(jmap12);
+
+            var jmap13 = base;
+            jmap13.heatmapType = 'Purples';
+            jmap13.areas = eval($('#jmap13').text());
+            $('#jmap13').jmap(jmap13);
+
         });
     </script>
 </head>
@@ -851,6 +881,75 @@ $('#jmap').jmap({
     ]
 });
                     </code></pre>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="scrolling-wrapper" style="overflow-x: auto;overflow-y: hidden;white-space: nowrap; margin:0 auto;">
+                    <div class="card mr-1 mb-1" style="width:15rem; display: inline-block;">
+                        <div id="jmap10" class="card-img-top">
+                            [ {code: 1,name: "北海道",number: 9.3 }, {code: 2,name: "青森",number: 11.0}, {code: 3,name: "岩手",number: 11.2}, {code: 4,name: "宮城",number: 13.5}, {code: 5,name: "秋田",number: 12.5}, {code: 6,name: "山形",number: 12.7 }, {code: 7,name: "福島",number: 14.2}, {code:
+                            8,name: "茨城",number: 14.8}, {code: 9,name: "栃木",number: 14.8}, {code: 10,name: "群馬",number: 15.6}, {code: 11,name: "埼玉",number: 15.9}, {code: 12,name: "千葉",number: 16.8}, {code: 13,name: "東京",number: 16.4}, {code: 14,name:
+                            "神奈川",number: 16.9}, {code: 15,name: "新潟",number: 14.5}, {code: 16,name: "富山",number: 15.2}, {code: 17,name: "石川",number: 15.7}, {code: 18,name: "福井",number: 15.6}, {code: 19,name: "山梨",number: 15.7}, {code: 20,name: "長野",number:
+                            13.1}, {code: 21,name: "岐阜",number: 16.9}, {code: 22,name: "静岡",number: 17.6}, {code: 23,name: "愛知",number: 17.0}, {code: 24,name: "三重",number: 16.9}, {code: 25,name: "滋賀",number: 15.8}, {code: 26,name: "京都",number: 17.1},
+                            {code: 27,name: "大阪",number: 17.7}, {code: 28,name: "兵庫",number: 17.8}, {code: 29,name: "奈良",number: 16.0}, {code: 30,name: "和歌山",number: 17.7}, {code: 31,name: "鳥取",number: 16.0}, {code: 32,name: "島根",number: 15.9}, {code:
+                            33,name: "岡山",number: 16.6}, {code: 34,name: "広島",number: 17.2}, {code: 35,name: "山口",number: 16.5}, {code: 36,name: "徳島",number: 17.6}, {code: 37,name: "香川",number: 17.5}, {code: 38,name: "愛媛",number: 17.6}, {code: 39,name:
+                            "高知",number: 18.1}, {code: 40,name: "福岡",number: 18.1}, {code: 41,name: "佐賀",number: 17.9}, {code: 42,name: "長崎",number: 18.1}, {code: 43,name: "熊本",number: 18.0}, {code: 44,name: "大分",number: 17.6}, {code: 45,name: "宮崎",number:
+                            18.6}, {code: 46,name: "鹿児島",number: 19.6}, {code: 47,name: "沖縄",number: 24.1} ];
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">年間平均気温</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mr-1 mb-1" style="width:15rem; display: inline-block;">
+                        <div id="jmap11" class="card-img-top">
+                            [ {code: 1,name: "北海道",number: 144}, {code: 2,name: "青森",number: 158}, {code: 3,name: "岩手",number: 133}, {code: 4,name: "宮城",number: 107}, {code: 5,name: "秋田",number: 177}, {code: 6,name: "山形",number: 146}, {code: 7,name: "福島",number: 115}, {code: 8,name:
+                            "茨城",number: 99}, {code: 9,name: "栃木",number: 104}, {code: 10,name: "群馬",number: 90}, {code: 11,name: "埼玉",number: 90}, {code: 12,name: "千葉",number: 101}, {code: 13,name: "東京",number: 106}, {code: 14,name: "神奈川",number: 103},
+                            {code: 15,name: "新潟",number: 170}, {code: 16,name: "富山",number: 168}, {code: 17,name: "石川",number: 161}, {code: 18,name: "福井",number: 169}, {code: 19,name: "山梨",number: 82}, {code: 20,name: "長野",number: 110}, {code: 21,name:
+                            "岐阜",number: 109}, {code: 22,name: "静岡",number: 106}, {code: 23,name: "愛知",number: 107}, {code: 24,name: "三重",number: 100}, {code: 25,name: "滋賀",number: 127}, {code: 26,name: "京都",number: 104}, {code: 27,name: "大阪",number:
+                            101}, {code: 28,name: "兵庫",number: 90}, {code: 29,name: "奈良",number: 105}, {code: 30,name: "和歌山",number: 102}, {code: 31,name: "鳥取",number: 158}, {code: 32,name: "島根",number: 150}, {code: 33,name: "岡山",number: 96}, {code: 34,name:
+                            "広島",number: 108}, {code: 35,name: "山口",number: 126}, {code: 36,name: "徳島",number: 106}, {code: 37,name: "香川",number: 106}, {code: 38,name: "愛媛",number: 107}, {code: 39,name: "高知",number: 122}, {code: 40,name: "福岡",number:
+                            124}, {code: 41,name: "佐賀",number: 115}, {code: 42,name: "長崎",number: 118}, {code: 43,name: "熊本",number: 119}, {code: 44,name: "大分",number: 108}, {code: 45,name: "宮崎",number: 120}, {code: 46,name: "鹿児島",number: 133}, {code:
+                            47,name: "沖縄",number: 137} ];
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">年間降水日数</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mr-1 mb-1" style="width:15rem; display: inline-block;">
+                        <div id="jmap12" class="card-img-top">
+                            [ {code: 1,name: "北海道",number: 383}, {code: 2,name: "青森",number: 362}, {code: 3,name: "岩手",number: 391}, {code: 4,name: "宮城",number: 408}, {code: 5,name: "秋田",number: 376}, {code: 6,name: "山形",number: 419}, {code: 7,name: "福島",number: 404}, {code: 8,name:
+                            "茨城",number: 426}, {code: 9,name: "栃木",number: 434}, {code: 10,name: "群馬",number: 412}, {code: 11,name: "埼玉",number: 436}, {code: 12,name: "千葉",number: 456}, {code: 13,name: "東京",number: 471}, {code: 14,name: "神奈川",number:
+                            478}, {code: 15,name: "新潟",number: 366}, {code: 16,name: "富山",number: 408}, {code: 17,name: "石川",number: 383}, {code: 18,name: "福井",number: 383}, {code: 19,name: "山梨",number: 420}, {code: 20,name: "長野",number: 436}, {code:
+                            21,name: "岐阜",number: 392}, {code: 22,name: "静岡",number: 417}, {code: 23,name: "愛知",number: 417}, {code: 24,name: "三重",number: 416}, {code: 25,name: "滋賀",number: 424}, {code: 26,name: "京都",number: 403}, {code: 27,name: "大阪",number:
+                            406}, {code: 28,name: "兵庫",number: 428}, {code: 29,name: "奈良",number: 408}, {code: 30,name: "和歌山",number: 393}, {code: 31,name: "鳥取",number: 375}, {code: 32,name: "島根",number: 408}, {code: 33,name: "岡山",number: 385}, {code:
+                            34,name: "広島",number: 404}, {code: 35,name: "山口",number: 402}, {code: 36,name: "徳島",number: 392}, {code: 37,name: "香川",number: 387}, {code: 38,name: "愛媛",number: 390}, {code: 39,name: "高知",number: 362}, {code: 40,name: "福岡",number:
+                            388}, {code: 41,name: "佐賀",number: 395}, {code: 42,name: "長崎",number: 373}, {code: 43,name: "熊本",number: 381}, {code: 44,name: "大分",number: 386}, {code: 45,name: "宮崎",number: 370}, {code: 46,name: "鹿児島",number: 392}, {code:
+                            47,name: "沖縄",number: 353} ];
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">平均年収</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mr-1 mb-1" style="width:15rem; display: inline-block;">
+                        <div id="jmap13" class="card-img-top">
+                            [ {code: 1,name: "北海道",number: 30.7}, {code: 2,name: "青森",number: 31.8}, {code: 3,name: "岩手",number: 31.9}, {code: 4,name: "宮城",number: 27.2}, {code: 5,name: "秋田",number: 35.6}, {code: 6,name: "山形",number: 32.2}, {code: 7,name: "福島",number: 30.2}, {code:
+                            8,name: "茨城",number: 28.3}, {code: 9,name: "栃木",number: 27.4}, {code: 10,name: "群馬",number: 28.9}, {code: 11,name: "埼玉",number: 26.0}, {code: 12,name: "千葉",number: 27.1}, {code: 13,name: "東京",number: 23.0}, {code: 14,name:
+                            "神奈川",number: 24.8}, {code: 15,name: "新潟",number: 31.3}, {code: 16,name: "富山",number: 31.6}, {code: 17,name: "石川",number: 28.8}, {code: 18,name: "福井",number: 29.8}, {code: 19,name: "山梨",number: 29.8}, {code: 20,name: "長野",number:
+                            31.1}, {code: 21,name: "岐阜",number: 29.3}, {code: 22,name: "静岡",number: 29.1}, {code: 23,name: "愛知",number: 24.6}, {code: 24,name: "三重",number: 29.0}, {code: 25,name: "滋賀",number: 25.3}, {code: 26,name: "京都",number: 28.6},
+                            {code: 27,name: "大阪",number: 27.2}, {code: 28,name: "兵庫",number: 28.3}, {code: 29,name: "奈良",number: 30.3}, {code: 30,name: "和歌山",number: 32.2}, {code: 31,name: "鳥取",number: 31.0}, {code: 32,name: "島根",number: 33.6}, {code:
+                            33,name: "岡山",number: 29.7}, {code: 34,name: "広島",number: 28.6}, {code: 35,name: "山口",number: 33.4}, {code: 36,name: "徳島",number: 32.4}, {code: 37,name: "香川",number: 31.1}, {code: 38,name: "愛媛",number: 32.1}, {code: 39,name:
+                            "高知",number: 34.2}, {code: 40,name: "福岡",number: 27.1}, {code: 41,name: "佐賀",number: 29.2}, {code: 42,name: "長崎",number: 31.3}, {code: 43,name: "熊本",number: 30.1}, {code: 44,name: "大分",number: 31.8}, {code: 45,name: "宮崎",number:
+                            31.1 }, {code: 46,name: "鹿児島",number: 30.8}, {code: 47,name: "沖縄",number: 21.0} ];
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">都高年化率</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
 

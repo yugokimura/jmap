@@ -402,15 +402,23 @@
         stylersPrimal.push(selector + style);
 
         // Loop prefectures
-        var heatmapMax = 0;
+        var heatmapMax = null;
+        var heatmapMin = null;
         if (params.showHeatmap) {
             for (var index in params.areas) {
                 var area = params.areas[index];
                 if (!area.number)
                     continue;
 
-                if (area.number > heatmapMax)
+                if (!heatmapMax)
                     heatmapMax = area.number;
+                else if (area.number > heatmapMax)
+                    heatmapMax = area.number;
+
+                if (!heatmapMin)
+                    heatmapMin = area.number;
+                else if (area.number < heatmapMin)
+                    heatmapMin = area.number;
             }
         }
 
@@ -436,19 +444,18 @@
                 }
             }
 
+            var t = 0;
             // Heatmap settings
             if (params.showHeatmap) {
                 if (option.number) {
-                    // var index = Math.ceil(option.number / heatmapTotal * 10);
-                    var index = Math.round(option.number / heatmapMax * 10);
+                    var index = Math.round((option.number - heatmapMin) / (heatmapMax - heatmapMin) * 10);
                     index = (index >= 10) ? 9 : index;
-
+                    t = index;
                     option.color = params.heatmapColors[index];
                     option.fontColor = params.heatmapFontColors[index];
 
                     if (option.hoverColor)
                         delete option.hoverColor;
-
                 }
             }
 
@@ -462,7 +469,6 @@
                 '-ms-grid-row-span': '%d1'.replace('%d1', pref.size.y),
                 'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
             };
-
             if (option.fontColor)
                 css['color'] = option.fontColor;
 
@@ -494,6 +500,7 @@
 
             // Prefecture
             var prefDiv = $('<div>')
+                .attr('data-color', t)
                 .data('data', pref)
                 .addClass(params.prefectureClass)
                 .attr('jmap-uniq', uniqClass + "-pref")
