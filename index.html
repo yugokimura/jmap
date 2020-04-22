@@ -834,16 +834,54 @@ $('#jmap').jmap({
                 </div>
             </div>
 
-            <h2 class="h3 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> リファレンス - <small class="text-muted">パラメーター</small></h2>
-            <p class="lead">豊富なパラメーターが用意されています。</p>
+            <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">5</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
+            <p class="lead">感性の赴くままにデザインしよう。</p>
 
-            <div class="table-responsive">
-                <table class="table table-striped">
+            <div class="table-responsive  mb-5">
+                <p>JmapはHTMLとCSSで構成された地図を出力します。もちろん自分が作成したCSSやJavascriptで直接操作する事ができます。</p>
+                <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th scope="col">Parameter<br><small>パラメーター</small></th>
-                            <th scope="col">Description<br><small>説明</small></th>
-                            <th scope="col">Default<br><small>初期値</small></th>
+                            <th scope="col ">Class Name<br><small>クラス名</small></th>
+                            <th scope="col ">Description<br><small>説明</small></th>
+                            <th scope="col ">CSS Selector<br><small>セレクター</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>jmap-container</th>
+                            <td>Jmapのラッパーに付与されるクラス名です。</td>
+                            <td>.jmap-container {}</td>
+                        </tr>
+                        <tr>
+                            <th>jmap-pref</th>
+                            <td>Jmapの全都道府県に共通で付与されるクラス名です。</td>
+                            <td>.jmap-container { background-color:#0f0; }</td>
+                        </tr>
+                        <tr>
+                            <th>jmap-pref[jmap-pref="都道府県コード"]</th>
+                            <td>Jmapの各都道府県に都道府県コード別に付与されるクラス名です。</td>
+                            <td>.jmap-pref[jmap-pref="都道府県コード"] { background-color:#f00; }</td>
+                        </tr>
+                        <tr>
+                            <th>jmap-divider</th>
+                            <td>Jmapの遠島区分け線に付与されるクラス名です。</td>
+                            <td>.jmap-divider { border-bottom-color:#f00; }</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="h3 mb-3 " id="parameters "><span class="badge badge-pill badge-primary ">*</span> リファレンス - <small class="text-muted ">パラメーター</small></h2>
+            <p class="lead ">豊富なパラメーターが用意されています。</p>
+
+            <div class="table-responsive ">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th scope="col ">Parameter<br><small>パラメーター</small></th>
+                            <th scope="col ">Description<br><small>説明</small></th>
+                            <th scope="col ">Default<br><small>初期値</small></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -976,9 +1014,9 @@ $('#jmap').jmap({
                             <th>heatmapColors</th>
                             <td>都道府県のヒートマップ色配列　ヒートマップの色配列10色を指定できます
                                 <div>
-                                    <small class="text-muted">参考例</small>
+                                    <small class="text-muted ">参考例</small>
                                     <code>
-                                        heatmapColors: ["#BFC7CE", "#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c", "#08306b"]
+                                        heatmapColors: ["#BFC7CE ", "#f7fbff ", "#deebf7 ", "#c6dbef ", "#9ecae1 ", "#6baed6 ", "#4292c6 ", "#2171b5 ", "#08519c ", "#08306b "]
                                     </code>
                                 </div>
                             </td>
@@ -988,9 +1026,9 @@ $('#jmap').jmap({
                             <th>heatmapFontColors</th>
                             <td>都道府県のヒートマップフォント色配列　ヒートマップフォント色の配列10色を指定できます
                                 <div>
-                                    <small class="text-muted">参考例</small>
+                                    <small class="text-muted ">参考例</small>
                                     <code>
-                                        heatmapFontColors: ["#000", "#000", "#000", "#000", "#000", "#fff", "#fff", "#fff", "#fff", "#fff"]
+                                        heatmapFontColors: ["#000 ", "#000 ", "#000 ", "#000 ", "#000 ", "#fff ", "#fff ", "#fff ", "#fff ", "#fff "]
                                     </code>
                                 </div>
                             </td>
@@ -999,42 +1037,42 @@ $('#jmap').jmap({
                         <tr>
                             <th>heatmapType</th>
                             <td>都道府県のヒートマップタイプ　ヒートマップの色を36種類から指定できます
-                                <table class="table mt-3">
-                                    <thead class="thead-dark">
+                                <table class="table mt-3 ">
+                                    <thead class="thead-dark ">
                                         <tr>
-                                            <th scope="col">種別</th>
-                                            <th scope="col">色の範囲
+                                            <th scope="col ">種別</th>
+                                            <th scope="col ">色の範囲
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>HRed</td>
-                                            <td style="background: linear-gradient(90deg,#FAE1E1, #CC3333);"></td>
+                                            <td style="background: linear-gradient(90deg,#FAE1E1, #CC3333); "></td>
                                         </tr>
                                         <tr>
                                             <td>HBlue</td>
-                                            <td style="background: linear-gradient(90deg,#F7FBFF, #08306B);"></td>
+                                            <td style="background: linear-gradient(90deg,#F7FBFF, #08306B); "></td>
                                         </tr>
                                         <tr>
                                             <td>OrRd</td>
-                                            <td style="background: linear-gradient(90deg,#fff7ec, #7f0000);"></td>
+                                            <td style="background: linear-gradient(90deg,#fff7ec, #7f0000); "></td>
                                         </tr>
                                         <tr>
                                             <td>PuBu</td>
-                                            <td style="background: linear-gradient(90deg,#fff7fb, #023858);"></td>
+                                            <td style="background: linear-gradient(90deg,#fff7fb, #023858); "></td>
                                         </tr>
                                         <tr>
                                             <td>BuPu</td>
-                                            <td style="background: linear-gradient(90deg,#f7fcfd, #4d004b);"></td>
+                                            <td style="background: linear-gradient(90deg,#f7fcfd, #4d004b); "></td>
                                         </tr>
                                         <tr>
                                             <td>Oranges</td>
-                                            <td style="background: linear-gradient(90deg,#fff5eb, #7f2704);"></td>
+                                            <td style="background: linear-gradient(90deg,#fff5eb, #7f2704); "></td>
                                         </tr>
                                         <tr>
                                             <td>BuGn</td>
-                                            <td style="background: linear-gradient(90deg,#f7fcfd, #00441b);"></td>
+                                            <td style="background: linear-gradient(90deg,#f7fcfd, #00441b); "></td>
                                         </tr>
                                         <tr>
                                             <td>その他</td>
@@ -1048,12 +1086,12 @@ $('#jmap').jmap({
                         <tr>
                             <th>onLoad</th>
                             <td>地図が読み込まれた際に呼び出されます
-                                <table class="table mt-3">
-                                    <thead class="thead-dark">
+                                <table class="table mt-3 ">
+                                    <thead class="thead-dark ">
                                         <tr>
-                                            <th scope="col">引数</th>
-                                            <th scope="col">値</th>
-                                            <th scope="col">説明</th>
+                                            <th scope="col ">引数</th>
+                                            <th scope="col ">値</th>
+                                            <th scope="col ">説明</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1075,12 +1113,12 @@ $('#jmap').jmap({
                         <tr>
                             <th>onSelect</th>
                             <td>都道府県が選択された際に呼び出されます
-                                <table class="table mt-3">
-                                    <thead class="thead-dark">
+                                <table class="table mt-3 ">
+                                    <thead class="thead-dark ">
                                         <tr>
-                                            <th scope="col">引数</th>
-                                            <th scope="col">値</th>
-                                            <th scope="col">説明</th>
+                                            <th scope="col ">引数</th>
+                                            <th scope="col ">値</th>
+                                            <th scope="col ">説明</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1103,12 +1141,12 @@ $('#jmap').jmap({
                         <tr>
                             <th>onHover</th>
                             <td>都道府県にマウスオーバーした際に呼び出されます
-                                <table class="table mt-3">
-                                    <thead class="thead-dark">
+                                <table class="table mt-3 ">
+                                    <thead class="thead-dark ">
                                         <tr>
-                                            <th scope="col">引数</th>
-                                            <th scope="col">値</th>
-                                            <th scope="col">説明</th>
+                                            <th scope="col ">引数</th>
+                                            <th scope="col ">値</th>
+                                            <th scope="col ">説明</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1130,12 +1168,12 @@ $('#jmap').jmap({
                         <tr>
                             <th>areas</th>
                             <td>都道府県別のオブジェクトを配列に格納すればオブジェクト内の47都道府県コード(code)を元に、独自の名前(name)、背景色(color)、ホバー時の背景色(hoverColor)を指定できます。
-                                <table class="table mt-3">
-                                    <thead class="thead-dark">
+                                <table class="table mt-3 ">
+                                    <thead class="thead-dark ">
                                         <tr>
-                                            <th scope="col">必須</th>
-                                            <th scope="col">パラメーター</th>
-                                            <th scope="col">説明</th>
+                                            <th scope="col ">必須</th>
+                                            <th scope="col ">パラメーター</th>
+                                            <th scope="col ">説明</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1173,31 +1211,31 @@ $('#jmap').jmap({
                 </table>
             </div>
     </main>
-    <footer class="footer">
-        <div class="container p-3 bg-light">
-            <small class="text-muted">
-                 <cite title="Source Title">Copyright (c) Yugo Kimura - Released under the MIT license</cite>
+    <footer class="footer ">
+        <div class="container p-3 bg-light ">
+            <small class="text-muted ">
+                 <cite title="Source Title ">Copyright (c) Yugo Kimura - Released under the MIT license</cite>
               </small>
         </div>
     </footer>
 
     <!-- Prefecture Modal -->
-    <div class="modal fade" id="prefectureModal" tabindex="-1" role="dialog" aria-labelledby="prefectureModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="prefectureModalTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+    <div class="modal fade " id="prefectureModal " tabindex="-1 " role="dialog " aria-labelledby="prefectureModalCenterTitle " aria-hidden="true ">
+        <div class="modal-dialog modal-dialog-centered " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="prefectureModalTitle "></h5>
+                    <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+            <span aria-hidden="true ">&times;</span>
                                                 </button>
                 </div>
-                <div class="modal-body overflow-auto" style="height:350px;">
-                    <pre class="modal-code border rounded-lg"><code class="json">
+                <div class="modal-body overflow-auto " style="height:350px; ">
+                    <pre class="modal-code border rounded-lg "><code class="json ">
                         
                     </code></pre>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-dismiss="modal ">閉じる</button>
                 </div>
             </div>
         </div>
