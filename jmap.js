@@ -188,6 +188,7 @@
             heatmapFontColors: [],
             viewType: 'map',
             gridNumber: 6,
+            gridOffset: 1,
             selectable: true,
             cursor: 'pointer',
             areas: [],
@@ -245,11 +246,13 @@
         };
 
         if (params.viewType == 'grid') {
+            var row = Math.ceil((conf.prefectures.length + params.gridOffset) / params.gridNumber);
+            var col = params.gridNumber;
             var gcss = {
-                'grid-template-rows': Array(8 + 1).join('12.5% '),
-                'grid-template-columns': Array(6 + 1).join('16.666% '),
-                '-ms-grid-rows': Array(8 + 1).join('12.5% '),
-                '-ms-grid-columns': Array(6 + 1).join('16.666% ')
+                'grid-template-rows': Array(row + 1).join((100 / row).toFixed(3) + '% '),
+                'grid-template-columns': Array(col + 1).join((100 / col).toFixed(3) + '% '),
+                '-ms-grid-rows': Array(row + 1).join((100 / row).toFixed(3) + '% '),
+                '-ms-grid-columns': Array(col + 1).join((100 / col).toFixed(3) + '% ')
             }
             css = $.extend(css, gcss);
             params.showIslandDivider = false;
@@ -435,6 +438,8 @@
             }
         }
 
+        var gridRowIndex = 1;
+        var gridColIndex = params.gridOffset;
         $.each(conf.prefectures, function(_index, pref) {
             var pref = $.extend({ option: {} }, pref);
 
@@ -486,21 +491,24 @@
                 css['color'] = option.fontColor;
 
             if (params.viewType == 'grid') {
-                var row = Math.ceil((_index + 1) / 6);
-                var col = Math.ceil((_index + 1) % 6);
-                if (col == 0)
-                    col = 6;
 
                 var gcss = {
-                    'grid-column': '%d1 / %d2'.replace('%d1', col).replace('%d2', (col + 1)),
-                    '-ms-grid-column': '%d1'.replace('%d1', col),
+                    'grid-column': '%d1 / %d2'.replace('%d1', gridColIndex).replace('%d2', gridColIndex + 1),
+                    '-ms-grid-column': '%d1'.replace('%d1', gridColIndex),
                     '-ms-grid-column-span': 'sx'.replace('sx', 1),
-                    'grid-row': '%d1 / %d2'.replace('%d1', row).replace('%d2', row + 1),
-                    '-ms-grid-row': '%d1'.replace('%d1', row),
+                    'grid-row': '%d1 / %d2'.replace('%d1', gridRowIndex).replace('%d2', gridRowIndex + 1),
+                    '-ms-grid-row': '%d1'.replace('%d1', gridRowIndex),
                     '-ms-grid-row-span': '%d1'.replace('%d1', 1),
                     'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
                 };
                 css = $.extend(css, gcss);
+
+                if (gridColIndex >= params.gridNumber) {
+                    gridColIndex = 0;
+                    gridRowIndex += 1;
+                }
+
+                gridColIndex++;
             }
             var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
             var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
