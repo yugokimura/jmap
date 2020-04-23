@@ -487,7 +487,7 @@
                 var col = Math.ceil((_index + 1) % 6);
                 if (col == 0)
                     col = 6;
-                console.log(col)
+
                 var gcss = {
                     'grid-column': '%d1 / %d2'.replace('%d1', col).replace('%d2', (col + 1)),
                     '-ms-grid-column': '%d1'.replace('%d1', col),
