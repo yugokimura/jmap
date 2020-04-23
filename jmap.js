@@ -322,7 +322,7 @@
 
             } else {
 
-                infoboxDiv = $('<div>')
+                infoboxDiv = $('<hr>')
                     .attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .html(params.infoboxContent)
@@ -375,9 +375,11 @@
             'position': 'relative',
             'display': 'flex',
             'cursor': params.cursor,
-            'border-width': params.prefectureLineWidth,
-            'border-color': params.prefectureLineColor,
-            'border-style': params.prefectureLineStyle,
+            'margin': params.prefectureLineWidth,
+            'box-shadow': '0 0 0 %s1 %s2'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineColor),
+            // 'border-width': params.prefectureLineWidth,
+            // 'border-color': params.prefectureLineColor,
+            // 'border-style': params.prefectureLineStyle,
             'font-size': params.fontSize,
             'color': params.fontColor,
             'border-radius': params.prefectureRadius,
@@ -399,15 +401,16 @@
         if (params.selectable) {
             var css = {
                 'background-color': params.prefectureBackgroundHoverColor,
-                'border-width': params.prefectureLineWidth,
-                'border-color': params.prefectureLineHoverColor,
-                'border-style': params.prefectureLineStyle,
-                'box-shadow': '0 0 5px #333',
+                'box-shadow': '0 0 0 %s1 %s2%c1 0 0 5px %s3'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineHoverColor).replace('%s3', "#333"),
+                // 'border-width': params.prefectureLineWidth,
+                // 'border-color': params.prefectureLineHoverColor,
+                // 'border-style': params.prefectureLineStyle,
+                // 'box-shadow': '0 0 5px #333',
                 'transform': 'scale(1.01)',
                 'z-index': 2
             };
             var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-            var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
+            var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';').replace(/%c1/g, ',')
             stylersPrimal.push(selector + style);
         }
 
@@ -565,7 +568,7 @@
             });
         });
 
-        var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-css', uniqClass).html(stylers.join("\n") + stylersPrimal.join("\n"));
+        var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-css', uniqClass).html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
         $(this).empty().append(jmapStyle).append(jmapDiv);
         return this;
     };
