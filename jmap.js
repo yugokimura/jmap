@@ -138,7 +138,21 @@
 
         }
     };
+    $.fn.jmapHeatLabel = function(options) {
+        var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', options + "-heatlabel")
+        for (var index = 0, l = conf.heatmap[options].length; index < l; index++) {
+            $('<li>').css({
+                'display': 'inline-block',
+                'width': '10%',
+                'height': '30px',
+                'background-color': conf.heatmap[options][index],
+            }).appendTo(heatmapUl);
+        }
 
+        $(this).append(heatmapUl);
+
+        return this;
+    };
     $.fn.jmap = function(options) {
 
         if (options == 'update') {
