@@ -322,7 +322,7 @@
 
             } else {
 
-                infoboxDiv = $('<hr>')
+                infoboxDiv = $('<div>')
                     .attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .html(params.infoboxContent)
