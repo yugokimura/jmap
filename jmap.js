@@ -224,6 +224,7 @@
         if (!params.selectable)
             params.cursor = 'default';
 
+
         // Jmap container
         var css = {
             'display': 'grid; display:-ms-grid',
@@ -231,8 +232,8 @@
             'font-family': params.font,
             'width': params.width,
             'height': params.height,
-            'grid-template-rows': 'repeat(22%c4.545%)',
-            'grid-template-columns': 'repeat(54%c1.851%)',
+            'grid-template-rows': 'repeat(22%c1 4.545%)',
+            'grid-template-columns': 'repeat(54%c1 1.851%)',
             '-ms-grid-rows': Array(22 + 1).join('4.545% '),
             '-ms-grid-columns': Array(54 + 1).join('1.851% '),
             'background-color': params.backgroundColor,
@@ -244,17 +245,19 @@
         };
 
         if (params.viewType == 'grid') {
-            // var gcss = {
-            //     'grid-template-rows': 'repeat(%d1, %d2)',
-            //     'grid-template-columns': 'repeat(%d1, %d2)',
-            //     '-ms-grid-rows': Array(22 + 1).join('%d1 '),
-            //     '-ms-grid-columns': Array(54 + 1).join('%d1 ')
-            // }
-            // css = $.extend(css, gcss);
+            var gcss = {
+                'grid-template-rows': 'repeat(%d1%c1 %d2)'.replace('%d1', 8).replace('%d2', '12.5%'),
+                'grid-template-columns': 'repeat(%d1%c1 %d2)'.replace('%d1', 6).replace('%d2', '16.666%'),
+                '-ms-grid-rows': Array(8 + 1).join('%d1 '),
+                '-ms-grid-columns': Array(6 + 1).join('%d1 ')
+            }
+            css = $.extend(css, gcss);
+            params.showIslandDivider = false;
+            params.showInfobox = false;
         }
 
         var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
-        var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';').replace(/%c/g, ',')
+        var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';').replace(/%c1/g, ',')
         stylers.push(selector + style);
 
         var jmapDiv = $('<div>')
@@ -429,7 +432,7 @@
             }
         }
 
-        $.each(conf.prefectures, function(index, pref) {
+        $.each(conf.prefectures, function(_index, pref) {
             var pref = $.extend({ option: {} }, pref);
 
             var option = params.areas.filter(function(_pref) {
@@ -479,6 +482,20 @@
             if (option.fontColor)
                 css['color'] = option.fontColor;
 
+            if (params.viewType == 'grid') {
+                var row = Math.ceil((_index + 1) / 6);
+                var col = Math.ceil((_index + 1) % 6);
+                var gcss = {
+                    'grid-column': '%d1 / %d2'.replace('%d1', col).replace('%d2', col + 1),
+                    '-ms-grid-column': '%d1'.replace('%d1', col),
+                    '-ms-grid-column-span': 'sx'.replace('sx', 1),
+                    'grid-row': '%d1 / %d2'.replace('%d1', row).replace('%d2', row + 1),
+                    '-ms-grid-row': '%d1'.replace('%d1', row),
+                    '-ms-grid-row-span': '%d1'.replace('%d1', 1),
+                    'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
+                };
+                css = $.extend(css, gcss);
+            }
             var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
             var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
             stylers.push(selector + style);

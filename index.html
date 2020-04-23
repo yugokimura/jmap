@@ -15,7 +15,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?140"></script>
+    <script src="./jmap.js?150"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -23,6 +23,7 @@
         $(document).ready(function() {
 
             $('#jmap1').jmap();
+
 
             $('#jmap2').jmap({
                 width: '100%',
@@ -41,6 +42,17 @@
             });
 
             $('#jmap3').jmap({
+                viewType: 'grid',
+                width: '100%',
+                height: '450px',
+                showPrefectureName: true,
+                prefectureNameType: 'full',
+                prefectureBackgroundColor: '#ffcc66',
+                prefectureBackgroundHoverColor: '#ffe0a3',
+                fontColor: '#774455'
+            });
+
+            $('#jmap4').jmap({
                 height: '450px',
                 lineColor: '#bfbfbf',
                 lineWidth: 1,
@@ -303,7 +315,7 @@
                 onHover: function(e, data) {}
             });
 
-            $('#jmap4').jmap({
+            $('#jmap5').jmap({
                 height: '450px',
                 showHeatmap: true,
                 showHeatlabel: true,
@@ -512,7 +524,7 @@
                 showPrefectureName: false,
                 selectable: false,
                 prefectureLineWidth: '0.04vw',
-                prefectureRadius: 'none',
+                prefectureRadius: '0',
                 showHeatmap: true,
                 showHeatlabel: true,
                 backgroundColor: '#f5f5f5'
@@ -536,6 +548,29 @@
             jmap13.heatmapType = 'Purples';
             jmap13.areas = eval($('#jmap13').text());
             $('#jmap13').jmap(jmap13);
+
+            base.viewType = 'grid';
+            base.showPrefectureName = true;
+            base.fontSize = '0.1rem';
+            var jmap20 = base;
+            jmap20.heatmapType = 'Oranges';
+            jmap20.areas = eval($('#jmap20').text());
+            $('#jmap20').jmap(jmap20);
+
+            var jmap21 = base;
+            jmap21.heatmapType = 'Blues';
+            jmap21.areas = eval($('#jmap21').text());
+            $('#jmap21').jmap(jmap21);
+
+            var jmap22 = base;
+            jmap22.heatmapType = 'YlGn';
+            jmap22.areas = eval($('#jmap22').text());
+            $('#jmap22').jmap(jmap22);
+
+            var jmap23 = base;
+            jmap23.heatmapType = 'Purples';
+            jmap23.areas = eval($('#jmap23').text());
+            $('#jmap23').jmap(jmap13);
 
         });
     </script>
@@ -619,7 +654,7 @@ $('#jmap').jmap();
             </div>
 
             <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">2</span> ステップアップ　- <small class="text-muted">カスタマイズ</small></h2>
-            <p class="lead">その一味は大きな変化を生み出します。</p>
+            <p class="lead">一手間かければ大きな変化につながります。</p>
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
@@ -653,6 +688,29 @@ $('#jmap').jmap({
                 </div>
             </div>
 
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div id="jmap3"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Tips!</h4>
+                        <p>Jmapには日本地図形状とグリッド形状が用意されており、<kbd>viewType</kbd>を指定すればいつでも変更できます。</p>
+                    </div>
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg"><code class="javascript">
+$('#jmap').jmap({
+    viewType: 'grid',    // 地図のグリッド表示
+    width: '100%',      // 横幅
+    height: '450px',    // 縦幅
+    showPrefectureName: true,   // 都道府県名の有無
+    prefectureNameType: 'full', // 都道府県名の表示形式
+    prefectureBackgroundColor: '#ffcc66',   // 地図の色
+    prefectureBackgroundHoverColor: '#ffe0a3',  // 地図ホバー色
+});
+                    </code></pre>
+                </div>
+            </div>
 
             <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">3</span> アドバンス　- <small class="text-muted">高度な設定</small></h2>
             <p class="lead">世界に一つしかない地図を生み出そう。</p>
@@ -661,7 +719,7 @@ $('#jmap').jmap({
                 <div class="col-md-6">
                     <p>この地図では各都道府県別に色を設定し、都道府県を選択するとその都道府県の情報がモーダルで表示されます。</p>
                     <p>都道府県選択時の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
-                    <div id="jmap3"></div>
+                    <div id="jmap4"></div>
                 </div>
                 <div class="col-md-6">
                     <h5 class="h5">Example</h5>
@@ -809,7 +867,7 @@ $(document).ready(function() {
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap4">
+                    <div id="jmap5">
                         <div class="jmap-infobox">
                             <h5 class="h5">情報表示エリア</h5>
                             <p><kbd>showHeatlabel</kbd> を指定するとヒートマップラベルを表示します</p>
@@ -956,6 +1014,78 @@ $('#jmap').jmap({
                 </div>
             </div>
 
+
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="scrolling-wrapper" style="overflow-x: auto;overflow-y: hidden;white-space: nowrap; text-align: center;">
+                        <div class="card mr-1 mb-1" style="width:15rem; display: inline-block; box-shadow:0 0 5px #ccc;">
+                            <div id="jmap20" class="card-img-top">
+                                [ {code: 1,name: "北海道",number: 9.3 }, {code: 2,name: "青森",number: 11.0}, {code: 3,name: "岩手",number: 11.2}, {code: 4,name: "宮城",number: 13.5}, {code: 5,name: "秋田",number: 12.5}, {code: 6,name: "山形",number: 12.7 }, {code: 7,name: "福島",number: 14.2}, {code:
+                                8,name: "茨城",number: 14.8}, {code: 9,name: "栃木",number: 14.8}, {code: 10,name: "群馬",number: 15.6}, {code: 11,name: "埼玉",number: 15.9}, {code: 12,name: "千葉",number: 16.8}, {code: 13,name: "東京",number: 16.4}, {code: 14,name:
+                                "神奈川",number: 16.9}, {code: 15,name: "新潟",number: 14.5}, {code: 16,name: "富山",number: 15.2}, {code: 17,name: "石川",number: 15.7}, {code: 18,name: "福井",number: 15.6}, {code: 19,name: "山梨",number: 15.7}, {code: 20,name: "長野",number:
+                                13.1}, {code: 21,name: "岐阜",number: 16.9}, {code: 22,name: "静岡",number: 17.6}, {code: 23,name: "愛知",number: 17.0}, {code: 24,name: "三重",number: 16.9}, {code: 25,name: "滋賀",number: 15.8}, {code: 26,name: "京都",number: 17.1},
+                                {code: 27,name: "大阪",number: 17.7}, {code: 28,name: "兵庫",number: 17.8}, {code: 29,name: "奈良",number: 16.0}, {code: 30,name: "和歌山",number: 17.7}, {code: 31,name: "鳥取",number: 16.0}, {code: 32,name: "島根",number: 15.9}, {code:
+                                33,name: "岡山",number: 16.6}, {code: 34,name: "広島",number: 17.2}, {code: 35,name: "山口",number: 16.5}, {code: 36,name: "徳島",number: 17.6}, {code: 37,name: "香川",number: 17.5}, {code: 38,name: "愛媛",number: 17.6}, {code: 39,name:
+                                "高知",number: 18.1}, {code: 40,name: "福岡",number: 18.1}, {code: 41,name: "佐賀",number: 17.9}, {code: 42,name: "長崎",number: 18.1}, {code: 43,name: "熊本",number: 18.0}, {code: 44,name: "大分",number: 17.6}, {code: 45,name: "宮崎",number:
+                                18.6}, {code: 46,name: "鹿児島",number: 19.6}, {code: 47,name: "沖縄",number: 24.1} ];
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">年間平均気温</h5>
+                            </div>
+                        </div>
+
+                        <div class="card mr-1 mb-1" style="width:15rem; display: inline-block; box-shadow:0 0 5px #ccc;">
+                            <div id="jmap21" class="card-img-top">
+                                [ {code: 1,name: "北海道",number: 144}, {code: 2,name: "青森",number: 158}, {code: 3,name: "岩手",number: 133}, {code: 4,name: "宮城",number: 107}, {code: 5,name: "秋田",number: 177}, {code: 6,name: "山形",number: 146}, {code: 7,name: "福島",number: 115}, {code: 8,name:
+                                "茨城",number: 99}, {code: 9,name: "栃木",number: 104}, {code: 10,name: "群馬",number: 90}, {code: 11,name: "埼玉",number: 90}, {code: 12,name: "千葉",number: 101}, {code: 13,name: "東京",number: 106}, {code: 14,name: "神奈川",number:
+                                103}, {code: 15,name: "新潟",number: 170}, {code: 16,name: "富山",number: 168}, {code: 17,name: "石川",number: 161}, {code: 18,name: "福井",number: 169}, {code: 19,name: "山梨",number: 82}, {code: 20,name: "長野",number: 110}, {code:
+                                21,name: "岐阜",number: 109}, {code: 22,name: "静岡",number: 106}, {code: 23,name: "愛知",number: 107}, {code: 24,name: "三重",number: 100}, {code: 25,name: "滋賀",number: 127}, {code: 26,name: "京都",number: 104}, {code: 27,name:
+                                "大阪",number: 101}, {code: 28,name: "兵庫",number: 90}, {code: 29,name: "奈良",number: 105}, {code: 30,name: "和歌山",number: 102}, {code: 31,name: "鳥取",number: 158}, {code: 32,name: "島根",number: 150}, {code: 33,name: "岡山",number:
+                                96}, {code: 34,name: "広島",number: 108}, {code: 35,name: "山口",number: 126}, {code: 36,name: "徳島",number: 106}, {code: 37,name: "香川",number: 106}, {code: 38,name: "愛媛",number: 107}, {code: 39,name: "高知",number: 122}, {code:
+                                40,name: "福岡",number: 124}, {code: 41,name: "佐賀",number: 115}, {code: 42,name: "長崎",number: 118}, {code: 43,name: "熊本",number: 119}, {code: 44,name: "大分",number: 108}, {code: 45,name: "宮崎",number: 120}, {code: 46,name:
+                                "鹿児島",number: 133}, {code: 47,name: "沖縄",number: 137} ];
+
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">年間降水日数</h5>
+                            </div>
+                        </div>
+
+                        <div class="card mr-1 mb-1" style="width:15rem; display: inline-block; box-shadow:0 0 5px #ccc;">
+                            <div id="jmap22" class="card-img-top">
+                                [ {code: 1,name: "北海道",number: 383}, {code: 2,name: "青森",number: 362}, {code: 3,name: "岩手",number: 391}, {code: 4,name: "宮城",number: 408}, {code: 5,name: "秋田",number: 376}, {code: 6,name: "山形",number: 419}, {code: 7,name: "福島",number: 404}, {code: 8,name:
+                                "茨城",number: 426}, {code: 9,name: "栃木",number: 434}, {code: 10,name: "群馬",number: 412}, {code: 11,name: "埼玉",number: 436}, {code: 12,name: "千葉",number: 456}, {code: 13,name: "東京",number: 471}, {code: 14,name: "神奈川",number:
+                                478}, {code: 15,name: "新潟",number: 366}, {code: 16,name: "富山",number: 408}, {code: 17,name: "石川",number: 383}, {code: 18,name: "福井",number: 383}, {code: 19,name: "山梨",number: 420}, {code: 20,name: "長野",number: 436}, {code:
+                                21,name: "岐阜",number: 392}, {code: 22,name: "静岡",number: 417}, {code: 23,name: "愛知",number: 417}, {code: 24,name: "三重",number: 416}, {code: 25,name: "滋賀",number: 424}, {code: 26,name: "京都",number: 403}, {code: 27,name:
+                                "大阪",number: 406}, {code: 28,name: "兵庫",number: 428}, {code: 29,name: "奈良",number: 408}, {code: 30,name: "和歌山",number: 393}, {code: 31,name: "鳥取",number: 375}, {code: 32,name: "島根",number: 408}, {code: 33,name: "岡山",number:
+                                385}, {code: 34,name: "広島",number: 404}, {code: 35,name: "山口",number: 402}, {code: 36,name: "徳島",number: 392}, {code: 37,name: "香川",number: 387}, {code: 38,name: "愛媛",number: 390}, {code: 39,name: "高知",number: 362}, {code:
+                                40,name: "福岡",number: 388}, {code: 41,name: "佐賀",number: 395}, {code: 42,name: "長崎",number: 373}, {code: 43,name: "熊本",number: 381}, {code: 44,name: "大分",number: 386}, {code: 45,name: "宮崎",number: 370}, {code: 46,name:
+                                "鹿児島",number: 392}, {code: 47,name: "沖縄",number: 353} ];
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">平均年収</h5>
+                            </div>
+                        </div>
+
+                        <div class="card mr-1 mb-1" style="width:15rem; display: inline-block;box-shadow:0 0 5px #ccc; ">
+                            <div id="jmap23" class="card-img-top">
+                                [ {code: 1,name: "北海道",number: 30.7}, {code: 2,name: "青森",number: 31.8}, {code: 3,name: "岩手",number: 31.9}, {code: 4,name: "宮城",number: 27.2}, {code: 5,name: "秋田",number: 35.6}, {code: 6,name: "山形",number: 32.2}, {code: 7,name: "福島",number: 30.2}, {code:
+                                8,name: "茨城",number: 28.3}, {code: 9,name: "栃木",number: 27.4}, {code: 10,name: "群馬",number: 28.9}, {code: 11,name: "埼玉",number: 26.0}, {code: 12,name: "千葉",number: 27.1}, {code: 13,name: "東京",number: 23.0}, {code: 14,name:
+                                "神奈川",number: 24.8}, {code: 15,name: "新潟",number: 31.3}, {code: 16,name: "富山",number: 31.6}, {code: 17,name: "石川",number: 28.8}, {code: 18,name: "福井",number: 29.8}, {code: 19,name: "山梨",number: 29.8}, {code: 20,name: "長野",number:
+                                31.1}, {code: 21,name: "岐阜",number: 29.3}, {code: 22,name: "静岡",number: 29.1}, {code: 23,name: "愛知",number: 24.6}, {code: 24,name: "三重",number: 29.0}, {code: 25,name: "滋賀",number: 25.3}, {code: 26,name: "京都",number: 28.6},
+                                {code: 27,name: "大阪",number: 27.2}, {code: 28,name: "兵庫",number: 28.3}, {code: 29,name: "奈良",number: 30.3}, {code: 30,name: "和歌山",number: 32.2}, {code: 31,name: "鳥取",number: 31.0}, {code: 32,name: "島根",number: 33.6}, {code:
+                                33,name: "岡山",number: 29.7}, {code: 34,name: "広島",number: 28.6}, {code: 35,name: "山口",number: 33.4}, {code: 36,name: "徳島",number: 32.4}, {code: 37,name: "香川",number: 31.1}, {code: 38,name: "愛媛",number: 32.1}, {code: 39,name:
+                                "高知",number: 34.2}, {code: 40,name: "福岡",number: 27.1}, {code: 41,name: "佐賀",number: 29.2}, {code: 42,name: "長崎",number: 31.3}, {code: 43,name: "熊本",number: 30.1}, {code: 44,name: "大分",number: 31.8}, {code: 45,name: "宮崎",number:
+                                31.1 }, {code: 46,name: "鹿児島",number: 30.8}, {code: 47,name: "沖縄",number: 21.0} ];
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">高齢化率</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="h3 mb-3"><span class="badge badge-pill badge-primary">5</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
             <p class="lead">感性の赴くままにデザインしよう。</p>
 
@@ -1021,6 +1151,11 @@ $('#jmap').jmap({
                             <th>height</th>
                             <td>地図の縦幅　値の単位を入力しない場合は、<kbd>px</kbd> が適用されます</td>
                             <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th>viewType</th>
+                            <td>地図の種類　日本地図 <kbd>map</kbd> か、グリッド表示 <kbd>grid</kbd> かを指定できます</td>
+                            <td>map</td>
                         </tr>
                         <tr>
                             <th>backgroundColor</th>
