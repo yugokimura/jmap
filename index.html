@@ -645,13 +645,13 @@
                         <a class="btn btn-success" href="https://yugokimura.github.io/jmap/jmap.js" target="_blank">Jmap 通常版</a>
                         <a class="btn btn-success" href="https://yugokimura.github.io/jmap/jmap.min.js" target="_blank">Jmap 圧縮版</a>
                     </div>
-                    <p>ファイルのダウンロードが完了したらHTMLファイルを作成し、その中でjQueryと、ダウンロードしてきたJmap jQuery pluginを読み込みましょう。</p>
+                    <p>ファイルのダウンロードが完了したらHTMLファイルを作成し、jQueryとJmap jQuery pluginを読み込みましょう。</p>
                     <h5 class="h5">jQueryとJmapの読み込みコード</h5>
                     <pre class="border rounded-lg"><code class="html">
 &lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;./jmap.js&quot;&gt;&lt;/script&gt;
                     </code></pre>
-                    <p>チュートリアル作成時のjQuery最新版は<mark>3.4.1</mark>です。最新のものを利用したい場合は以下リンクからURLを取得してください。</p>
+                    <p>チュートリアル作成時のjQuery最新版は<mark>3.4.1</mark>です。最新のものを利用したい場合は以下から最新版を取得してください。</p>
                     <a class="btn btn-info" href="https://developers.google.com/speed/libraries" target="_blank">Google Hosted Libraries</a>
                 </div>
                 <div class="col-md-6">
@@ -758,7 +758,7 @@ $('#jmap').jmap({
             <div class="row mb-5">
                 <div class="col-md-6">
                     <p>この地図では各都道府県別に色を設定し、都道府県を選択するとその都道府県の情報がモーダルで表示されます。</p>
-                    <p>都道府県選択時の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
+                    <p>都道府県選択の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
                     <div id="jmap4">
                         <div class="jmap-infobox">
                             <h5 class="h5">世界に一つだけの地図</h5>
@@ -921,7 +921,7 @@ $(document).ready(function() {
                     <div id="jmap5">
                         <div class="jmap-infobox">
                             <h5 class="h5">情報表示エリア</h5>
-                            <p><kbd>showHeatlabel</kbd> を指定するとヒートマップラベルを表示します</p>
+                            <p>オプションに <kbd>showHeatlabel</kbd> を指定するとヒートマップラベルが表示されます。</p>
                         </div>
                     </div>
                 </div>
