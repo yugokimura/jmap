@@ -56,6 +56,7 @@
                 height: '450px',
                 lineColor: '#bfbfbf',
                 lineWidth: 1,
+                showInfobox: true,
                 backgroundRadius: '0.3rem',
                 backgroundPadding: '1rem',
                 backgroundColor: '#ff000000',
@@ -719,7 +720,12 @@ $('#jmap').jmap({
                 <div class="col-md-6">
                     <p>この地図では各都道府県別に色を設定し、都道府県を選択するとその都道府県の情報がモーダルで表示されます。</p>
                     <p>都道府県選択時の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
-                    <div id="jmap4"></div>
+                    <div id="jmap4">
+                        <div class="jmap-infobox">
+                            <h5 class="h5">世界に一つだけの地図</h5>
+                            <p>地図をクリックするとモーダルが表示されます。</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h5 class="h5">Example</h5>
@@ -750,7 +756,12 @@ $('#jmap').jmap({
 &lt;/head&gt;
 &lt;body&gt;
     &lt;!-- Jmap表示位置 --&gt;
-    &lt;div id=&quot;jmap&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;jmap&quot;
+        &lt;div class=&quot;jmap-infobox&quot;&gt;
+            &lt;h5 class=&quot;h5&quot;&gt;世界に一つだけの地図&lt;/h5&gt;
+            &lt;p&gt;地図をクリックするとモーダルが表示されます。&lt;/p&gt;
+        &lt;/div&gt;
+    &gt;&lt;/div&gt;
 
     &lt;!-- モーダル用HTML --&gt;
     &lt;div class=&quot;modal fade&quot; id=&quot;prefectureModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;prefectureModalCenterTitle&quot; aria-hidden=&quot;true&quot;&gt;
@@ -782,6 +793,7 @@ $(document).ready(function() {
         height: '450px',
         lineColor: '#bfbfbf',
         lineWidth: 1,
+        showInfobox: true,
         backgroundRadius: '0.3rem',
         backgroundPadding: '1rem',
         backgroundColor: '#ff000000',
