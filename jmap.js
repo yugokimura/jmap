@@ -248,8 +248,8 @@
             var gcss = {
                 'grid-template-rows': 'repeat(%d1%c1 %d2)'.replace('%d1', 8).replace('%d2', '12.5%'),
                 'grid-template-columns': 'repeat(%d1%c1 %d2)'.replace('%d1', 6).replace('%d2', '16.666%'),
-                '-ms-grid-rows': Array(8 + 1).join('%d1 '),
-                '-ms-grid-columns': Array(6 + 1).join('%d1 ')
+                '-ms-grid-rows': Array(8 + 1).join('%d1 ').replace('%d1', 8),
+                '-ms-grid-columns': Array(6 + 1).join('%d1 ').replace('%d1', 6)
             }
             css = $.extend(css, gcss);
             params.showIslandDivider = false;
