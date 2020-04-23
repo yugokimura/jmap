@@ -647,7 +647,7 @@
             <p class="lead">最初の一歩は驚くほど簡単です。</p>
 
             <div class="row mb-5">
-                <div class="col-md-6 mb-5">
+                <div class="col-md-12">
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Start!</h4>
                         <p>最初の一歩はJmapのサイト上からJmap jQuery pluginをダウンロードする所からはじめましょう。</p>
@@ -664,7 +664,13 @@
                     <p>チュートリアル作成時のjQuery最新版は<mark>3.4.1</mark>です。最新のものを利用したい場合は以下から最新版を取得してください。</p>
                     <a class="btn btn-info" href="https://developers.google.com/speed/libraries" target="_blank">Google Hosted Libraries</a>
                 </div>
-                <div class="col-md-6">
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-6 mb-5">
+                    <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Tips!</h4>
+                        <p>地図を表示するため必要なのはたった1行です。</p>
+                    </div>
                     <h5 class="h5">Example</h5>
                     <pre class="border rounded-lg"><code class="html">
 &lt;html&gt;
@@ -674,33 +680,18 @@
     &lt;script type=&quot;text/javascript&quot; src=&quot;./jmap.js&quot;&gt;&lt;/script&gt;
     &lt;script type = &quot;text/javascript&quot;&gt;
         $(document).ready(function() {
-            // これ以降「Example」に記載するエリア
+            $('#jmap').jmap();
         });
     &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;!-- id=&quot;xxx&quot; の「xxx」部分は必要に応じて変更 --&gt;
     &lt;div id=&quot;jmap&quot;&gt;&lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
                     </code></pre>
                 </div>
-            </div>
-
-            <div class="row mb-5">
-                <div class="col-md-6 mb-5">
-                    <div id="jmap1" style="height:400px"></div>
-                </div>
                 <div class="col-md-6">
-                    <div class="alert alert-primary" role="alert">
-                        <h4 class="alert-heading">Tips!</h4>
-                        <p>HTMLの要素に jmap メソッドを適用するだけで、デフォルトの地図が表示されます。</p>
-                    </div>
-                    <h5 class="h5">Example</h5>
-                    <pre class="border rounded-lg"><code class="javascript">
-$('#jmap').jmap();
-                    </code></pre>
-                    <p>オプションの横縦幅パラメーターを指定しない場合、地図の親要素の縦横幅いっぱいに地図が表示されます。</p>
+                    <div id="jmap1" style="height:400px"></div>
                 </div>
             </div>
 
@@ -709,9 +700,6 @@ $('#jmap').jmap();
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap2"></div>
-                </div>
-                <div class="col-md-6">
                     <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Tips!</h4>
                         <p>Jmapには地図をカスタマイズするのに必要な様々なパラメータが用意されています。</p>
@@ -737,13 +725,13 @@ $('#jmap').jmap({
 });
                     </code></pre>
                 </div>
+                <div class="col-md-6">
+                    <div id="jmap2"></div>
+                </div>
             </div>
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap3"></div>
-                </div>
-                <div class="col-md-6">
                     <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Tips!</h4>
                         <p>Jmapには日本地図形状とグリッド形状が用意されており、<kbd>viewType</kbd>を指定すればいつでも変更できます。</p>
@@ -761,23 +749,16 @@ $('#jmap').jmap({
 });
                     </code></pre>
                 </div>
+                <div class="col-md-6">
+                    <div id="jmap3"></div>
+                </div>
             </div>
 
             <h2 class="h3 mb-3" id="advance"><span class="badge badge-pill badge-primary">3</span> アドバンス　- <small class="text-muted">高度な設定</small></h2>
             <p class="lead">世界に一つしかない地図を生み出そう。</p>
 
             <div class="row mb-5">
-                <div class="col-md-6">
-                    <p>この地図では各都道府県別に色を設定し、都道府県を選択するとその都道府県の情報がモーダルで表示されます。</p>
-                    <p>都道府県選択の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
-                    <div id="jmap4">
-                        <div class="jmap-infobox">
-                            <h5 class="h5">世界に一つだけの地図</h5>
-                            <p>地図をクリックするとモーダルが表示されます。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-5">
                     <h5 class="h5">Example</h5>
                     <ul class="nav nav-tabs" id="codeTab1" role="tablist">
                         <li class="nav-item">
@@ -922,6 +903,16 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <p>この地図では各都道府県別に色を設定し、都道府県を選択するとその都道府県の情報がモーダルで表示されます。</p>
+                    <p>都道府県選択の挙動は、<kbd>onSelect</kbd> で指定する事ができます。</p>
+                    <div id="jmap4">
+                        <div class="jmap-infobox">
+                            <h5 class="h5">世界に一つだけの地図</h5>
+                            <p>地図をクリックするとモーダルが表示されます。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <h2 class="h3 mb-3" id="visualize"><span class="badge badge-pill badge-primary">4</span> ビジュアライズ - <small class="text-muted">高度な設定</small></h2>
@@ -929,14 +920,6 @@ $(document).ready(function() {
 
             <div class="row mb-5">
                 <div class="col-md-6 mb-5">
-                    <div id="jmap5">
-                        <div class="jmap-infobox">
-                            <h5 class="h5">情報表示エリア</h5>
-                            <p>オプションに <kbd>showHeatlabel</kbd> を指定するとヒートマップラベルが表示されます。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
                     <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Heatmap</h4>
                         <p>Heatmapパラメーターを有効にし、areasの都道府県オブジェクトに <kbd>number</kbd>を指定するとヒートマップ地図が表示されます。</p>
@@ -1002,6 +985,14 @@ $('#jmap').jmap({
     ]
 });
                     </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <div id="jmap5">
+                        <div class="jmap-infobox">
+                            <h5 class="h5">情報表示エリア</h5>
+                            <p>オプションに <kbd>showHeatlabel</kbd> を指定するとヒートマップラベルが表示されます。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
