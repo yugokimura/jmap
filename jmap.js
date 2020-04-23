@@ -232,8 +232,8 @@
             'font-family': params.font,
             'width': params.width,
             'height': params.height,
-            'grid-template-rows': 'repeat(22 4.545%)',
-            'grid-template-columns': 'repeat(54 1.851%)',
+            'grid-template-rows': Array(22 + 1).join('4.545% '),
+            'grid-template-columns': Array(54 + 1).join('1.851% '),
             '-ms-grid-rows': Array(22 + 1).join('4.545% '),
             '-ms-grid-columns': Array(54 + 1).join('1.851% '),
             'background-color': params.backgroundColor,
@@ -246,8 +246,8 @@
 
         if (params.viewType == 'grid') {
             var gcss = {
-                'grid-template-rows': 'repeat(%d1, %d2)'.replace('%d1', 8).replace('%d2', '12.5%'),
-                'grid-template-columns': 'repeat(%d1, %d2)'.replace('%d1', 6).replace('%d2', '16.666%'),
+                'grid-template-rows': Array(8 + 1).join('12.5% '),
+                'grid-template-columns': Array(6 + 1).join('16.666% '),
                 '-ms-grid-rows': Array(8 + 1).join('12.5% '),
                 '-ms-grid-columns': Array(6 + 1).join('16.666% ')
             }
@@ -257,7 +257,7 @@
         }
 
         var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
-        var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+        var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
         stylers.push(selector + style);
 
         var jmapDiv = $('<div>')
@@ -286,7 +286,7 @@
             };
 
             var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.dividerClass).replace('%s2', uniqClass + "-divider");
-            var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+            var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
             stylers.push(selector + style);
 
             var dividerDiv = $('<div>')
@@ -310,7 +310,7 @@
                 'background-color': params.infoboxBackgroundColor
             };
             var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.infoboxClass).replace('%s2', uniqClass + "-infobox");
-            var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+            var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
             stylers.push(selector + style);
 
             var infoboxDiv = $(this).find('.jmap-infobox');
@@ -334,26 +334,26 @@
             if (params.showHeatmap && params.showHeatlabel) {
 
                 var css = {
-                    'padding': 0,
-                    'margin': 0,
+                    'padding': "0px",
+                    'margin': "0px",
                     'max-width': '250px'
                 };
                 var selector = '.%s1[jmap-uniq="%s2"]'.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
-                var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+                var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(selector + style);
 
                 var css = {
                     'border-radius': '3px 0 0 3px'
                 };
                 var selector = '.%s1[jmap-uniq="%s2"] li:first-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
-                var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+                var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(selector + style);
 
                 var css = {
                     'border-radius': '0 3px 3px 0'
                 };
                 var selector = '.%s1[jmap-uniq="%s2"] li:last-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
-                var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+                var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(selector + style);
 
                 var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', uniqClass + "-heatlabel")
@@ -394,7 +394,7 @@
             'white-space': (params.textNowrap) ? 'nowrap' : 'normal'
         };
         var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-        var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+        var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
         stylers.push(selector + style);
 
         // Prefecture Common Hover
@@ -410,7 +410,7 @@
                 'z-index': 2
             };
             var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-            var style = JSON.stringify(css).replace(/,"/g, '";').replace(/"/g, '');
+            var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(selector + style);
         }
 
