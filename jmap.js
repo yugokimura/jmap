@@ -248,8 +248,8 @@
             var gcss = {
                 'grid-template-rows': 'repeat(%d1%c1 %d2)'.replace('%d1', 8).replace('%d2', '12.5%'),
                 'grid-template-columns': 'repeat(%d1%c1 %d2)'.replace('%d1', 6).replace('%d2', '16.666%'),
-                '-ms-grid-rows': Array(8 + 1).join('%d1 ').replace('%d1', 8),
-                '-ms-grid-columns': Array(6 + 1).join('%d1 ').replace('%d1', 6)
+                '-ms-grid-rows': Array(8 + 1).join('12.5% '),
+                '-ms-grid-columns': Array(6 + 1).join('16.666% ')
             }
             css = $.extend(css, gcss);
             params.showIslandDivider = false;
@@ -485,8 +485,11 @@
             if (params.viewType == 'grid') {
                 var row = Math.ceil((_index + 1) / 6);
                 var col = Math.ceil((_index + 1) % 6);
+                if (col == 0)
+                    col = 6;
+                console.log(col)
                 var gcss = {
-                    'grid-column': '%d1 / %d2'.replace('%d1', col).replace('%d2', col + 1),
+                    'grid-column': '%d1 / %d2'.replace('%d1', col).replace('%d2', (col + 1)),
                     '-ms-grid-column': '%d1'.replace('%d1', col),
                     '-ms-grid-column-span': 'sx'.replace('sx', 1),
                     'grid-row': '%d1 / %d2'.replace('%d1', row).replace('%d2', row + 1),
