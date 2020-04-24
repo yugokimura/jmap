@@ -598,7 +598,7 @@
             });
         });
 
-        var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-css', uniqClass).html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
+        var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-uniq', uniqClass + "-css").html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
         $(this).empty().append(jmapStyle).append(jmapDiv);
         return this;
     };
