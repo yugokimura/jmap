@@ -24,7 +24,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?130"></script>
+    <script src="./jmap.js?150"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -37,17 +37,24 @@
             $('#jmap2').jmap({
                 width: '100%',
                 height: '450px',
-                lineColor: 'green',
+                lineColor: '#EFE4A6',
                 lineWidth: 2,
-                backgroundColor: '#EFEFEF',
+                showTextShadow: true,
+                backgroundColor: '#6FCFDD',
                 backgroundRadius: '0.5rem',
                 backgroundPadding: '0.5rem',
                 showPrefectureName: true,
                 prefectureNameType: 'full',
-                prefectureBackgroundColor: '#BFEAB5',
-                prefectureBackgroundHoverColor: '#DFFFD5',
+                prefectureBackgroundColor: '#B5C854',
+                prefectureBackgroundHoverColor: '#95A834',
+                prefectureLineColor: '#195658',
+                prefectureLineHoverColor: '#ffffff',
+                prefectureLineWidth: '2px',
+                prefectureLineGap: '3px',
+                prefectureLineY: '2px',
+                prefectureLineX: '2px',
                 fontSize: '0.6rem',
-                fontColor: '#467E36'
+                fontColor: '#fff'
             });
 
             $('#jmap3').jmap({
@@ -644,7 +651,7 @@
 
         <div class="container">
 
-            <h2 class="h3 mb-3" id="quickstart"><span class="badge badge-pill badge-primary">1</span> クイックスタート - <small class="text-muted">最初の一歩</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="quickstart"><span class="badge badge-pill badge-primary">1</span> クイックスタート - <small class="text-muted">最初の一歩</small></h2>
             <p class="lead">最初の一歩は驚くほど簡単です。</p>
 
             <div class="row mb-5">
@@ -666,7 +673,8 @@
                     <a class="btn btn-info" href="https://developers.google.com/speed/libraries" target="_blank" rel="noopener">Google Hosted Libraries</a>
                 </div>
             </div>
-            <div class="row mb-5">
+
+            <div class="row">
                 <div class="col-md-6 mb-5">
                     <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Tips!</h4>
@@ -696,7 +704,7 @@
                 </div>
             </div>
 
-            <h2 class="h3 mb-3" id="stepup"><span class="badge badge-pill badge-primary">2</span> ステップアップ　- <small class="text-muted">カスタマイズ</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="stepup"><span class="badge badge-pill badge-primary">2</span> ステップアップ　- <small class="text-muted">カスタマイズ</small></h2>
             <p class="lead">一手間が大きな変化につながります。</p>
 
             <div class="row mb-5">
@@ -708,21 +716,28 @@
                         <a class="btn btn-primary" href="#reference">リファレンス</a>
                     </div>
                     <h5 class="h5">Example</h5>
-                    <pre class="border rounded-lg"><code class="javascript">
+                    <pre class="border rounded-lg" style="height:220px"><code class="javascript">
 $('#jmap').jmap({
-    width: '100%',      // 横幅
-    height: '450px',    // 縦幅
-    lineColor: 'green', // 地図背景の枠線幅
-    lineWidth: 2,       // 地図背景の枠線色
-    backgroundColor: '#EFEFEF', // 地図背景の色
-    backgroundRadius: '0.5rem',   // 地図背景の角丸
-    backgroundPadding: '0.5rem',  // 地図背景の余白
-    showPrefectureName: true,   // 都道府県名の有無
-    prefectureNameType: 'full', // 都道府県名の表示形式
-    prefectureBackgroundColor: '#BFEAB5',   // 地図の色
-    prefectureBackgroundHoverColor: '#DFFFD5',  // 地図ホバー色
-    fontSize: '0.6rem',     // フォントサイズ
-    fontColor: '#467E36'    // フォント色
+    width: '100%',
+    height: '450px',
+    lineColor: '#EFE4A6',
+    lineWidth: 2,
+    showTextShadow: true,
+    backgroundColor: '#6FCFDD',
+    backgroundRadius: '0.5rem',
+    backgroundPadding: '0.5rem',
+    showPrefectureName: true,
+    prefectureNameType: 'full',
+    prefectureBackgroundColor: '#B5C854',
+    prefectureBackgroundHoverColor: '#95A834',
+    prefectureLineColor: '#195658',
+    prefectureLineHoverColor: '#ffffff',
+    prefectureLineWidth: '2px',
+    prefectureLineGap: '3px',
+    prefectureLineY: '2px',
+    prefectureLineX: '2px',
+    fontSize: '0.6rem',
+    fontColor: '#fff'
 });
                     </code></pre>
                 </div>
@@ -731,7 +746,7 @@ $('#jmap').jmap({
                 </div>
             </div>
 
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-md-6 mb-5">
                     <div class="alert alert-primary" role="alert">
                         <h4 class="alert-heading">Tips!</h4>
@@ -755,10 +770,10 @@ $('#jmap').jmap({
                 </div>
             </div>
 
-            <h2 class="h3 mb-3" id="advance"><span class="badge badge-pill badge-primary">3</span> アドバンス　- <small class="text-muted">高度な設定</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="advance"><span class="badge badge-pill badge-primary">3</span> アドバンス　- <small class="text-muted">高度な設定</small></h2>
             <p class="lead">世界に一つしかない地図を生み出そう。</p>
 
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-md-6 mb-5">
                     <h5 class="h5">Example</h5>
                     <ul class="nav nav-tabs" id="codeTab1" role="tablist">
@@ -916,7 +931,7 @@ $(document).ready(function() {
                 </div>
             </div>
 
-            <h2 class="h3 mb-3" id="visualize"><span class="badge badge-pill badge-primary">4</span> ビジュアライズ - <small class="text-muted">高度な設定</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="visualize"><span class="badge badge-pill badge-primary">4</span> ビジュアライズ - <small class="text-muted">高度な設定</small></h2>
             <p class="lead">見えなかった世界を可視化しよう。</p>
 
             <div class="row mb-5">
@@ -1085,8 +1100,7 @@ $('#jmap').jmap({
                 </div>
             </div>
 
-
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="text-center overflow-auto" style="white-space: nowrap;">
                         <div class="card mr-1 mb-1" style="width:15rem; display: inline-block; box-shadow:0 0 5px #ccc;">
@@ -1173,10 +1187,10 @@ $('#jmap').jmap({
                 </div>
             </div>
 
-            <h2 class="h3 mb-3" id="originality"><span class="badge badge-pill badge-primary">5</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="originality"><span class="badge badge-pill badge-primary">5</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
             <p class="lead">感性の赴くままにデザインしよう。</p>
 
-            <div class="table-responsive mb-5">
+            <div class="table-responsive">
                 <p>JmapはHTMLとCSSで構成された地図を出力します。もちろん自分が作成したCSSやJavascriptで直接操作する事ができます。</p>
                 <table class="table table-striped ">
                     <thead>
@@ -1191,6 +1205,16 @@ $('#jmap').jmap({
                             <th>jmap-container</th>
                             <td>Jmapのラッパーに付与されるクラス名です。</td>
                             <td>.jmap-container {}</td>
+                        </tr>
+                        <tr>
+                            <th>jmap-container[jmap-id="{id}"]</th>
+                            <td>複数の地図がある場合、それぞれの地図を識別するためのセレクターです。この{id}の値は、Jmapのオプションパラメーターidを指定すると変更する事ができます。通常時は連番の整数値です。</td>
+                            <td>.jmap-container[jmap-id="{id}"] {}</td>
+                        </tr>
+                        <tr>
+                            <th>jmap-content</th>
+                            <td>Jmapのコンテンツラッパーに付与されるクラス名です。</td>
+                            <td>.jmap-content {}</td>
                         </tr>
                         <tr>
                             <th>jmap-pref</th>
@@ -1216,10 +1240,10 @@ $('#jmap').jmap({
                 </table>
             </div>
 
-            <h2 class="h3 mb-3" id="reference"><span class="badge badge-pill badge-primary">*</span> リファレンス - <small class="text-muted">パラメーター</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="reference"><span class="badge badge-pill badge-primary">*</span> リファレンス - <small class="text-muted">パラメーター</small></h2>
             <p class="lead">豊富なパラメーターが用意されています。</p>
 
-            <div class="table-responsive mb-5">
+            <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -1229,6 +1253,11 @@ $('#jmap').jmap({
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <th>id</th>
+                            <td>地図の識別子　地図の大外HTMLの一意な識別子 jmap-id 属性の値を指定できます</td>
+                            <td>jmap-{一意な整数}</td>
+                        </tr>
                         <tr>
                             <th>width</th>
                             <td>地図の横幅　値の単位を入力しない場合は、<kbd>px</kbd> が適用されます</td>
@@ -1331,6 +1360,21 @@ $('#jmap').jmap({
                             <td>pointer</td>
                         </tr>
                         <tr>
+                            <th>showTextShadow</th>
+                            <td>都道府県名ドロップシャドーの有無　都道府県名ドロップシャドーの有無を指定できます</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <th>textShadowWidth</th>
+                            <td>都道府県名ドロップシャドーの幅　都道府県名ドロップシャドーの幅を指定できます</td>
+                            <td>2px</td>
+                        </tr>
+                        <tr>
+                            <th>textShadowColor</th>
+                            <td>都道府県名ドロップシャードの色　都道府県名ドロップシャードの色を指定できます</td>
+                            <td>#000</td>
+                        </tr>
+                        <tr>
                             <th>showPrefectureName</th>
                             <td>都道府県名の有無　都道府県名表示の有無を指定できます</td>
                             <td>true</td>
@@ -1356,6 +1400,11 @@ $('#jmap').jmap({
                             <td>#666</td>
                         </tr>
                         <tr>
+                            <th>prefectureLineGap</th>
+                            <td>都道府県枠線の間隔　都道府県の間隔を指定できます</td>
+                            <td>1px</td>
+                        </tr>
+                        <tr>
                             <th>prefectureLineWidth</th>
                             <td>都道府県枠線の幅　都道府県の枠線幅を指定できます</td>
                             <td>1px</td>
@@ -1370,11 +1419,16 @@ $('#jmap').jmap({
                             <td>都道府県マウスオーバ―時の枠線の色　都道府県マウスオーバ―時の枠線の色を<kbd>色文字</kbd>、<kbd>#rgb-hex</kbd>、<kbd>rgb(dec,dec,dec)</kbd>で指定できます</td>
                             <td>#aa1a00</td>
                         </tr>
-                        <!-- <tr>
-                            <th>prefectureLineStyle</th>
-                            <td>都道府県枠線の書式　都道府県の枠線書式をCSSの　<kbd>border-style</kbd> の形式で指定できます</td>
-                            <td>solid</td>
-                        </tr> -->
+                        <tr>
+                            <th>prefectureLineY</th>
+                            <td>都道府県枠線のY軸開始位置　都道府県枠線のY軸開始位置を指定できます</td>
+                            <td>0px</td>
+                        </tr>
+                        <tr>
+                            <th>prefectureLineX</th>
+                            <td>都道府県枠線のX軸開始位置　都道府県枠線のX軸開始位置を指定できます</td>
+                            <td>0px</td>
+                        </tr>
                         <tr>
                             <th>prefectureRadius</th>
                             <td>都道府県枠の角丸　都道府県枠の角丸を指定できます</td>
@@ -1926,10 +1980,10 @@ $('#jmap').jmap({
                 </table>
             </div>
 
-            <h2 class="h3 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> 互換性 - <small class="text-muted">他プラグイン</small></h2>
+            <h2 class="h3 pt-5 mb-3" id="parameters"><span class="badge badge-pill badge-primary">*</span> 互換性 - <small class="text-muted">他プラグイン</small></h2>
             <p class="lead">もとめる地図に出会おう。</p>
 
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Japan Mapとの互換性</h4>
