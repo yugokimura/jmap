@@ -135,8 +135,8 @@
             Pastel2: ["#BFC7CE", "#b3e2cd", "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"],
             Pastel1: ["#BFC7CE", "#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"],
             Font: ["#000", "#000", "#000", "#000", "#000", "#fff", "#fff", "#fff", "#fff", "#fff"]
-
-        }
+        },
+        icon: ["m256", "0c-95.202", "0-172.36", "77.155-172.36", "172.36", "0", "97.162", "48.158", "117.86", "101.39", "182.5", "63.666", "77.31", "70.97", "157.15", "70.97", "157.15s7.304-79.839", "70.97-157.15c53.228-64.634", "101.39-85.334", "101.39-182.5", "0-95.202-77.154-172.36-172.36-172.36zm0", "231.92c-32.897", "0-59.564-26.668-59.564-59.564s26.668-59.564", "59.564-59.564", "59.564", "26.668", "59.564", "59.564-26.668", "59.564-59.564", "59.564z"]
     };
     $.fn.jmapHeatLabel = function(options) {
         var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', options + "-heatlabel")
@@ -614,6 +614,7 @@
 
         var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-uniq', uniqClass + "-css").html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
         containerDiv.append(contentDiv)
+
         $(this).empty().append(jmapStyle).append(containerDiv);
 
         if (params.skew != 0) {
