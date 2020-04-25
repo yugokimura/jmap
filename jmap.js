@@ -156,10 +156,6 @@
     $.fn.jmap = function(options) {
 
         if (options == 'update') {
-            console.log(this)
-
-            console.log(Math.ceil(47 / 6))
-            console.log((100 / 6).toFixed(4))
             return this;
         }
 
@@ -400,11 +396,8 @@
             'position': 'relative',
             'display': 'flex',
             'cursor': params.cursor,
-            'margin': params.prefectureLineWidth,
+            'margin': (parseFloat(params.prefectureLineWidth) / 2) + params.prefectureLineWidth.replace(parseFloat(params.prefectureLineWidth), ''),
             'box-shadow': '0 0 0 %s1 %s2'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineColor),
-            // 'border-width': params.prefectureLineWidth,
-            // 'border-color': params.prefectureLineColor,
-            // 'border-style': params.prefectureLineStyle,
             'font-size': params.fontSize,
             'color': params.fontColor,
             'border-radius': params.prefectureRadius,
@@ -414,7 +407,7 @@
             'text-align': 'center',
             'box-sizing': 'border-box',
             'transition': 'all 0.1s',
-            'z-index': 1,
+            'z-index': '1',
             'overflow': 'hidden',
             'white-space': (params.textNowrap) ? 'nowrap' : 'normal'
         };
@@ -427,12 +420,8 @@
             var css = {
                 'background-color': params.prefectureBackgroundHoverColor,
                 'box-shadow': '0 0 0 %s1 %s2, 0 0 5px %s3'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineHoverColor).replace('%s3', "#333"),
-                // 'border-width': params.prefectureLineWidth,
-                // 'border-color': params.prefectureLineHoverColor,
-                // 'border-style': params.prefectureLineStyle,
-                // 'box-shadow': '0 0 5px #333',
                 'transform': 'scale(1.01)',
-                'z-index': 2
+                'z-index': '2'
             };
             var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
             var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
