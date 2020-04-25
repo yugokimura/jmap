@@ -289,6 +289,10 @@
             '-ms-grid-columns': Array(54 + 1).join('1.851% ')
         };
 
+        var contentSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+        var contentStyle = JSON.stringify(contentCss).replace(/",/g, '";').replace(/"/g, '');
+        stylers.push(contentSelector + contentStyle);
+
         if (params.viewType == 'grid') {
             var row = Math.ceil((conf.prefectures.length + params.gridOffset) / params.gridNumber);
             var col = params.gridNumber;
@@ -297,18 +301,20 @@
                 'grid-template-columns': Array(col + 1).join((100 / col).toFixed(3) + '% '),
                 '-ms-grid-rows': Array(row + 1).join((100 / row).toFixed(3) + '% '),
                 '-ms-grid-columns': Array(col + 1).join((100 / col).toFixed(3) + '% ')
-            }
-            contentCss = $.extend(contentCss, contentGridCss);
+            };
+            var contentGridSelector = '.%s1[jmap-uniq="%s2"][jmap-view="grid"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+            var contentGridStyle = JSON.stringify(contentGridCss).replace(/",/g, '";').replace(/"/g, '');
+            stylersPrimal.push(contentGridSelector + contentGridStyle);
+
             params.showIslandDivider = false;
             params.showInfobox = false;
+            params.showHeatlabel = false;
         }
 
-        var contentSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
-        var contentStyle = JSON.stringify(contentCss).replace(/",/g, '";').replace(/"/g, '');
-        stylers.push(contentSelector + contentStyle);
-
+        // Jmap Content
         var contentDiv = $('<div>')
             .attr('jmap-uniq', uniqClass + "-content")
+            .attr('jmap-view', params.viewType)
             .addClass(params.contentClass);
 
         if (params.skew != 0) {
@@ -535,8 +541,13 @@
                 '-ms-grid-row-span': '%d1'.replace('%d1', pref.size.y),
                 'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
             };
+
             if (option.fontColor)
                 prefectureIndivisualCss['color'] = option.fontColor;
+
+            var prefectureIndivisualSelector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+            var prefectureIndivisualStyle = JSON.stringify(prefectureIndivisualCss).replace(/"/g, '').replace(/,/g, ';');
+            stylers.push(prefectureIndivisualSelector + prefectureIndivisualStyle);
 
             if (params.viewType == 'grid') {
 
@@ -546,10 +557,12 @@
                     '-ms-grid-column-span': 'sx'.replace('sx', 1),
                     'grid-row': '%d1 / %d2'.replace('%d1', gridRowIndex).replace('%d2', gridRowIndex + 1),
                     '-ms-grid-row': '%d1'.replace('%d1', gridRowIndex),
-                    '-ms-grid-row-span': '%d1'.replace('%d1', 1),
-                    'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
+                    '-ms-grid-row-span': '%d1'.replace('%d1', 1)
                 };
-                prefectureIndivisualCss = $.extend(prefectureIndivisualCss, prefectureIndivisualGridCss);
+
+                var prefectureIndivisualGridSelector = '%s1 .%s2[jmap-uniq="%s3"][jmap-pref="%s4"] '.replace('%s1', contentGridSelector).replace('%s2', params.prefectureClass).replace('%s3', uniqClass + "-pref").replace('%s4', pref.code);
+                var prefectureIndivisualGridStyle = JSON.stringify(prefectureIndivisualGridCss).replace(/"/g, '').replace(/,/g, ';');
+                stylersPrimal.push(prefectureIndivisualGridSelector + prefectureIndivisualGridStyle);
 
                 if (gridColIndex >= params.gridNumber) {
                     gridColIndex = 0;
@@ -558,20 +571,17 @@
 
                 gridColIndex++;
             }
-            var prefectureIndivisualSelector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
-            var prefectureIndivisualStyle = JSON.stringify(prefectureIndivisualCss).replace(/"/g, '').replace(/,/g, ';');
-            stylers.push(prefectureIndivisualSelector + prefectureIndivisualStyle);
 
             // Prefecture Indivisual Hover
             if (params.selectable) {
                 if (option.hoverColor) {
 
-                    var css = {
+                    var prefectureIndivisualHoverCss = {
                         'background-color': option.hoverColor
                     };
-                    var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
-                    var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
-                    stylersPrimal.push(selector + style);
+                    var prefectureIndivisualHoverSelector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+                    var prefectureIndivisualHoverStyle = JSON.stringify(prefectureIndivisualHoverCss).replace(/"/g, '').replace(/,/g, ';');
+                    stylersPrimal.push(prefectureIndivisualHoverSelector + prefectureIndivisualHoverStyle);
 
                 } else if (params.showHeatmap && option.number) {
 
