@@ -258,7 +258,8 @@
             'border-color': params.lineColor,
             'border-style': params.lineStyle,
             'border-radius': params.backgroundRadius,
-            'padding': params.backgroundPadding
+            'padding': params.backgroundPadding,
+            'overflow': 'hidden'
         };
         var containerSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
         var containerStyle = JSON.stringify(containerCss).replace(/",/g, '";').replace(/"/g, '');
