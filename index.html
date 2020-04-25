@@ -24,7 +24,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?110"></script>
+    <script src="./jmap.js?130"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -327,6 +327,7 @@
 
             $('#jmap5').jmap({
                 height: '450px',
+                skew: '15',
                 showHeatmap: true,
                 showHeatlabel: true,
                 heatmapType: 'HRed',
@@ -631,6 +632,9 @@
     </nav>
 
     <main role="main" class="main">
+        <div class="bd-callout bd-callout-info">
+            <p><strong>Heads up!</strong> Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).</p>
+        </div>
         <div class="jumbotron container text-center">
             <h1 class="display-4 text-bold">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="70" height="70" viewBox="0 0 48 48" style=" fill:#000000;"><circle cx="24" cy="24" r="20" fill="#fff"></circle><path fill="#d50000" d="M33,24c0,4.969-4.031,9-9,9s-9-4.031-9-9s4.031-9,9-9S33,19.031,33,24z"></path></svg>
@@ -928,6 +932,7 @@ $(document).ready(function() {
                     <pre class="border rounded-lg overflow-auto" style="height:350px;"><code class="javascript">
 $('#jmap').jmap({
     height: "450px",
+    skew: '15',
     showHeatmap: true,
     heatmapType: 'HRed',
     showHeatlabel: true,
@@ -1392,6 +1397,16 @@ $('#jmap').jmap({
                             <th>infoboxContent</th>
                             <td>情報表示エリアのコンテンツ　情報表示エリアのコンテンツを直接指定できます</td>
                             <td>空</td>
+                        </tr>
+                        <tr>
+                            <th>skew</th>
+                            <td>地図の歪み角度　地図の歪み角度を指定できます</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>showTextNoneSkewed</th>
+                            <td>地図歪み時の文字の角度　地図の歪み角度指定時に文字も同時に歪ませるかを指定できます</td>
+                            <td>true</td>
                         </tr>
                         <tr>
                             <th>showHeatmap</th>

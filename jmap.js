@@ -185,6 +185,7 @@
             showInfobox: false,
             showPrefectureName: true,
             containerClass: 'jmap-container',
+            contentClass: 'jmap-content',
             dividerClass: 'jmap-divider',
             infoboxClass: 'jmap-infobox',
             infoboxContent: '',
@@ -209,6 +210,8 @@
             gridOffset: 1,
             selectable: true,
             cursor: 'pointer',
+            skew: '0',
+            showTextNoneSkewed: true,
             areas: [],
             onSelect: function(e, data) {},
             onHover: function(e, data) {},
@@ -243,24 +246,38 @@
         if (!params.selectable)
             params.cursor = 'default';
 
-
         // Jmap container
-        var css = {
-            'display': 'grid; display:-ms-grid',
+        var containerCss = {
+            'display': 'flex',
             'position': 'relative',
             'font-family': params.font,
             'width': params.width,
             'height': params.height,
-            'grid-template-rows': Array(22 + 1).join('4.545% '),
-            'grid-template-columns': Array(54 + 1).join('1.851% '),
-            '-ms-grid-rows': Array(22 + 1).join('4.545% '),
-            '-ms-grid-columns': Array(54 + 1).join('1.851% '),
             'background-color': params.backgroundColor,
             'border-width': params.lineWidth,
             'border-color': params.lineColor,
             'border-style': params.lineStyle,
             'border-radius': params.backgroundRadius,
             'padding': params.backgroundPadding
+        };
+        var containerSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
+        var containerStyle = JSON.stringify(containerCss).replace(/",/g, '";').replace(/"/g, '');
+        stylers.push(containerSelector + containerStyle);
+
+        var containerDiv = $('<div>')
+            .attr('jmap-uniq', uniqClass + "-container")
+            .addClass(params.containerClass);
+
+        // Jmap content
+        var contentCss = {
+            'display': 'grid; display:-ms-grid',
+            'position': 'relative',
+            'width': '100%',
+            'height': '100%',
+            'grid-template-rows': Array(22 + 1).join('4.545% '),
+            'grid-template-columns': Array(54 + 1).join('1.851% '),
+            '-ms-grid-rows': Array(22 + 1).join('4.545% '),
+            '-ms-grid-columns': Array(54 + 1).join('1.851% ')
         };
 
         if (params.viewType == 'grid') {
@@ -272,25 +289,24 @@
                 '-ms-grid-rows': Array(row + 1).join((100 / row).toFixed(3) + '% '),
                 '-ms-grid-columns': Array(col + 1).join((100 / col).toFixed(3) + '% ')
             }
-            css = $.extend(css, gcss);
+            contentCss = $.extend(contentCss, gcss);
             params.showIslandDivider = false;
             params.showInfobox = false;
         }
 
-        var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
-        var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
-        stylers.push(selector + style);
+        var contentSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+        var contentStyle = JSON.stringify(contentCss).replace(/",/g, '";').replace(/"/g, '');
+        stylers.push(contentSelector + contentStyle);
 
-        var jmapDiv = $('<div>')
-            .attr('jmap-uniq', uniqClass + "-container")
-            .addClass(params.containerClass);
-
+        var contentDiv = $('<div>')
+            .attr('jmap-uniq', uniqClass + "-content")
+            .addClass(params.contentClass);
 
         // Island divider 
         if (params.showIslandDivider) {
 
             var divider = conf.divider;
-            var css = {
+            var dividerCss = {
                 'grid-column': '%d1 / %d2'.replace('%d1', divider.cordinate.x).replace('%d2', divider.cordinate.x + divider.size.x),
                 '-ms-grid-column': '%d1'.replace('%d1', divider.cordinate.x),
                 '-ms-grid-column-span': 'sx'.replace('sx', divider.size.x),
@@ -306,17 +322,18 @@
                 'border-bottom-style': params.dividerStyle,
             };
 
-            var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.dividerClass).replace('%s2', uniqClass + "-divider");
-            var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
-            stylers.push(selector + style);
+            var dividerSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.dividerClass).replace('%s2', uniqClass + "-divider");
+            var dividerStyle = JSON.stringify(dividerCss).replace(/",/g, '";').replace(/"/g, '');
+            stylers.push(dividerSelector + dividerStyle);
 
             var dividerDiv = $('<div>')
                 .attr('jmap-uniq', uniqClass + "-divider")
                 .addClass(params.dividerClass)
-                .appendTo(jmapDiv);
+                .appendTo(contentDiv);
         }
 
         // Infobox 
+        var infoboxDiv = null;
         if (params.showInfobox) {
 
             var infobox = conf.infobox;
@@ -334,12 +351,12 @@
             var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
             stylers.push(selector + style);
 
-            var infoboxDiv = $(this).find('.jmap-infobox');
+            infoboxDiv = $(this).find('.jmap-infobox');
             if (infoboxDiv.length > 0) {
 
                 infoboxDiv.attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
-                    .appendTo(jmapDiv);
+                    .appendTo(contentDiv);
 
             } else {
 
@@ -347,7 +364,7 @@
                     .attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .html(params.infoboxContent)
-                    .appendTo(jmapDiv);
+                    .appendTo(contentDiv);
 
             }
 
@@ -392,7 +409,7 @@
         }
 
         // Prefecture Common
-        var css = {
+        var prefectureCss = {
             'position': 'relative',
             'display': 'flex',
             'cursor': params.cursor,
@@ -406,26 +423,26 @@
             'align-items': 'center',
             'text-align': 'center',
             'box-sizing': 'border-box',
-            'transition': 'all 0.1s',
+            'transition': 'box-shadow 0.2s',
             'z-index': '1',
             'overflow': 'hidden',
             'white-space': (params.textNowrap) ? 'nowrap' : 'normal'
         };
-        var selector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-        var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
-        stylers.push(selector + style);
+        var prefectureSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
+        var prefectureStyle = JSON.stringify(prefectureCss).replace(/",/g, '";').replace(/"/g, '');
+        stylers.push(prefectureSelector + prefectureStyle);
 
         // Prefecture Common Hover
         if (params.selectable) {
-            var css = {
+            var prefectureHoverCss = {
                 'background-color': params.prefectureBackgroundHoverColor,
                 'box-shadow': '0 0 0 %s1 %s2, 0 0 5px %s3'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineHoverColor).replace('%s3', "#333"),
                 'transform': 'scale(1.01)',
                 'z-index': '2'
             };
-            var selector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
-            var style = JSON.stringify(css).replace(/",/g, '";').replace(/"/g, '');
-            stylersPrimal.push(selector + style);
+            var prefectureHoverSelector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
+            var prefectureHoverStyle = JSON.stringify(prefectureHoverCss).replace(/",/g, '";').replace(/"/g, '');
+            stylersPrimal.push(prefectureHoverSelector + prefectureHoverStyle);
         }
 
         // Loop prefectures
@@ -581,14 +598,41 @@
                 prefDiv.html(option.name);
             }
 
-            jmapDiv.append(prefDiv);
+            if (params.showTextNoneSkewed && params.skew != 0) {
+                var textDiv = $('<div>').html(prefDiv.html()).css({
+                    'transform': 'skew(%d1deg)'.replace('%d1', params.skew)
+                })
+                prefDiv.html(textDiv);
+            }
+
+            contentDiv.append(prefDiv);
             setTimeout(function() {
                 params.onLoad.call(prefDiv, null, pref)
             });
         });
 
         var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-uniq', uniqClass + "-css").html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
-        $(this).empty().append(jmapStyle).append(jmapDiv);
+        containerDiv.append(contentDiv)
+        $(this).empty().append(jmapStyle).append(containerDiv);
+
+        if (params.skew != 0) {
+
+            // 角度変化による増加した幅
+            // ( (height / tan( 90 - Θ ) - width) / 2
+            var increasedWidth = ((contentDiv.height() / Math.tan((90 - params.skew) * (Math.PI / 180))) / 2).toFixed(3);
+            contentDiv.css({
+                'padding': '0 ' + increasedWidth + 'px',
+                'transform': 'skew(-%d1deg)'.replace('%d1', params.skew)
+            });
+
+            if (infoboxDiv) {
+                infoboxDiv.css({
+                    'margin-left': '-%d1'.replace('%d1', increasedWidth / 2 * 3 + 'px'),
+                    'transform': 'skew(%d1deg)'.replace('%d1', params.skew)
+                });
+            }
+        }
+
         return this;
     };
 })(jQuery);
