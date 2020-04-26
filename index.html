@@ -24,7 +24,7 @@
     <!-- https://highlightjs.org/static/demo/ -->
     <!-- https://cdnjs.com/libraries/highlight.js/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
-    <script src="./jmap.js?150"></script>
+    <script src="./jmap.js?161"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -44,13 +44,18 @@
                 backgroundRadius: '0.5rem',
                 backgroundPadding: '0.5rem',
                 showPrefectureName: true,
+                showRoundedPrefecture: true,
                 prefectureNameType: 'full',
-                prefectureBackgroundColor: '#B5C854',
+                prefectureBackgroundColor: '#62B34C',
                 prefectureBackgroundHoverColor: '#95A834',
-                prefectureLineColor: '#195658',
+                prefectureLineColor: '#EFE4A6',
                 prefectureLineHoverColor: '#ffffff',
                 prefectureLineWidth: '2px',
-                prefectureLineGap: '3px',
+                prefectureLineGap: '0px',
+                prefectureInnerLineWidth: '1px',
+                prefectureInnerLineColor: '#EFE4A6',
+                prefectureInnerLineType: 'outset',
+                prefectureRadius: '30px',
                 prefectureLineY: '2px',
                 prefectureLineX: '2px',
                 fontSize: '0.6rem',
@@ -337,6 +342,7 @@
                 skew: '10',
                 showHeatmap: true,
                 showHeatlabel: true,
+                heatmapConditions: [0, '>20', '>40', '>50', '>100'],
                 heatmapType: 'HRed',
                 areas: [{
                     code: 1,
@@ -727,13 +733,18 @@ $('#jmap').jmap({
     backgroundRadius: '0.5rem',
     backgroundPadding: '0.5rem',
     showPrefectureName: true,
+    showRoundedPrefecture: true,
     prefectureNameType: 'full',
-    prefectureBackgroundColor: '#B5C854',
+    prefectureBackgroundColor: '#62B34C',
     prefectureBackgroundHoverColor: '#95A834',
-    prefectureLineColor: '#195658',
+    prefectureLineColor: '#EFE4A6',
     prefectureLineHoverColor: '#ffffff',
     prefectureLineWidth: '2px',
-    prefectureLineGap: '3px',
+    prefectureLineGap: '0px',
+    prefectureInnerLineWidth: '1px',
+    prefectureInnerLineColor: '#EFE4A6',
+    prefectureInnerLineType: 'outset',
+    prefectureRadius: '30px',
     prefectureLineY: '2px',
     prefectureLineX: '2px',
     fontSize: '0.6rem',

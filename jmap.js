@@ -15,61 +15,53 @@
     var identifier = 0;
     var conf = {
         prefectures: [
-            { code: 1, name: "北海道", full: "", alphabet: "Hokkaido", area8: 1, area11: 1, cordinate: { x: 41, y: 1 }, size: { x: 14, y: 4 } },
-            { code: 2, name: "青森", full: "県", alphabet: "Aomori", area8: 2, area11: 2, cordinate: { x: 41, y: 5 }, size: { x: 12, y: 2 } },
-            { code: 3, name: "岩手", full: "県", alphabet: "Iwate", area8: 2, area11: 2, cordinate: { x: 47, y: 7 }, size: { x: 6, y: 2 } },
-            { code: 4, name: "宮城", full: "県", alphabet: "Miyagi", area8: 2, area11: 2, cordinate: { x: 47, y: 9 }, size: { x: 6, y: 2 } },
-            { code: 5, name: "秋田", full: "県", alphabet: "Akita", area8: 2, area11: 2, cordinate: { x: 41, y: 7 }, size: { x: 6, y: 2 } },
-            { code: 6, name: "山形", full: "県", alphabet: "Yamagata", area8: 2, area11: 2, cordinate: { x: 41, y: 9 }, size: { x: 6, y: 2 } },
-            { code: 7, name: "福島", full: "県", alphabet: "Fukushima", area8: 2, area11: 2, cordinate: { x: 45, y: 11 }, size: { x: 8, y: 2 } },
-            { code: 8, name: "茨城", full: "県", alphabet: "Ibaraki", area8: 3, area11: 3, cordinate: { x: 49, y: 13 }, size: { x: 4, y: 3 } },
-            { code: 9, name: "栃木", full: "県", alphabet: "Tochigi", area8: 3, area11: 3, cordinate: { x: 45, y: 13 }, size: { x: 4, y: 3 } },
-            { code: 10, name: "群馬", full: "県", alphabet: "Gunma", area8: 3, area11: 3, cordinate: { x: 41, y: 13 }, size: { x: 4, y: 3 } },
-            { code: 11, name: "埼玉", full: "県", alphabet: "Saitama", area8: 3, area11: 3, cordinate: { x: 41, y: 16 }, size: { x: 8, y: 2 } },
-            { code: 12, name: "千葉", full: "県", alphabet: "Chiba", area8: 3, area11: 3, cordinate: { x: 49, y: 16 }, size: { x: 4, y: 5 } },
-            { code: 13, name: "東京", full: "都", alphabet: "Tokyo", area8: 3, area11: 3, cordinate: { x: 41, y: 18 }, size: { x: 8, y: 2 } },
-            { code: 14, name: "神奈川", full: "県", alphabet: "Kanagawa", area8: 3, area11: 3, cordinate: { x: 41, y: 20 }, size: { x: 8, y: 2 } },
-            { code: 15, name: "新潟", full: "県", alphabet: "Niigata", area8: 4, area11: 4, cordinate: { x: 37, y: 11 }, size: { x: 8, y: 2 } },
-            { code: 16, name: "富山", full: "県", alphabet: "Toyama", area8: 4, area11: 4, cordinate: { x: 33, y: 11 }, size: { x: 4, y: 2 } },
-            // { code: 17, name: "石川", full: "県", alphabet: "Ishikawa", area8: 4, area11: 4, cordinate: { x: 29, y: 11 }, size: { x: 4, y: 2 } },
-            // { code: 18, name: "福井", full: "県", alphabet: "Fukui", area8: 4, area11: 4, cordinate: { x: 29, y: 13 }, size: { x: 4, y: 2 } },
-            { code: 17, name: "石川", full: "県", alphabet: "Ishikawa", area8: 4, area11: 4, cordinate: { x: 29, y: 10 }, size: { x: 4, y: 2 } },
-            { code: 18, name: "福井", full: "県", alphabet: "Fukui", area8: 4, area11: 4, cordinate: { x: 27, y: 12 }, size: { x: 6, y: 2 } },
-            { code: 19, name: "山梨", full: "県", alphabet: "Yamanashi", area8: 4, area11: 3, cordinate: { x: 37, y: 17 }, size: { x: 4, y: 2 } },
-            { code: 20, name: "長野", full: "県", alphabet: "Nagano", area8: 4, area11: 3, cordinate: { x: 37, y: 13 }, size: { x: 4, y: 4 } },
-            { code: 21, name: "岐阜", full: "県", alphabet: "Gifu", area8: 4, area11: 5, cordinate: { x: 33, y: 13 }, size: { x: 4, y: 4 } },
-            { code: 22, name: "静岡", full: "県", alphabet: "Shizuoka", area8: 4, area11: 5, cordinate: { x: 37, y: 19 }, size: { x: 4, y: 3 } },
-            { code: 23, name: "愛知", full: "県", alphabet: "Aichi", area8: 4, area11: 5, cordinate: { x: 33, y: 17 }, size: { x: 4, y: 3 } },
-            // { code: 24, name: "三重", full: "県", alphabet: "Mie", area8: 5, area11: 5, cordinate: { x: 29, y: 17 }, size: { x: 4, y: 2 } },
-            // { code: 25, name: "滋賀", full: "県", alphabet: "Shiga", area8: 5, area11: 6, cordinate: { x: 29, y: 15 }, size: { x: 4, y: 2 } },
-            // { code: 26, name: "京都", full: "府", alphabet: "Kyoto", area8: 5, area11: 6, cordinate: { x: 25, y: 12 }, size: { x: 4, y: 2 } },
-            // { code: 27, name: "大阪", full: "府", alphabet: "Osaka", area8: 5, area11: 6, cordinate: { x: 25, y: 14 }, size: { x: 4, y: 3 } },
-            { code: 24, name: "三重", full: "県", alphabet: "Mie", area8: 5, area11: 5, cordinate: { x: 29, y: 18 }, size: { x: 4, y: 2 } },
-            { code: 25, name: "滋賀", full: "県", alphabet: "Shiga", area8: 5, area11: 6, cordinate: { x: 29, y: 14 }, size: { x: 4, y: 2 } },
-            { code: 26, name: "京都", full: "府", alphabet: "Kyoto", area8: 5, area11: 6, cordinate: { x: 25, y: 14 }, size: { x: 4, y: 3 } },
-            { code: 27, name: "大阪", full: "府", alphabet: "Osaka", area8: 5, area11: 6, cordinate: { x: 25, y: 17 }, size: { x: 4, y: 3 } },
-            { code: 28, name: "兵庫", full: "県", alphabet: "Hyogo", area8: 5, area11: 6, cordinate: { x: 21, y: 15 }, size: { x: 4, y: 4 } },
-            // { code: 29, name: "奈良", full: "県", alphabet: "Nara", area8: 5, area11: 6, cordinate: { x: 25, y: 17 }, size: { x: 4, y: 2 } },
-            // { code: 30, name: "和歌山", full: "県", alphabet: "Wakayama", area8: 5, area11: 6, cordinate: { x: 25, y: 19 }, size: { x: 6, y: 2 } },
-            { code: 29, name: "奈良", full: "県", alphabet: "Nara", area8: 5, area11: 6, cordinate: { x: 29, y: 16 }, size: { x: 4, y: 2 } },
-            { code: 30, name: "和歌山", full: "県", alphabet: "Wakayama", area8: 5, area11: 6, cordinate: { x: 25, y: 20 }, size: { x: 6, y: 2 } },
-            { code: 31, name: "鳥取", full: "県", alphabet: "Tottori", area8: 6, area11: 7, cordinate: { x: 17, y: 15 }, size: { x: 4, y: 2 } },
-            { code: 32, name: "島根", full: "県", alphabet: "Shimane", area8: 6, area11: 7, cordinate: { x: 13, y: 15 }, size: { x: 4, y: 2 } },
-            { code: 33, name: "岡山", full: "県", alphabet: "Okayama", area8: 6, area11: 7, cordinate: { x: 17, y: 17 }, size: { x: 4, y: 2 } },
-            { code: 34, name: "広島", full: "県", alphabet: "Hiroshima", area8: 6, area11: 7, cordinate: { x: 13, y: 17 }, size: { x: 4, y: 2 } },
-            { code: 35, name: "山口", full: "県", alphabet: "Yamaguchi", area8: 6, area11: 9, cordinate: { x: 9, y: 15 }, size: { x: 4, y: 4 } },
-            { code: 36, name: "徳島", full: "県", alphabet: "Tokushima", area8: 7, area11: 8, cordinate: { x: 19, y: 21 }, size: { x: 4, y: 2 } },
-            { code: 37, name: "香川", full: "県", alphabet: "Kagawa", area8: 7, area11: 8, cordinate: { x: 19, y: 19 }, size: { x: 4, y: 2 } },
-            { code: 38, name: "愛媛", full: "県", alphabet: "Ehime", area8: 7, area11: 8, cordinate: { x: 15, y: 19 }, size: { x: 4, y: 2 } },
-            { code: 39, name: "高知", full: "県", alphabet: "Kochi", area8: 7, area11: 8, cordinate: { x: 15, y: 21 }, size: { x: 4, y: 2 } },
-            { code: 40, name: "福岡", full: "県", alphabet: "Fukuoka", area8: 8, area11: 9, cordinate: { x: 5, y: 15 }, size: { x: 4, y: 2 } },
-            { code: 41, name: "佐賀", full: "県", alphabet: "Saga", area8: 8, area11: 9, cordinate: { x: 1, y: 17 }, size: { x: 4, y: 2 } },
-            { code: 42, name: "長崎", full: "県", alphabet: "Nagasaki", area8: 8, area11: 9, cordinate: { x: 1, y: 15 }, size: { x: 4, y: 2 } },
-            { code: 43, name: "熊本", full: "県", alphabet: "Kumamoto", area8: 8, area11: 9, cordinate: { x: 1, y: 19 }, size: { x: 4, y: 2 } },
-            { code: 44, name: "大分", full: "県", alphabet: "Oita", area8: 8, area11: 9, cordinate: { x: 5, y: 17 }, size: { x: 4, y: 2 } },
-            { code: 45, name: "宮崎", full: "県", alphabet: "Miyazaki", area8: 8, area11: 10, cordinate: { x: 5, y: 19 }, size: { x: 4, y: 2 } },
-            { code: 46, name: "鹿児島", full: "県", alphabet: "Kagoshima", area8: 8, area11: 10, cordinate: { x: 1, y: 21 }, size: { x: 8, y: 2 } },
-            { code: 47, name: "沖縄", full: "県", alphabet: "Okinawa", area8: 8, area11: 11, cordinate: { x: 18, y: 11 }, size: { x: 4, y: 2 } }
+            { code: 1, name: "北海道", full: "", alphabet: "Hokkaido", area8: 1, area11: 1, cordinate: { x: 41, y: 1, z: 29 }, size: { x: 14, y: 4 }, radius: [1, 1, 1, 0] },
+            { code: 2, name: "青森", full: "県", alphabet: "Aomori", area8: 2, area11: 2, cordinate: { x: 41, y: 5, z: 30 }, size: { x: 12, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 3, name: "岩手", full: "県", alphabet: "Iwate", area8: 2, area11: 2, cordinate: { x: 47, y: 7, z: 33 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 4, name: "宮城", full: "県", alphabet: "Miyagi", area8: 2, area11: 2, cordinate: { x: 47, y: 9, z: 34 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 5, name: "秋田", full: "県", alphabet: "Akita", area8: 2, area11: 2, cordinate: { x: 41, y: 7, z: 31 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 6, name: "山形", full: "県", alphabet: "Yamagata", area8: 2, area11: 2, cordinate: { x: 41, y: 9, z: 32 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 7, name: "福島", full: "県", alphabet: "Fukushima", area8: 2, area11: 2, cordinate: { x: 45, y: 11, z: 39 }, size: { x: 8, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 8, name: "茨城", full: "県", alphabet: "Ibaraki", area8: 3, area11: 3, cordinate: { x: 49, y: 13, z: 42 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
+            { code: 9, name: "栃木", full: "県", alphabet: "Tochigi", area8: 3, area11: 3, cordinate: { x: 45, y: 13, z: 41 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
+            { code: 10, name: "群馬", full: "県", alphabet: "Gunma", area8: 3, area11: 3, cordinate: { x: 41, y: 13, z: 40 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
+            { code: 11, name: "埼玉", full: "県", alphabet: "Saitama", area8: 3, area11: 3, cordinate: { x: 41, y: 16, z: 43 }, size: { x: 8, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 12, name: "千葉", full: "県", alphabet: "Chiba", area8: 3, area11: 3, cordinate: { x: 49, y: 16, z: 46 }, size: { x: 4, y: 5 }, radius: [0, 0, 1, 0] },
+            { code: 13, name: "東京", full: "都", alphabet: "Tokyo", area8: 3, area11: 3, cordinate: { x: 41, y: 18, z: 44 }, size: { x: 8, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 14, name: "神奈川", full: "県", alphabet: "Kanagawa", area8: 3, area11: 3, cordinate: { x: 41, y: 20, z: 45 }, size: { x: 8, y: 2 }, radius: [0, 0, 1, 0] },
+            { code: 15, name: "新潟", full: "県", alphabet: "Niigata", area8: 4, area11: 4, cordinate: { x: 37, y: 11, z: 35 }, size: { x: 8, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 16, name: "富山", full: "県", alphabet: "Toyama", area8: 4, area11: 4, cordinate: { x: 33, y: 11, z: 26 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 17, name: "石川", full: "県", alphabet: "Ishikawa", area8: 4, area11: 4, cordinate: { x: 29, y: 10, z: 18 }, size: { x: 4, y: 2 }, radius: [1, 1, 0, 0] },
+            { code: 18, name: "福井", full: "県", alphabet: "Fukui", area8: 4, area11: 4, cordinate: { x: 27, y: 12, z: 19 }, size: { x: 6, y: 2 }, radius: [1, 0, 0, 0] },
+            { code: 19, name: "山梨", full: "県", alphabet: "Yamanashi", area8: 4, area11: 3, cordinate: { x: 37, y: 17, z: 37 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 20, name: "長野", full: "県", alphabet: "Nagano", area8: 4, area11: 3, cordinate: { x: 37, y: 13, z: 36 }, size: { x: 4, y: 4 }, radius: [0, 0, 0, 0] },
+            { code: 21, name: "岐阜", full: "県", alphabet: "Gifu", area8: 4, area11: 5, cordinate: { x: 33, y: 13, z: 27 }, size: { x: 4, y: 4 }, radius: [0, 0, 0, 0] },
+            { code: 22, name: "静岡", full: "県", alphabet: "Shizuoka", area8: 4, area11: 5, cordinate: { x: 37, y: 19, z: 38 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 1] },
+            { code: 23, name: "愛知", full: "県", alphabet: "Aichi", area8: 4, area11: 5, cordinate: { x: 33, y: 17, z: 28 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
+            { code: 24, name: "三重", full: "県", alphabet: "Mie", area8: 5, area11: 5, cordinate: { x: 29, y: 18, z: 24 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 25, name: "滋賀", full: "県", alphabet: "Shiga", area8: 5, area11: 6, cordinate: { x: 29, y: 14, z: 22 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 26, name: "京都", full: "府", alphabet: "Kyoto", area8: 5, area11: 6, cordinate: { x: 25, y: 14, z: 20 }, size: { x: 4, y: 3 }, radius: [1, 0, 0, 0] },
+            { code: 27, name: "大阪", full: "府", alphabet: "Osaka", area8: 5, area11: 6, cordinate: { x: 25, y: 17, z: 21 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
+            { code: 28, name: "兵庫", full: "県", alphabet: "Hyogo", area8: 5, area11: 6, cordinate: { x: 21, y: 15, z: 13 }, size: { x: 4, y: 4 }, radius: [0, 0, 0, 0] },
+            { code: 29, name: "奈良", full: "県", alphabet: "Nara", area8: 5, area11: 6, cordinate: { x: 29, y: 16, z: 23 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 30, name: "和歌山", full: "県", alphabet: "Wakayama", area8: 5, area11: 6, cordinate: { x: 25, y: 20, z: 25 }, size: { x: 6, y: 2 }, radius: [0, 0, 1, 1] },
+            { code: 31, name: "鳥取", full: "県", alphabet: "Tottori", area8: 6, area11: 7, cordinate: { x: 17, y: 15, z: 11 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 32, name: "島根", full: "県", alphabet: "Shimane", area8: 6, area11: 7, cordinate: { x: 13, y: 15, z: 9 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 33, name: "岡山", full: "県", alphabet: "Okayama", area8: 6, area11: 7, cordinate: { x: 17, y: 17, z: 12 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 34, name: "広島", full: "県", alphabet: "Hiroshima", area8: 6, area11: 7, cordinate: { x: 13, y: 17, z: 10 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 35, name: "山口", full: "県", alphabet: "Yamaguchi", area8: 6, area11: 9, cordinate: { x: 9, y: 15, z: 8 }, size: { x: 4, y: 4 }, radius: [0, 0, 0, 0] },
+            { code: 36, name: "徳島", full: "県", alphabet: "Tokushima", area8: 7, area11: 8, cordinate: { x: 19, y: 21, z: 17 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 37, name: "香川", full: "県", alphabet: "Kagawa", area8: 7, area11: 8, cordinate: { x: 19, y: 19, z: 16 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 38, name: "愛媛", full: "県", alphabet: "Ehime", area8: 7, area11: 8, cordinate: { x: 15, y: 19, z: 14 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 39, name: "高知", full: "県", alphabet: "Kochi", area8: 7, area11: 8, cordinate: { x: 15, y: 21, z: 15 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 40, name: "福岡", full: "県", alphabet: "Fukuoka", area8: 8, area11: 9, cordinate: { x: 5, y: 15, z: 4 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 41, name: "佐賀", full: "県", alphabet: "Saga", area8: 8, area11: 9, cordinate: { x: 1, y: 17, z: 2 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 42, name: "長崎", full: "県", alphabet: "Nagasaki", area8: 8, area11: 9, cordinate: { x: 1, y: 15, z: 1 }, size: { x: 4, y: 2 }, radius: [1, 0, 0, 0] },
+            { code: 43, name: "熊本", full: "県", alphabet: "Kumamoto", area8: 8, area11: 9, cordinate: { x: 1, y: 19, z: 3 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 44, name: "大分", full: "県", alphabet: "Oita", area8: 8, area11: 9, cordinate: { x: 5, y: 17, z: 5 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 45, name: "宮崎", full: "県", alphabet: "Miyazaki", area8: 8, area11: 10, cordinate: { x: 5, y: 19, z: 6 }, size: { x: 4, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 46, name: "鹿児島", full: "県", alphabet: "Kagoshima", area8: 8, area11: 10, cordinate: { x: 1, y: 21, z: 7 }, size: { x: 8, y: 2 }, radius: [0, 0, 1, 1] },
+            { code: 47, name: "沖縄", full: "県", alphabet: "Okinawa", area8: 8, area11: 11, cordinate: { x: 18, y: 11, z: 47 }, size: { x: 4, y: 2, z: 47 }, radius: [1, 1, 1, 1] }
         ],
         infobox: { cordinate: { x: 1, y: 1 }, size: { x: 37, y: 9 } },
         divider: { cordinate: { x: 18, y: 11 }, size: { x: 4, y: 2 } },
@@ -205,6 +197,10 @@
             prefectureLineGap: '1px',
             prefectureLineColor: '#fff',
             prefectureLineHoverColor: '#aa1a00',
+            prefectureInnerLineWidth: '0px',
+            prefectureInnerLineColor: 'transparent',
+            prefectureInnerLineType: 'solid',
+            showRoundedPrefecture: false,
             showHeatmap: false,
             showHeatlabel: false,
             heatmapType: 'HRed',
@@ -235,6 +231,8 @@
         params.prefectureRadius = (String(params.prefectureRadius).match(unit)) ? params.prefectureRadius : parseInt(params.prefectureRadius) + 'px';
         params.prefectureLineGap = (String(params.prefectureLineGap).match(unit)) ? params.prefectureLineGap : parseInt(params.prefectureLineGap) + 'px';
         params.prefectureLineWidth = (String(params.prefectureLineWidth).match(unit)) ? params.prefectureLineWidth : parseInt(params.prefectureLineWidth) + 'px';
+        params.prefectureInnerLineWidth = (String(params.prefectureInnerLineWidth).match(unit)) ? params.prefectureInnerLineWidth : parseInt(params.prefectureInnerLineWidth) + 'px';
+
         params.prefectureLineY = (String(params.prefectureLineY).match(unit)) ? params.prefectureLineY : parseInt(params.prefectureLineY) + 'px';
         params.prefectureLineX = (String(params.prefectureLineX).match(unit)) ? params.prefectureLineX : parseInt(params.prefectureLineX) + 'px';
 
@@ -436,6 +434,7 @@
             'cursor': params.cursor,
             'margin': params.prefectureLineGap,
             'box-shadow': '%s1 %s2 0 %s3 %s4'.replace('%s1', params.prefectureLineY).replace('%s2', params.prefectureLineX).replace('%s3', params.prefectureLineWidth).replace('%s4', params.prefectureLineColor),
+            'border': '%s1 %s2 %s3'.replace('%s1', params.prefectureInnerLineWidth).replace('%s2', params.prefectureInnerLineType).replace('%s3', params.prefectureInnerLineColor),
             'font-size': params.fontSize,
             'color': params.fontColor,
             'border-radius': params.prefectureRadius,
@@ -464,7 +463,7 @@
                 'background-color': params.prefectureBackgroundHoverColor,
                 'box-shadow': '0 0 0 %s1 %s2, 0 0 5px %s3'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineHoverColor).replace('%s3', "#333"),
                 'transform': 'scale(1.01)',
-                'z-index': '2'
+                'z-index': '100'
             };
             var prefectureHoverSelector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
             var prefectureHoverStyle = JSON.stringify(prefectureHoverCss).replace(/",/g, '";').replace(/"/g, '');
@@ -540,7 +539,11 @@
                 '-ms-grid-row': '%d1'.replace('%d1', pref.cordinate.y),
                 '-ms-grid-row-span': '%d1'.replace('%d1', pref.size.y),
                 'background-color': (option.color) ? option.color : params.prefectureBackgroundColor,
+                'z-index': pref.cordinate.z
             };
+
+            if (params.showRoundedPrefecture)
+                prefectureIndivisualCss = $.extend(prefectureIndivisualCss, { 'border-radius': pref.radius.join(' ').replace(/1/g, params.prefectureRadius) });
 
             if (option.fontColor)
                 prefectureIndivisualCss['color'] = option.fontColor;
