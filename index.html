@@ -1186,8 +1186,92 @@ $('#jmap').jmap({
                     </div>
                 </div>
             </div>
+            <h2 class="h3 pt-5 mb-3" id="originality"><span class="badge badge-pill badge-primary">5</span> タッチ＆フィール - <small class="text-muted">全ての設定</small></h2>
+            <p class="lead">自らの手で触れてみよう。</p>
 
-            <h2 class="h3 pt-5 mb-3" id="originality"><span class="badge badge-pill badge-primary">5</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Tips!</h4>
+                        <p>全てのオプションパラメーターが初期値の状態で設定されたサンプルです。</p>
+                    </div>
+                    <h5 class="h5">Example</h5>
+                    <pre class="border rounded-lg" style="height:300px"><code class="javascript">
+$('#jmap').jmap({
+    id: null,   // 地図の識別子
+    width: '100%',  // 地図の横幅
+    height: '100%', // 地図の縦幅
+    viewType: 'map',    // 地図の種類
+    gridNumber: 6,      // グリッド表示の列数
+    gridOffset: 1,      // グリッド表示の開始列数
+    backgroundColor: 'transparent', // 地図背景の色
+    backgroundRadius: '0',          // 地図背景の角丸
+    backgroundPadding: '0',         // 地図背景の余白
+    lineColor: 'transparent',   // 地図背景枠線の幅
+    lineWidth: 0,               // 地図背景枠線の色
+    lineStyle: 'solid',         // 地図背景枠線の書式
+    showIslandDivider: true,    // 遠島区切り線の有無
+    dividerWidth: '1px',        // 遠島区切り線の幅
+    dividerColor: '#bfbfbf',    // 遠島区切り線の色
+    dividerStyle: 'solid',      // 遠島区切り線の書式
+    font: 'inherit',    // 都道府県名フォント
+    fontSize: '12px',   // 都道府県名フォントのサイズ
+    fontColor: '#fff',  // 都道府県名フォントの色
+    textNowrap: false,  // 
+    selectable: true,   // 都道府県マウスホバーの有無
+    cursor: 'pointer',  // 都道府県マウスホバーのカーソル
+    showTextShadow: false,      // 都道府県名ドロップシャドーの有無
+    textShadowWidth: '2px',     // 都道府県名ドロップシャドーの幅
+    textShadowColor: '#000',    // 	都道府県名ドロップシャードの色
+    showPrefectureName: true,               // 都道府県名の有無
+    prefectureNameType: 'short',            // 都道府県名の表示形式
+    prefectureClass: 'jmap-pref',           // 都道府県の共通CSSクラス
+    prefectureBackgroundColor: '#333',      // 都道府県の色
+    prefectureBackgroundHoverColor: '#666', // 都道府県マウスオーバ―時の色
+    prefectureLineGap: '1px',               // 都道府県枠線の間隔
+    prefectureLineWidth: '1px',             // 都道府県枠線の幅
+    prefectureLineColor: '#fff',            // 都道府県枠線の色
+    prefectureLineHoverColor: '#aa1a00',    // 都道府県マウスオーバ―時の枠線の色
+    prefectureLineY: '0px',                 // 都道府県枠線のY軸開始位置
+    prefectureLineX: '0px',                 // 都道府県枠線のX軸開始位置
+    prefectureRadius: '3px',                // 都道府県枠の角丸
+    showInfobox: false,             // 情報表示エリアの有無
+    infoboxClass: 'jmap-infobox',   // 情報表示エリアのCSSクラス
+    infoboxContent: '',             // 情報表示エリアのコンテンツ
+    infoboxBackgroundColor: 'transparent',  // 
+    skew: '0',                  // 地図の歪み角度
+    showTextNoneSkewed: true,   // 地図歪み時の文字の角度
+    showHeatmap: false,         // 都道府県のヒートマップ表示
+    showHeatlabel: false,       // 都道府県のヒートラベル表示
+    heatmapColors: [],          // 都道府県のヒートマップ色配列
+    heatmapFontColors: [],      // 都道府県のヒートマップフォント色配列
+    heatmapType: 'HRed',        // 都道府県のヒートマップタイプ
+    containerClass: 'jmap-container', 
+    contentClass: 'jmap-content',
+    dividerClass: 'jmap-divider',
+    // 地図が読み込まれた際に呼び出されます
+    onLoad: function(e, data) {
+
+    },
+    // 都道府県が選択された際に呼び出されます
+    onSelect: function(e, data) {
+
+    },
+    // 都道府県にマウスオーバーした際に呼び出されます
+    onHover: function(e, data) {
+
+    },
+    // 
+    onMouseout: function(e, data) {
+
+    },
+    areas: [] // 都道府県別のオブジェクト
+});
+                    </code></pre>
+                </div>
+            </div>
+
+            <h2 class="h3 pt-5 mb-3" id="originality"><span class="badge badge-pill badge-primary">6</span> オリジナリティー - <small class="text-muted">独自設定</small></h2>
             <p class="lead">感性の赴くままにデザインしよう。</p>
 
             <div class="table-responsive">
