@@ -330,7 +330,7 @@
                 'grid-row': '%d1 / %d2'.replace('%d1', divider.cordinate.y).replace('%d2', divider.cordinate.y + divider.size.y),
                 '-ms-grid-row': '%d1'.replace('%d1', divider.cordinate.y),
                 '-ms-grid-row-span': '%d1'.replace('%d1', divider.size.y),
-                'transform': 'scale(1.5)',
+                'transform': 'scale(1.6)',
                 'border-right-width': params.dividerWidth,
                 'border-right-color': params.dividerColor,
                 'border-right-style': params.dividerStyle,
