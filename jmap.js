@@ -130,6 +130,7 @@
         },
         icon: ["m256", "0c-95.202", "0-172.36", "77.155-172.36", "172.36", "0", "97.162", "48.158", "117.86", "101.39", "182.5", "63.666", "77.31", "70.97", "157.15", "70.97", "157.15s7.304-79.839", "70.97-157.15c53.228-64.634", "101.39-85.334", "101.39-182.5", "0-95.202-77.154-172.36-172.36-172.36zm0", "231.92c-32.897", "0-59.564-26.668-59.564-59.564s26.668-59.564", "59.564-59.564", "59.564", "26.668", "59.564", "59.564-26.668", "59.564-59.564", "59.564z"]
     };
+
     $.fn.jmapHeatLabel = function(options) {
         var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', options + "-heatlabel")
         for (var index = 0, l = conf.heatmap[options].length; index < l; index++) {
@@ -145,6 +146,33 @@
 
         return this;
     };
+
+    $.fn.jmapBlackOrWhite = function(hexcolor) {
+        if(hexcolor.length <= 4) {
+            var hr = hexcolor.substr( 1, 1 );
+            var hg = hexcolor.substr( 2, 1 );
+            var hb = hexcolor.substr( 3, 1 );
+            hexcolor = "#" + hr + hr + hg + hg + hb + hb;
+        } else if(hexcolor.substr(0,3) == 'rgb') {
+            hexcolor = hexcolor.replace(' ','');
+            hexcolor = hexcolor.replace('rgba(','[');
+            hexcolor = hexcolor.replace('rgb(','[');
+            hexcolor = hexcolor.replace(')',']');
+            hexArray = eval(hexcolor);
+            if(hexArray.length >= 4)
+                hexArray.pop();
+            hexcolor = "#";
+            $.each(hexArray, function(index, val) {
+                hexcolor += ( "0" + hexArray[index].toString(16) ) .slice( -2 );
+            });
+        }
+        var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+        var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+        var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+
+        return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 160 ) ? "#ffffff" : "#000000" ;
+    };
+
     $.fn.jmap = function(options) {
 
         if (options == 'update') {
@@ -206,6 +234,7 @@
             heatmapType: 'HRed',
             heatmapColors: [],
             heatmapFontColors: [],
+            heatmapConditions: [],
             viewType: 'map',
             gridNumber: 6,
             gridOffset: 1,
@@ -242,8 +271,14 @@
         if (params.heatmapColors.length <= 0)
             params.heatmapColors = conf.heatmap[params.heatmapType];
 
-        if (params.heatmapFontColors.length <= 0)
-            params.heatmapFontColors = conf.heatmap['Font'];
+        // if (params.heatmapFontColors.length <= 0)
+        //     params.heatmapFontColors = conf.heatmap['Font'];
+
+        if( params.heatmapConditions.length > 0) {
+            params.heatmapConditions = params.heatmapConditions.reverse();
+            // params.heatmapColors     = params.heatmapColors.reverse();
+            // params.heatmapFontColors = params.heatmapFontColors.reverse();
+        }
 
         if (params.showHeatmap && params.showHeatlabel)
             params.showInfobox = true;
@@ -304,9 +339,10 @@
             var contentGridStyle = JSON.stringify(contentGridCss).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(contentGridSelector + contentGridStyle);
 
-            params.showIslandDivider = false;
+        // if (params.viewType == 'grid') {
             params.showInfobox = false;
             params.showHeatlabel = false;
+            params.showIslandDivider = false;
         }
 
         // Jmap Content
@@ -515,15 +551,38 @@
                 }
             }
 
-            var t = 0;
+            // var t = 0;
             // Heatmap settings
             if (params.showHeatmap) {
-                if (option.number) {
+                if(params.heatmapConditions.length > 0 && option.number) {
+                    option.color = '#f00';
+
+                    $.each(params.heatmapConditions, function(index, _cond) {
+                        
+                        _cond = $.isNumeric(_cond)? "==" + _cond : _cond;
+
+                        if( eval(option.number + " " + _cond + "? true: false") ) {
+                            option.color = params.heatmapColors[ (params.heatmapColors.length - 1) - index];
+                            if( !params.heatmapFontColors[(params.heatmapColors.length - 1) - index] ) {
+                                option.fontColor = $(this).jmapBlackOrWhite(option.color);
+                            } else {
+                                option.fontColor = params.heatmapFontColors[(params.heatmapColors.length - 1) - index];
+                            }
+                            if (option.hoverColor)
+                                delete option.hoverColor;
+
+                            return false;
+                        }
+                    });
+                } else if (option.number) {
                     var index = Math.round((option.number - heatmapMin) / (heatmapMax - heatmapMin) * 10);
                     index = (index >= 10) ? 9 : index;
-                    t = index;
+                    // t = index;
                     option.color = params.heatmapColors[index];
-                    option.fontColor = params.heatmapFontColors[index];
+                    if( !params.heatmapFontColors[index] )
+                        option.fontColor = $(this).jmapBlackOrWhite(option.color);
+                    else
+                        option.fontColor = params.heatmapFontColors[index];
 
                     if (option.hoverColor)
                         delete option.hoverColor;
@@ -601,7 +660,7 @@
 
             // Prefecture
             var prefDiv = $('<div>')
-                .attr('data-color', t)
+                // .attr('data-color', t)
                 .data('data', pref)
                 .addClass(params.prefectureClass)
                 .attr('jmap-uniq', uniqClass + "-pref")
