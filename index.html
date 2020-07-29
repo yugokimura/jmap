@@ -344,6 +344,7 @@
                 showHeatmap: true,
                 showHeatlabel: true,
                 heatmapType: 'HRed',
+                heatmapLabelUnit: '人',
                 areas: [{
                     code: 1,
                     name: "北海道",
@@ -613,6 +614,7 @@
             jmap30.viewType = 'map';
             jmap30.height =  "450px";
             jmap30.fontSize = '0.8rem';
+            jmap30.heatmapLabelUnit =  '人';
             jmap30.areas = eval($('#jmap30').text());
             jmap30.heatmapConditions = ["<5000", ">=5000",  ">=8000"];
             jmap30.heatmapColors     = ["#cccccc", "#FFA500", "#FF0000"];
@@ -969,6 +971,7 @@ $('#jmap').jmap({
     height: "450px",
     skew: '10',
     showHeatmap: true,
+    heatmapLabelUnit: '人',
     heatmapType: 'HRed',
     showHeatlabel: true,
     onSelect: function(e, data) {
@@ -1226,6 +1229,7 @@ $('#jmap').jmap({
     height: "450px",
     showHeatmap: true,
     showHeatlabel: true,
+    heatmapLabelUnit: '人'
     heatmapConditions: ["&lt;5000", "&gt;=5000",  "&gt;=8000"], // 色がマッチする条件
     heatmapColors: ["#cccccc", "#FFA500", "#FF0000"], 　　　　　 // マッチした場合のヒートマップの色
     areas: [
@@ -1669,6 +1673,18 @@ $('#jmap').jmap({
                                     <small class="text-muted">参考例</small>
                                     <code>
                                         heatmapColors: ["#BFC7CE ", "#f7fbff ", "#deebf7 ", "#c6dbef ", "#9ecae1 ", "#6baed6 ", "#4292c6 ", "#2171b5 ", "#08519c ", "#08306b "]
+                                    </code>
+                                </div>
+                            </td>
+                            <td>[]</td>
+                        </tr>
+                        <tr>
+                            <th>heatmapLabelUnit</th>
+                            <td>ヒートマップの数字の単位　ヒートマップの数字の単位を指定しラベルに表示できます。
+                                <div>
+                                    <small class="text-muted">参考例</small>
+                                    <code>
+                                        heatmapLabelUnit: '人'
                                     </code>
                                 </div>
                             </td>

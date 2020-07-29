@@ -233,6 +233,7 @@
             showHeatlabel: false,
             heatmapType: 'HRed',
             heatmapColors: [],
+            heatmapLabelUnit: '',
             heatmapFontColors: [],
             heatmapConditions: [],
             viewType: 'map',
@@ -385,6 +386,28 @@
                 .appendTo(contentDiv);
         }
 
+
+        // Loop prefectures
+        var heatmapMax = null;
+        var heatmapMin = null;
+        if (params.showHeatmap) {
+            for (var index in params.areas) {
+                var area = params.areas[index];
+                if (!area.number)
+                    continue;
+
+                if (!heatmapMax)
+                    heatmapMax = area.number;
+                else if (area.number > heatmapMax)
+                    heatmapMax = area.number;
+
+                if (!heatmapMin)
+                    heatmapMin = area.number;
+                else if (area.number < heatmapMin)
+                    heatmapMin = area.number;
+            }
+        }
+
         // Infobox 
         var infoboxDiv = null;
         if (params.showInfobox) {
@@ -449,16 +472,67 @@
                 var heatmapLabelLastChildCssStyle = JSON.stringify(heatmapLabelLastChildCss).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(heatmapLabelLastChildCssSelector + heatmapLabelLastChildCssStyle);
 
-                var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', uniqClass + "-heatlabel")
+
+                var heatmapLabelSpan  = {
+                    'position' : 'absolute',
+                    'top' : '30px',
+                    'margin' : '5px',
+                    'padding' : '5px 20px',
+                    'text-align' : 'center',
+                    'opacity': '0',
+                    'z-index': '1',
+                    'border': '2px solid #ccc',
+                    'box-shadow': '0 0 5px rgba(0,0,0,0.3)',
+                    'background-color' : '#ffffff',
+                    'border-radius': '5px',
+                    'font-size' : '0.8rem',
+                    'max-width' : '250px',
+                    'min-width' : '120px'
+                };
+                var heatmapLabelSpanCssSelector = '.%s1[jmap-uniq="%s2"] li span '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var heatmapLabelSpanCssStyle = JSON.stringify(heatmapLabelSpan).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelSpanCssSelector + heatmapLabelSpanCssStyle);
+
+                var heatmapLabelSpanHover  = {
+                    'opacity': '1',
+                    'z-index': '100'
+                };
+                var heatmapLabelSpanHoverCssSelector = '.%s1[jmap-uniq="%s2"] li:hover span'.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var heatmapLabelSpanHoverCssStyle = JSON.stringify(heatmapLabelSpanHover).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelSpanHoverCssSelector + heatmapLabelSpanHoverCssStyle);
+
+                var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', uniqClass + "-heatlabel");
+
+                var amount = heatmapMax - heatmapMin;
+                var inc    = Math.round(amount/10);
+                console.log(amount  +"++" + inc)
                 for (var index = 0, l = params.heatmapColors.length; index < l; index++) {
+
+                    var value = 0;
+                    if( params.heatmapConditions[params.heatmapConditions.length - 1 - index] ) {
+                        value = (params.heatmapConditions[params.heatmapConditions.length - 1 - index]).replace(' ', '')
+                        value = ( value.match(/>=/) )? parseInt(value.replace('>=','')).toLocaleString() + params.heatmapLabelUnit + '以上': value;
+                        value = ( value.match(/<=/) )? parseInt(value.replace('<=','')).toLocaleString() + params.heatmapLabelUnit + '以下': value;
+                        value = ( value.match(/</) )? parseInt(value.replace('<','')).toLocaleString() + params.heatmapLabelUnit + '未満': value;
+                        value = ( value.match(/>/) )? parseInt(value.replace('>','')).toLocaleString() + params.heatmapLabelUnit + '超': value;
+                    } else {
+                        value = (heatmapMin + (inc * index)).toLocaleString() + params.heatmapLabelUnit + "以上";
+                    }
+                    
+                    var span = $('<span>')
+                        .attr('jmap-uniq', '%s1'.replace('%s1', uniqClass + "-heatlabel-" + index) )
+                        .text(value);
+
                     $('<li>').css({
                         'display': 'inline-block',
                         'width': '10%',
                         'height': '30px',
                         'background-color': params.heatmapColors[index],
-                    }).appendTo(heatmapUl);
+                        'position': 'relative'
+                    }).append(span).appendTo(heatmapUl);
                 }
                 infoboxDiv.append(heatmapUl)
+                
 
             }
         }
@@ -504,27 +578,6 @@
             var prefectureHoverSelector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
             var prefectureHoverStyle = JSON.stringify(prefectureHoverCss).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(prefectureHoverSelector + prefectureHoverStyle);
-        }
-
-        // Loop prefectures
-        var heatmapMax = null;
-        var heatmapMin = null;
-        if (params.showHeatmap) {
-            for (var index in params.areas) {
-                var area = params.areas[index];
-                if (!area.number)
-                    continue;
-
-                if (!heatmapMax)
-                    heatmapMax = area.number;
-                else if (area.number > heatmapMax)
-                    heatmapMax = area.number;
-
-                if (!heatmapMin)
-                    heatmapMin = area.number;
-                else if (area.number < heatmapMin)
-                    heatmapMin = area.number;
-            }
         }
 
         var gridRowIndex = 1;
