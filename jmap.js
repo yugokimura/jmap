@@ -272,6 +272,8 @@
             viewType: 'map',
             gridNumber: 6,
             gridOffset: 1,
+            gridTotalRows: 22,
+            gridTotalColumns: 54,
             selectable: true,
             cursor: 'pointer',
             skew: '0',
@@ -281,6 +283,9 @@
             onHover: function(e, data) {},
             onMouseout: function(e, data) {},
             onLoad: function(e, data) {},
+            onSelectHeatMapLabel: function(e, data) {},
+            onHoverHeatMapLabel: function(e, data) {},
+            onLoadHeatMapLabel: function(e, data) {}
         }, options);
 
         var unit = '/px|vw|vh|rem|%|em|ex|ch|vmin|vmax|cm|mm|in|pt|pc/';
@@ -343,10 +348,10 @@
             'position': 'relative',
             'width': '100%',
             'height': '100%',
-            'grid-template-rows': Array(22 + 1).join('4.545% '),
-            'grid-template-columns': Array(54 + 1).join('1.851% '),
-            '-ms-grid-rows': Array(22 + 1).join('4.545% '),
-            '-ms-grid-columns': Array(54 + 1).join('1.851% ')
+            'grid-template-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '%' ),
+            'grid-template-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '%' ),
+            '-ms-grid-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '%' ),
+            '-ms-grid-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '%' )
         };
 
         var contentSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.contentClass);
@@ -445,7 +450,8 @@
                 'grid-row': '%d1 / %d2'.replace('%d1', infobox.cordinate.y).replace('%d2', infobox.cordinate.y + infobox.size.y),
                 '-ms-grid-row': '%d1'.replace('%d1', infobox.cordinate.y),
                 '-ms-grid-row-span': '%d1'.replace('%d1', infobox.size.y),
-                'background-color': params.infoboxBackgroundColor
+                'background-color': params.infoboxBackgroundColor,
+                'z-index' : '130'
             };
             var infoboxSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.infoboxClass);
             var infoboxStyle = JSON.stringify(infoboxCss).replace(/",/g, '";').replace(/"/g, '');
@@ -525,15 +531,13 @@
                     'padding' : '5px 20px',
                     'text-align' : 'center',
                     'opacity': '0',
-                    'z-index': '1',
                     'border': '2px solid #ccc',
                     'box-shadow': '0 0 5px rgba(0,0,0,0.3)',
                     'background-color' : '#ffffff',
                     'border-radius': '5px',
                     'font-size' : '0.8rem',
                     'max-width' : '250px',
-                    'white-space' : 'nowrap',
-                    'transition' : 'opacity 0.2s'
+                    'white-space' : 'nowrap'
                 };
                 var heatmapLabelSpanCssSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li span '.replace('%s1', uniqClass);
                 var heatmapLabelSpanCssStyle = JSON.stringify(heatmapLabelSpan).replace(/",/g, '";').replace(/"/g, '');
@@ -542,30 +546,52 @@
                 // HeatmalLabel Li Span:hover
                 var heatmapLabelSpanHover  = {
                     'display' : 'block',
-                    'opacity': '1',
-                    'z-index': '100'
+                    'opacity': '1'
                 };
                 var heatmapLabelSpanHoverCssSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li:hover span'.replace('%s1', uniqClass);
                 var heatmapLabelSpanHoverCssStyle = JSON.stringify(heatmapLabelSpanHover).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(heatmapLabelSpanHoverCssSelector + heatmapLabelSpanHoverCssStyle);
+
+                $('body').on('mouseover', heatmapLabelLiSelector, function(e) {
+                    var span = $(this).children().get(0);
+                    return params.onHoverHeatMapLabel.call(span, e, $(span).data('data'));
+                }).on('click', heatmapLabelLiSelector, function(e) {
+                    var span = $(this).children().get(0);
+                    return params.onSelectHeatMapLabel.call(span, e, $(span).data('data'));
+                });
 
                 var heatmapUl = $('<ul>').addClass('jmap-heatlabel');
                 var inc    = Math.round( (heatmapMax - heatmapMin) /10);
                 for (var index = 0, l = params.heatmapColors.length; index < l; index++) {
 
                     var value = 0;
+                    var text = '';
+                    var range = '';
                     if( params.heatmapConditions[params.heatmapConditions.length - 1 - index] ) {
-                        value = (params.heatmapConditions[params.heatmapConditions.length - 1 - index]).replace(' ', '')
-                        value = ( value.match(/>=/) )? parseInt(value.replace('>=','')).toLocaleString() + params.heatmapLabelUnit + '以上': value;
-                        value = ( value.match(/<=/) )? parseInt(value.replace('<=','')).toLocaleString() + params.heatmapLabelUnit + '以下': value;
-                        value = ( value.match(/</) )? parseInt(value.replace('<','')).toLocaleString() + params.heatmapLabelUnit + '未満': value;
-                        value = ( value.match(/>/) )? parseInt(value.replace('>','')).toLocaleString() + params.heatmapLabelUnit + '超': value;
+                        var str = (params.heatmapConditions[params.heatmapConditions.length - 1 - index]).replace(' ', '');
+
+                        if( str.match(/>=/) ) range = '以上';
+                        if( str.match(/<=/) ) range = '以下';
+                        if( range == '') {
+                            if( str.match(/>/) ) range = '超';
+                            if( str.match(/</) ) range = '未満';
+                            if( str.match(/=/) ) range = '等しい';
+                        }
+
+                        value = parseInt( str.replace('>=','').replace('<=','').replace('<','').replace('<','') );
+                        text = value.toLocaleString() + params.heatmapLabelUnit + range;
+
                     } else {
-                        value = (heatmapMin + (inc * index)).toLocaleString() + params.heatmapLabelUnit + "以上";
+                        range = '以上'
+                        value = heatmapMin + (inc * index);
+                        text = value.toLocaleString() + params.heatmapLabelUnit + range;
+                        text += ' ';
+                        text += (heatmapMin + (inc * (index + 1))).toLocaleString() + "未満";
                     }
                     
                     var span = $('<span>')
-                        .text(value);
+                        .text(text)
+                        .data('data', { 'index' : index, 'text' : text, 'value' : value, 'range' : range, 'unit' : params.heatmapLabelUnit })
 
                     // HeatmalLabel Li Indivisual
                     var heatmapLabelLiIndivisualCss = {
@@ -602,7 +628,6 @@
             'text-align': 'center',
             'box-sizing': 'border-box',
             'transition': 'box-shadow 0.2s',
-            'z-index': '1',
             'overflow': 'hidden',
             'white-space': (params.textNowrap) ? 'nowrap' : 'normal'
         };
@@ -637,9 +662,6 @@
             stylersPrimal.push(prefectureHoverSelector + prefectureHoverStyle);
         }
 
-        var gridRowIndex = 1;
-        var gridColIndex = params.gridOffset;
-
         // If showTextNoneSkewed are true
         if (params.showTextNoneSkewed && params.skew != 0) {
 
@@ -652,6 +674,8 @@
             stylers.push(prefectureInnerDivSelector + prefectureInnerDivStyle);
         }
 
+        var gridRowIndex = 1;
+        var gridColIndex = params.gridOffset;
         $.each(conf.prefectures, function(_index, pref) {
             var pref = $.extend({ option: {} }, pref);
 
@@ -676,6 +700,7 @@
 
             // Heatmap settings
             if (params.showHeatmap) {
+
                 // if Heatmap Conditions area defined
                 if(params.heatmapConditions.length > 0 && option.number) {
  
@@ -685,21 +710,25 @@
 
                         if( eval(option.number + " " + _cond + "? true: false") ) {
                             option.color = params.heatmapColors[ (params.heatmapColors.length - 1) - index];
-                            if( !params.heatmapFontColors[(params.heatmapColors.length - 1) - index] ) {
+
+                            if( !params.heatmapFontColors[ (params.heatmapColors.length - 1) - index] )
                                 option.fontColor = $(this).jmapBlackOrWhite(option.color);
-                            } else {
+                            else
                                 option.fontColor = params.heatmapFontColors[(params.heatmapColors.length - 1) - index];
-                            }
+                            
                             if (option.hoverColor)
                                 delete option.hoverColor;
 
                             return false;
                         }
                     });
-                } else if (option.number) {
+
+                } else if (option.number) { // if Number are defined in item option
+
                     var index = Math.round((option.number - heatmapMin) / (heatmapMax - heatmapMin) * 10);
                     index = (index >= 10) ? 9 : index;
                     option.color = params.heatmapColors[index];
+
                     if( !params.heatmapFontColors[index] )
                         option.fontColor = $(this).jmapBlackOrWhite(option.color);
                     else

@@ -2156,6 +2156,60 @@ $('#jmap').jmap({
                             <td>なし</td>
                         </tr>
                         <tr>
+                            <th>onHoverHeatMapLabel</th>
+                            <td>ヒートマップのラベルにマウスオーバーした際に呼び出されます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">引数</th>
+                                            <th scope="col">値</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>第1引数</td>
+                                            <td>Event Object</td>
+                                            <td>イベントオブジェクト</td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2引数</td>
+                                            <td>Label Data Object</td>
+                                            <td>ラベルの値情報が格納されたオブジェクトが返却されます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <th>onSelectHeatMapLabel</th>
+                            <td>ヒートマップのラベルが選択された際に呼び出されます
+                                <table class="table mt-3">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">引数</th>
+                                            <th scope="col">値</th>
+                                            <th scope="col">説明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>第1引数</td>
+                                            <td>Event Object</td>
+                                            <td>イベントオブジェクト</td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2引数</td>
+                                            <td>Label Data Object</td>
+                                            <td>ラベルの値情報が格納されたオブジェクトが返却されます</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
                             <th>areas</th>
                             <td>都道府県別のオブジェクトを配列に格納すればオブジェクト内の47都道府県コード(code)を元に、独自の名前(name)、背景色(color)、ホバー時の背景色(hoverColor)を指定できます。
                                 <table class="table mt-3 ">
