@@ -15,11 +15,11 @@
     var identifier = 0;
     var conf = {
         prefectures: [
-            { code: 1, name: "北海道", full: "", alphabet: "Hokkaido", area8: 1, area11: 1, cordinate: { x: 41, y: 1, z: 29 }, size: { x: 14, y: 4 }, radius: [1, 1, 1, 0] },
+            { code: 1, name: "北海道", full: "", alphabet: "Hokkaido", area8: 1, area11: 1, cordinate: { x: 41, y: 1, z: 29 }, size: { x: 14, y: 4 }, radius: [1, 1, 1, 0], box : { cordinate: { x: 32, y: 2 }, size : { x: 12, y: 3}} },
             { code: 2, name: "青森", full: "県", alphabet: "Aomori", area8: 2, area11: 2, cordinate: { x: 41, y: 5, z: 30 }, size: { x: 12, y: 2 }, radius: [0, 0, 0, 0] },
             { code: 3, name: "岩手", full: "県", alphabet: "Iwate", area8: 2, area11: 2, cordinate: { x: 47, y: 7, z: 33 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
             { code: 4, name: "宮城", full: "県", alphabet: "Miyagi", area8: 2, area11: 2, cordinate: { x: 47, y: 9, z: 34 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
-            { code: 5, name: "秋田", full: "県", alphabet: "Akita", area8: 2, area11: 2, cordinate: { x: 41, y: 7, z: 31 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
+            { code: 5, name: "秋田", full: "県", alphabet: "Akita", area8: 2, area11: 2, cordinate: { x: 41, y: 7, z: 31 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0], box : { cordinate: { x: 30, y: 6 }, size : { x: 12, y: 3}} },
             { code: 6, name: "山形", full: "県", alphabet: "Yamagata", area8: 2, area11: 2, cordinate: { x: 41, y: 9, z: 32 }, size: { x: 6, y: 2 }, radius: [0, 0, 0, 0] },
             { code: 7, name: "福島", full: "県", alphabet: "Fukushima", area8: 2, area11: 2, cordinate: { x: 45, y: 11, z: 39 }, size: { x: 8, y: 2 }, radius: [0, 0, 0, 0] },
             { code: 8, name: "茨城", full: "県", alphabet: "Ibaraki", area8: 3, area11: 3, cordinate: { x: 49, y: 13, z: 42 }, size: { x: 4, y: 3 }, radius: [0, 0, 0, 0] },
@@ -89,46 +89,67 @@
             { code: 11, name: "沖縄" }
         ],
         heatmap: {
-            HRed: ['#BFC7CE', '#FAE1E1', '#F19898', '#EE7F7F', '#EB6767', '#E55D5D', '#DF5353', '#D94848', '#D23D3D', '#CC3333'],
-            HBlue: ['#FFFFFF', '#F7FBFF', '#DEEBF7', '#C6DBEF', '#9ECAE1', '#6BAED6', '#4292C6', '#2171B5', '#08519C', '#08306B'],
-            OrRd: ["#BFC7CE", "#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"],
-            PuBu: ["#BFC7CE", "#fff7fb", "#ece7f2", "#d0d1e6", "#a6bddb", "#74a9cf", "#3690c0", "#0570b0", "#045a8d", "#023858"],
-            BuPu: ["#BFC7CE", "#f7fcfd", "#e0ecf4", "#bfd3e6", "#9ebcda", "#8c96c6", "#8c6bb1", "#88419d", "#810f7c", "#4d004b"],
-            Oranges: ["#BFC7CE", "#fff5eb", "#fee6ce", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#a63603", "#7f2704"],
-            BuGn: ["#BFC7CE", "#f7fcfd", "#e5f5f9", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#006d2c", "#00441b"],
-            YlOrBr: ["#BFC7CE", "#ffffe5", "#fff7bc", "#fee391", "#fec44f", "#fe9929", "#ec7014", "#cc4c02", "#993404", "#662506"],
-            YlGn: ["#BFC7CE", "#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"],
-            Reds: ["#BFC7CE", "#fff5f0", "#fee0d2", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15", "#67000d"],
-            RdPu: ["#BFC7CE", "#fff7f3", "#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177", "#49006a"],
-            Greens: ["#BFC7CE", "#f7fcf5", "#e5f5e0", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c", "#00441b"],
-            YlGnBu: ["#BFC7CE", "#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"],
-            Purples: ["#BFC7CE", "#fcfbfd", "#efedf5", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#54278f", "#3f007d"],
-            GnBu: ["#BFC7CE", "#f7fcf0", "#e0f3db", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"],
-            Greys: ["#BFC7CE", "#ffffff", "#f0f0f0", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252", "#252525", "#000000"],
-            YlOrRd: ["#BFC7CE", "#ffffcc", "#ffeda0", "#fed976", "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c", "#bd0026", "#800026"],
-            PuRd: ["#BFC7CE", "#f7f4f9", "#e7e1ef", "#d4b9da", "#c994c7", "#df65b0", "#e7298a", "#ce1256", "#980043", "#67001f"],
-            Blues: ["#BFC7CE", "#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c", "#08306b"],
-            PuBuGn: ["#BFC7CE", "#fff7fb", "#ece2f0", "#d0d1e6", "#a6bddb", "#67a9cf", "#3690c0", "#02818a", "#016c59", "#014636"],
-            Spectral: ["#BFC7CE", "#9e0142", "#d53e4f", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#e6f598", "#abdda4", "#66c2a5", "#3288bd", "#5e4fa2"],
-            RdYlGn: ["#BFC7CE", "#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"],
-            RdBu: ["#BFC7CE", "#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#f7f7f7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"],
-            PiYG: ["#BFC7CE", "#8e0152", "#c51b7d", "#de77ae", "#f1b6da", "#fde0ef", "#f7f7f7", "#e6f5d0", "#b8e186", "#7fbc41", "#4d9221", "#276419"],
-            PRGn: ["#BFC7CE", "#40004b", "#762a83", "#9970ab", "#c2a5cf", "#e7d4e8", "#f7f7f7", "#d9f0d3", "#a6dba0", "#5aae61", "#1b7837", "#00441b"],
-            RdYlBu: ["#BFC7CE", "#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#ffffbf", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"],
-            BrBG: ["#BFC7CE", "#543005", "#8c510a", "#bf812d", "#dfc27d", "#f6e8c3", "#f5f5f5", "#c7eae5", "#80cdc1", "#35978f", "#01665e", "#003c30"],
-            RdGy: ["#BFC7CE", "#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#ffffff", "#e0e0e0", "#bababa", "#878787", "#4d4d4d", "#1a1a1a"],
-            PuOr: ["#BFC7CE", "#7f3b08", "#b35806", "#e08214", "#fdb863", "#fee0b6", "#f7f7f7", "#d8daeb", "#b2abd2", "#8073ac", "#542788", "#2d004b"],
-            Set2: ["#BFC7CE", "#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494", "#b3b3b3"],
-            Accent: ["#BFC7CE", "#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#f0027f", "#bf5b17", "#666666"],
-            Set1: ["#BFC7CE", "#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#ffff33", "#a65628", "#f781bf", "#999999"],
-            Set3: ["#BFC7CE", "#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"],
-            Dark2: ["#BFC7CE", "#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666"],
-            Paired: ["#BFC7CE", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"],
-            Pastel2: ["#BFC7CE", "#b3e2cd", "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"],
-            Pastel1: ["#BFC7CE", "#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"],
+            HRed: ['#bfc7ce', '#fae1e1', '#f19898', '#ee7f7f', '#eb6767', '#e55d5d', '#df5353', '#d94848', '#d23d3d', '#cc3333'],
+            HBlue: ['#ffffff', '#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'],
+            OrRd: ["#bfc7ce", "#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"],
+            PuBu: ["#bfc7ce", "#fff7fb", "#ece7f2", "#d0d1e6", "#a6bddb", "#74a9cf", "#3690c0", "#0570b0", "#045a8d", "#023858"],
+            BuPu: ["#bfc7ce", "#f7fcfd", "#e0ecf4", "#bfd3e6", "#9ebcda", "#8c96c6", "#8c6bb1", "#88419d", "#810f7c", "#4d004b"],
+            Oranges: ["#bfc7ce", "#fff5eb", "#fee6ce", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#a63603", "#7f2704"],
+            BuGn: ["#bfc7ce", "#f7fcfd", "#e5f5f9", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#006d2c", "#00441b"],
+            YlOrBr: ["#bfc7ce", "#ffffe5", "#fff7bc", "#fee391", "#fec44f", "#fe9929", "#ec7014", "#cc4c02", "#993404", "#662506"],
+            YlGn: ["#bfc7ce", "#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"],
+            Reds: ["#bfc7ce", "#fff5f0", "#fee0d2", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15", "#67000d"],
+            RdPu: ["#bfc7ce", "#fff7f3", "#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177", "#49006a"],
+            Greens: ["#bfc7ce", "#f7fcf5", "#e5f5e0", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c", "#00441b"],
+            YlGnBu: ["#bfc7ce", "#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"],
+            Purples: ["#bfc7ce", "#fcfbfd", "#efedf5", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#54278f", "#3f007d"],
+            GnBu: ["#bfc7ce", "#f7fcf0", "#e0f3db", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"],
+            Greys: ["#bfc7ce", "#ffffff", "#f0f0f0", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252", "#252525", "#000000"],
+            YlOrRd: ["#bfc7ce", "#ffffcc", "#ffeda0", "#fed976", "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c", "#bd0026", "#800026"],
+            PuRd: ["#bfc7ce", "#f7f4f9", "#e7e1ef", "#d4b9da", "#c994c7", "#df65b0", "#e7298a", "#ce1256", "#980043", "#67001f"],
+            Blues: ["#bfc7ce", "#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c", "#08306b"],
+            PuBuGn: ["#bfc7ce", "#fff7fb", "#ece2f0", "#d0d1e6", "#a6bddb", "#67a9cf", "#3690c0", "#02818a", "#016c59", "#014636"],
+            Spectral: ["#bfc7ce", "#9e0142", "#d53e4f", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#e6f598", "#abdda4", "#66c2a5", "#3288bd", "#5e4fa2"],
+            RdYlGn: ["#bfc7ce", "#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"],
+            RdBu: ["#bfc7ce", "#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#f7f7f7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"],
+            PiYG: ["#bfc7ce", "#8e0152", "#c51b7d", "#de77ae", "#f1b6da", "#fde0ef", "#f7f7f7", "#e6f5d0", "#b8e186", "#7fbc41", "#4d9221", "#276419"],
+            PRGn: ["#bfc7ce", "#40004b", "#762a83", "#9970ab", "#c2a5cf", "#e7d4e8", "#f7f7f7", "#d9f0d3", "#a6dba0", "#5aae61", "#1b7837", "#00441b"],
+            RdYlBu: ["#bfc7ce", "#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#ffffbf", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"],
+            BrBG: ["#bfc7ce", "#543005", "#8c510a", "#bf812d", "#dfc27d", "#f6e8c3", "#f5f5f5", "#c7eae5", "#80cdc1", "#35978f", "#01665e", "#003c30"],
+            RdGy: ["#bfc7ce", "#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#ffffff", "#e0e0e0", "#bababa", "#878787", "#4d4d4d", "#1a1a1a"],
+            PuOr: ["#bfc7ce", "#7f3b08", "#b35806", "#e08214", "#fdb863", "#fee0b6", "#f7f7f7", "#d8daeb", "#b2abd2", "#8073ac", "#542788", "#2d004b"],
+            Set2: ["#bfc7ce", "#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494", "#b3b3b3"],
+            Accent: ["#bfc7ce", "#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#f0027f", "#bf5b17", "#666666"],
+            Set1: ["#bfc7ce", "#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#ffff33", "#a65628", "#f781bf", "#999999"],
+            Set3: ["#bfc7ce", "#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"],
+            Dark2: ["#bfc7ce", "#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666"],
+            Paired: ["#bfc7ce", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"],
+            Pastel2: ["#bfc7ce", "#b3e2cd", "#fdcdac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"],
+            Pastel1: ["#bfc7ce", "#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc", "#e5d8bd", "#fddaec", "#f2f2f2"],
             Font: ["#000", "#000", "#000", "#000", "#000", "#fff", "#fff", "#fff", "#fff", "#fff"]
         },
-        icon: ["m256", "0c-95.202", "0-172.36", "77.155-172.36", "172.36", "0", "97.162", "48.158", "117.86", "101.39", "182.5", "63.666", "77.31", "70.97", "157.15", "70.97", "157.15s7.304-79.839", "70.97-157.15c53.228-64.634", "101.39-85.334", "101.39-182.5", "0-95.202-77.154-172.36-172.36-172.36zm0", "231.92c-32.897", "0-59.564-26.668-59.564-59.564s26.668-59.564", "59.564-59.564", "59.564", "26.668", "59.564", "59.564-26.668", "59.564-59.564", "59.564z"]
+        colorgroups : {
+            'pink': '#ffc0cb', 'lightpink': '#ffb6c1', 'hotpink': '#ff69b4', 'deeppink': '#ff1493', 'palevioletred': '#db7093', 'mediumvioletred': '#c71585', 'lavender': '#e6e6fa',
+            'thistle': '#d8bfd8', 'plum': '#dda0dd', 'orchid': '#da70d6', 'violet': '#ee82ee', 'fuchsia': '#ff00ff', 'magenta': '#ff00ff', 'mediumorchid': '#ba55d3', 'darkorchid': '#9932cc',
+            'darkviolet': '#9400d3', 'blueviolet': '#8a2be2', 'darkmagenta': '#8b008b', 'purple': '#800080', 'mediumpurple': '#9370db', 'mediumslateblue': '#7b68ee', 'slateblue': '#6a5acd',
+            'darkslateblue': '#483d8b', 'rebeccapurple': '#663399', 'indigo ': '#4b0082', 'lightsalmon': '#ffa07a', 'salmon': '#fa8072', 'darksalmon': '#e9967a', 'lightcoral': '#f08080',
+            'indianred ': '#cd5c5c', 'crimson': '#dc143c', 'red': '#ff0000', 'firebrick': '#b22222', 'darkred': '#8b0000', 'orange': '#ffa500', 'darkorange': '#ff8c00', 'coral': '#ff7f50',
+            'tomato': '#ff6347', 'orangered': '#ff4500', 'gold': '#ffd700', 'yellow': '#ffff00', 'lightyellow': '#ffffe0', 'lemonchiffon': '#fffacd', 'lightgoldenrodyellow': '#fafad2',
+            'papayawhip': '#ffefd5', 'moccasin': '#ffe4b5', 'peachpuff': '#ffdab9', 'palegoldenrod': '#eee8aa', 'khaki': '#f0e68c', 'darkkhaki': '#bdb76b', 'greenyellow': '#adff2f',
+            'chartreuse': '#7fff00', 'lawngreen': '#7cfc00', 'lime': '#00ff00', 'limegreen': '#32cd32', 'palegreen': '#98fb98', 'lightgreen': '#90ee90', 'mediumspringgreen': '#00fa9a',
+            'springgreen': '#00ff7f', 'mediumseagreen': '#3cb371', 'seagreen': '#2e8b57', 'forestgreen': '#228b22', 'green': '#008000', 'darkgreen': '#006400', 'yellowgreen': '#9acd32',
+            'olivedrab': '#6b8e23', 'darkolivegreen': '#556b2f', 'mediumaquamarine': '#66cdaa', 'darkseagreen': '#8fbc8f', 'lightseagreen': '#20b2aa', 'darkcyan': '#008b8b', 'teal': '#008080',
+            'aqua': '#00ffff', 'cyan': '#00ffff', 'lightcyan': '#e0ffff', 'paleturquoise': '#afeeee', 'aquamarine': '#7fffd4', 'turquoise': '#40e0d0', 'mediumturquoise': '#48d1cc',
+            'darkturquoise': '#00ced1', 'cadetblue': '#5f9ea0', 'steelblue': '#4682b4', 'lightsteelblue': '#b0c4de', 'lightblue': '#add8e6', 'powderblue': '#b0e0e6',
+            'lightskyblue': '#87cefa', 'skyblue': '#87ceeb', 'cornflowerblue': '#6495ed', 'deepskyblue': '#00bfff', 'dodgerblue': '#1e90ff', 'royalblue': '#4169e1', 'blue': '#0000ff',
+            'mediumblue': '#0000cd', 'darkblue': '#00008b', 'navy': '#000080', 'midnightblue': '#191970', 'cornsilk': '#fff8dc', 'blanchedalmond': '#ffebcd', 'bisque': '#ffe4c4',
+            'navajowhite': '#ffdead', 'wheat': '#f5deb3', 'burlywood': '#deb887', 'tan': '#d2b48c', 'rosybrown': '#bc8f8f', 'sandybrown': '#f4a460', 'goldenrod': '#daa520',
+            'darkgoldenrod': '#b8860b', 'peru': '#cd853f', 'chocolate': '#d2691e', 'olive': '#808000', 'saddlebrown': '#8b4513', 'sienna': '#a0522d', 'brown': '#a52a2a', 'maroon': '#800000',
+            'white': '#ffffff', 'snow': '#fffafa', 'honeydew': '#f0fff0', 'mintcream': '#f5fffa', 'azure': '#f0ffff', 'aliceblue': '#f0f8ff', 'ghostwhite': '#f8f8ff', 'whitesmoke': '#f5f5f5',
+            'seashell': '#fff5ee', 'beige': '#f5f5dc', 'oldlace': '#fdf5e6', 'floralwhite': '#fffaf0', 'ivory': '#fffff0', 'antiquewhite': '#faebd7', 'linen': '#faf0e6',
+            'lavenderblush': '#fff0f5', 'mistyrose': '#ffe4e1', 'gainsboro': '#dcdcdc', 'lightgray': '#d3d3d3', 'silver': '#c0c0c0', 'darkgray': '#a9a9a9', 'dimgray': '#696969', 'gray': '#808080',
+            'lightslategray': '#778899', 'slategray': '#708090', 'darkslategray': '#2f4f4f', 'black': '#000000'
+        }
     };
 
     $.fn.jmapHeatLabel = function(options) {
@@ -147,7 +168,10 @@
         return this;
     };
 
-    $.fn.jmapBlackOrWhite = function(hexcolor) {
+    $.fn.jmapBlackOrWhite = function(_hexcolor) {
+        
+        var hexcolor = _hexcolor.toLowerCase();
+
         if(hexcolor.length <= 4) {
             var hr = hexcolor.substr( 1, 1 );
             var hg = hexcolor.substr( 2, 1 );
@@ -159,18 +183,27 @@
             hexcolor = hexcolor.replace('rgb(','[');
             hexcolor = hexcolor.replace(')',']');
             hexArray = eval(hexcolor);
+
             if(hexArray.length >= 4)
                 hexArray.pop();
+
             hexcolor = "#";
             $.each(hexArray, function(index, val) {
                 hexcolor += ( "0" + hexArray[index].toString(16) ) .slice( -2 );
             });
+        } else if( hexcolor.match(/^a-z/gi) ) {
+            hexcolor = conf.colorgroups[hexcolor];
         }
-        var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
-        var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
-        var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
 
-        return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 160 ) ? "#ffffff" : "#000000" ;
+        try {
+            var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+            var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+            var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+            return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 160 ) ? "#ffffff" : "#000000" ;
+        } catch(e) {
+            return _hexcolor;
+        }
+
     };
 
     $.fn.jmap = function(options) {
@@ -272,14 +305,8 @@
         if (params.heatmapColors.length <= 0)
             params.heatmapColors = conf.heatmap[params.heatmapType];
 
-        // if (params.heatmapFontColors.length <= 0)
-        //     params.heatmapFontColors = conf.heatmap['Font'];
-
-        if( params.heatmapConditions.length > 0) {
+        if( params.heatmapConditions.length > 0)
             params.heatmapConditions = params.heatmapConditions.reverse();
-            // params.heatmapColors     = params.heatmapColors.reverse();
-            // params.heatmapFontColors = params.heatmapFontColors.reverse();
-        }
 
         if (params.showHeatmap && params.showHeatlabel)
             params.showInfobox = true;
@@ -302,13 +329,12 @@
             'padding': params.backgroundPadding,
             'overflow': 'hidden'
         };
-        var containerSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.containerClass).replace('%s2', uniqClass + "-container");
+        var containerSelector = 'div[jmap-id="%s1"]'.replace('%s1', uniqClass)
         var containerStyle = JSON.stringify(containerCss).replace(/",/g, '";').replace(/"/g, '');
         stylers.push(containerSelector + containerStyle);
 
         var containerDiv = $('<div>')
             .attr('jmap-id', params.id)
-            .attr('jmap-uniq', uniqClass + "-container")
             .addClass(params.containerClass);
 
         // Jmap content
@@ -323,7 +349,7 @@
             '-ms-grid-columns': Array(54 + 1).join('1.851% ')
         };
 
-        var contentSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+        var contentSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.contentClass);
         var contentStyle = JSON.stringify(contentCss).replace(/",/g, '";').replace(/"/g, '');
         stylers.push(contentSelector + contentStyle);
 
@@ -336,7 +362,7 @@
                 '-ms-grid-rows': Array(row + 1).join((100 / row).toFixed(3) + '% '),
                 '-ms-grid-columns': Array(col + 1).join((100 / col).toFixed(3) + '% ')
             };
-            var contentGridSelector = '.%s1[jmap-uniq="%s2"][jmap-view="grid"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+            var contentGridSelector = 'div[jmap-id="%s1"] .%s2[jmap-view="grid"] '.replace('%s1', uniqClass).replace('%s2', params.contentClass);
             var contentGridStyle = JSON.stringify(contentGridCss).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(contentGridSelector + contentGridStyle);
 
@@ -348,7 +374,6 @@
 
         // Jmap Content
         var contentDiv = $('<div>')
-            .attr('jmap-uniq', uniqClass + "-content")
             .attr('jmap-view', params.viewType)
             .addClass(params.contentClass);
 
@@ -376,12 +401,11 @@
                 'border-bottom-style': params.dividerStyle,
             };
 
-            var dividerSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.dividerClass).replace('%s2', uniqClass + "-divider");
+            var dividerSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.dividerClass);
             var dividerStyle = JSON.stringify(dividerCss).replace(/",/g, '";').replace(/"/g, '');
             stylers.push(dividerSelector + dividerStyle);
 
             var dividerDiv = $('<div>')
-                .attr('jmap-uniq', uniqClass + "-divider")
                 .addClass(params.dividerClass)
                 .appendTo(contentDiv);
         }
@@ -423,21 +447,20 @@
                 '-ms-grid-row-span': '%d1'.replace('%d1', infobox.size.y),
                 'background-color': params.infoboxBackgroundColor
             };
-            var infoboxSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.infoboxClass).replace('%s2', uniqClass + "-infobox");
+            var infoboxSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.infoboxClass);
             var infoboxStyle = JSON.stringify(infoboxCss).replace(/",/g, '";').replace(/"/g, '');
             stylers.push(infoboxSelector + infoboxStyle);
 
             infoboxDiv = $(this).find('.jmap-infobox');
             if (infoboxDiv.length > 0) {
 
-                infoboxDiv.attr('jmap-uniq', uniqClass + "-infobox")
+                infoboxDiv
                     .addClass(params.infoboxClass)
                     .appendTo(contentDiv);
 
             } else {
 
                 infoboxDiv = $('<div>')
-                    .attr('jmap-uniq', uniqClass + "-infobox")
                     .addClass(params.infoboxClass)
                     .html(params.infoboxContent)
                     .appendTo(contentDiv);
@@ -452,28 +475,50 @@
                     'margin': "0px",
                     'max-width': '250px'
                 };
-                var heatmapSelector = '.%s1[jmap-uniq="%s2"]'.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var heatmapSelector = 'div[jmap-id="%s1"] .jmap-heatlabel'.replace('%s1', uniqClass);
                 var heatmapStyle = JSON.stringify(heatmapCss).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(heatmapSelector + heatmapStyle);
 
-                // HeatmalLabel First Child
-                var heatmapLabelFirstChildCss = {
+                // HeatmalLabel Li
+                var heatmapLabelLiCss = {
+                    'display': 'inline-block',
+                    'width': '10%',
+                    'height': '30px',
+                    'position': 'relative',
+                    'box-sizing' : 'border-box'
+                };
+                var heatmapLabelLiSelector = 'div[jmap-id="%s1"] .jmap-heatlabel  li '.replace('%s1', uniqClass);
+                var heatmapLabelLiStyle = JSON.stringify(heatmapLabelLiCss).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelLiSelector + heatmapLabelLiStyle);
+
+                // HeatmalLabel Li:hover
+                var heatmapLabelLiHoverCss = {
+                    'opacity': '0.8',
+                    'border' : '1px solid #ccc'
+                };
+                var heatmapLabelLiHoverSelector = 'div[jmap-id="%s1"] .jmap-heatlabel  li:hover '.replace('%s1', uniqClass);
+                var heatmapLabelLiHoverStyle = JSON.stringify(heatmapLabelLiHoverCss).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelLiHoverSelector + heatmapLabelLiHoverStyle);
+
+                // HeatmalLabel Li First Child
+                var heatmapLabelLiFirstChildCss = {
                     'border-radius': '3px 0 0 3px'
                 };
-                var heatmapLabelFirstChildSelector = '.%s1[jmap-uniq="%s2"] li:first-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
-                var heatmapLabelFirstChildStyle = JSON.stringify(heatmapLabelFirstChildCss).replace(/",/g, '";').replace(/"/g, '');
-                stylers.push(heatmapLabelFirstChildSelector + heatmapLabelFirstChildStyle);
+                var heatmapLabelLiFirstChildSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li:first-child '.replace('%s1', uniqClass);
+                var heatmapLabelLiFirstChildStyle = JSON.stringify(heatmapLabelLiFirstChildCss).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelLiFirstChildSelector + heatmapLabelLiFirstChildStyle);
 
-                // HeatmalLabel Last Child
-                var heatmapLabelLastChildCss = {
+                // HeatmalLabel Li Last Child
+                var heatmapLabelLiLastChildCss = {
                     'border-radius': '0 3px 3px 0'
                 };
-                var heatmapLabelLastChildCssSelector = '.%s1[jmap-uniq="%s2"] li:last-child '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
-                var heatmapLabelLastChildCssStyle = JSON.stringify(heatmapLabelLastChildCss).replace(/",/g, '";').replace(/"/g, '');
-                stylers.push(heatmapLabelLastChildCssSelector + heatmapLabelLastChildCssStyle);
+                var heatmapLabelLiLastChildCssSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li:last-child '.replace('%s1', uniqClass);
+                var heatmapLabelLiLastChildCssStyle = JSON.stringify(heatmapLabelLiLastChildCss).replace(/",/g, '";').replace(/"/g, '');
+                stylers.push(heatmapLabelLiLastChildCssSelector + heatmapLabelLiLastChildCssStyle);
 
-
+                // HeatmalLabel Li Span
                 var heatmapLabelSpan  = {
+                    'display' : 'none',
                     'position' : 'absolute',
                     'top' : '30px',
                     'margin' : '5px',
@@ -487,25 +532,25 @@
                     'border-radius': '5px',
                     'font-size' : '0.8rem',
                     'max-width' : '250px',
-                    'min-width' : '120px'
+                    'white-space' : 'nowrap',
+                    'transition' : 'opacity 0.2s'
                 };
-                var heatmapLabelSpanCssSelector = '.%s1[jmap-uniq="%s2"] li span '.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var heatmapLabelSpanCssSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li span '.replace('%s1', uniqClass);
                 var heatmapLabelSpanCssStyle = JSON.stringify(heatmapLabelSpan).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(heatmapLabelSpanCssSelector + heatmapLabelSpanCssStyle);
 
+                // HeatmalLabel Li Span:hover
                 var heatmapLabelSpanHover  = {
+                    'display' : 'block',
                     'opacity': '1',
                     'z-index': '100'
                 };
-                var heatmapLabelSpanHoverCssSelector = '.%s1[jmap-uniq="%s2"] li:hover span'.replace('%s1', 'jmap-heatlabel').replace('%s2', uniqClass + "-heatlabel");
+                var heatmapLabelSpanHoverCssSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li:hover span'.replace('%s1', uniqClass);
                 var heatmapLabelSpanHoverCssStyle = JSON.stringify(heatmapLabelSpanHover).replace(/",/g, '";').replace(/"/g, '');
                 stylers.push(heatmapLabelSpanHoverCssSelector + heatmapLabelSpanHoverCssStyle);
 
-                var heatmapUl = $('<ul>').addClass('jmap-heatlabel').attr('jmap-uniq', uniqClass + "-heatlabel");
-
-                var amount = heatmapMax - heatmapMin;
-                var inc    = Math.round(amount/10);
-                console.log(amount  +"++" + inc)
+                var heatmapUl = $('<ul>').addClass('jmap-heatlabel');
+                var inc    = Math.round( (heatmapMax - heatmapMin) /10);
                 for (var index = 0, l = params.heatmapColors.length; index < l; index++) {
 
                     var value = 0;
@@ -520,16 +565,19 @@
                     }
                     
                     var span = $('<span>')
-                        .attr('jmap-uniq', '%s1'.replace('%s1', uniqClass + "-heatlabel-" + index) )
                         .text(value);
 
-                    $('<li>').css({
-                        'display': 'inline-block',
-                        'width': '10%',
-                        'height': '30px',
-                        'background-color': params.heatmapColors[index],
-                        'position': 'relative'
-                    }).append(span).appendTo(heatmapUl);
+                    // HeatmalLabel Li Indivisual
+                    var heatmapLabelLiIndivisualCss = {
+                        'background-color': params.heatmapColors[index]
+                    };
+                    var heatmapLabelLiIndivisualSelector = 'div[jmap-id="%s1"] .jmap-heatlabel li[jmap-uniq="%s2"]'.replace('%s1', uniqClass).replace('%s2', index)
+                    var heatmapLabelLiIndivisualStyle = JSON.stringify(heatmapLabelLiIndivisualCss).replace(/",/g, '";').replace(/"/g, '');
+                    stylers.push(heatmapLabelLiIndivisualSelector + heatmapLabelLiIndivisualStyle);
+
+                    $('<li>')
+                    .attr('jmap-uniq', index)
+                    .append(span).appendTo(heatmapUl);
                 }
                 infoboxDiv.append(heatmapUl)
                 
@@ -563,9 +611,18 @@
             prefectureCss['text-shadow'] = '0 0 %s1 %s2'.replace('%s1', params.textShadowWidth).replace('%s2', params.textShadowColor);
         }
 
-        var prefectureSelector = '.%s1[jmap-uniq="%s2"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
+        var prefectureSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.prefectureClass);
         var prefectureStyle = JSON.stringify(prefectureCss).replace(/",/g, '";').replace(/"/g, '');
         stylers.push(prefectureSelector + prefectureStyle);
+
+        // Prefecture Event
+        $('body').on('click', prefectureSelector, function(e){
+            return params.onSelect.call(this, e, $(this).data('data'));
+        }).on('mouseover', prefectureSelector, function(e){
+            return params.onHover.call(this, e, $(this).data('data'));
+        }).on('mouseout', prefectureSelector, function(e){
+            return params.onMouseout.call(this, e, $(this).data('data'));
+        });
 
         // Prefecture Common Hover
         if (params.selectable) {
@@ -573,15 +630,28 @@
                 'background-color': params.prefectureBackgroundHoverColor,
                 'box-shadow': '0 0 0 %s1 %s2, 0 0 5px %s3'.replace('%s1', params.prefectureLineWidth).replace('%s2', params.prefectureLineHoverColor).replace('%s3', "#333"),
                 'transform': 'scale(1.01)',
-                'z-index': '100'
+                'z-index': '120'
             };
-            var prefectureHoverSelector = '.%s1[jmap-uniq="%s2"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref");
+            var prefectureHoverSelector = 'div[jmap-id="%s1"] .%s2:hover '.replace('%s1', uniqClass).replace('%s2', params.prefectureClass);
             var prefectureHoverStyle = JSON.stringify(prefectureHoverCss).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(prefectureHoverSelector + prefectureHoverStyle);
         }
 
         var gridRowIndex = 1;
         var gridColIndex = params.gridOffset;
+
+        // If showTextNoneSkewed are true
+        if (params.showTextNoneSkewed && params.skew != 0) {
+
+            // Prefecture Inner Div
+            var prefectureInnerDivCss = {
+                'transform': 'skew(%d1deg)'.replace('%d1', params.skew)
+            };
+            var prefectureInnerDivSelector = 'div[jmap-id="%s1"] .%s2 div'.replace('%s1', uniqClass).replace('%s2', params.prefectureClass);
+            var prefectureInnerDivStyle = JSON.stringify(prefectureInnerDivCss).replace(/"/g, '').replace(/,/g, ';');
+            stylers.push(prefectureInnerDivSelector + prefectureInnerDivStyle);
+        }
+
         $.each(conf.prefectures, function(_index, pref) {
             var pref = $.extend({ option: {} }, pref);
 
@@ -604,12 +674,11 @@
                 }
             }
 
-            // var t = 0;
             // Heatmap settings
             if (params.showHeatmap) {
+                // if Heatmap Conditions area defined
                 if(params.heatmapConditions.length > 0 && option.number) {
-                    option.color = '#f00';
-
+ 
                     $.each(params.heatmapConditions, function(index, _cond) {
                         
                         _cond = $.isNumeric(_cond)? "==" + _cond : _cond;
@@ -630,7 +699,6 @@
                 } else if (option.number) {
                     var index = Math.round((option.number - heatmapMin) / (heatmapMax - heatmapMin) * 10);
                     index = (index >= 10) ? 9 : index;
-                    // t = index;
                     option.color = params.heatmapColors[index];
                     if( !params.heatmapFontColors[index] )
                         option.fontColor = $(this).jmapBlackOrWhite(option.color);
@@ -660,7 +728,7 @@
             if (option.fontColor)
                 prefectureIndivisualCss['color'] = option.fontColor;
 
-            var prefectureIndivisualSelector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"] '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+            var prefectureIndivisualSelector = 'div[jmap-id="%s1"] .%s2[jmap-uniq="%s3"] '.replace('%s1', uniqClass).replace('%s2', params.prefectureClass).replace('%s3', pref.code);
             var prefectureIndivisualStyle = JSON.stringify(prefectureIndivisualCss).replace(/"/g, '').replace(/,/g, ';');
             stylers.push(prefectureIndivisualSelector + prefectureIndivisualStyle);
 
@@ -675,7 +743,7 @@
                     '-ms-grid-row-span': '%d1'.replace('%d1', 1)
                 };
 
-                var prefectureIndivisualGridSelector = '%s1 .%s2[jmap-uniq="%s3"][jmap-pref="%s4"] '.replace('%s1', contentGridSelector).replace('%s2', params.prefectureClass).replace('%s3', uniqClass + "-pref").replace('%s4', pref.code);
+                var prefectureIndivisualGridSelector = '%s1 .%s2[jmap-uniq="%s3"] '.replace('%s1', contentGridSelector).replace('%s2', params.prefectureClass).replace('%s3', pref.code);
                 var prefectureIndivisualGridStyle = JSON.stringify(prefectureIndivisualGridCss).replace(/"/g, '').replace(/,/g, ';');
                 stylersPrimal.push(prefectureIndivisualGridSelector + prefectureIndivisualGridStyle);
 
@@ -694,7 +762,7 @@
                     var prefectureIndivisualHoverCss = {
                         'background-color': option.hoverColor
                     };
-                    var prefectureIndivisualHoverSelector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+                    var prefectureIndivisualHoverSelector = 'div[jmap-id="%s1"] .%s2[jmap-uniq="%s3"]:hover '.replace('%s1', uniqClass).replace('%s2', params.prefectureClass).replace('%s3', pref.code);
                     var prefectureIndivisualHoverStyle = JSON.stringify(prefectureIndivisualHoverCss).replace(/"/g, '').replace(/,/g, ';');
                     stylersPrimal.push(prefectureIndivisualHoverSelector + prefectureIndivisualHoverStyle);
 
@@ -704,7 +772,7 @@
                         'background-color': option.color,
                         'opacity': '0.8'
                     };
-                    var selector = '.%s1[jmap-uniq="%s2"][jmap-pref="%s3"]:hover '.replace('%s1', params.prefectureClass).replace('%s2', uniqClass + "-pref").replace('%s3', pref.code);
+                    var selector = 'div[jmap-id="%s1"] .%s2[jmap-uniq="%s3"]:hover '.replace('%s1', uniqClass).replace('%s2', params.prefectureClass).replace('%s3', pref.code);
                     var style = JSON.stringify(css).replace(/"/g, '').replace(/,/g, ';');
                     stylersPrimal.push(selector + style);
 
@@ -713,18 +781,9 @@
 
             // Prefecture
             var prefDiv = $('<div>')
-                // .attr('data-color', t)
                 .data('data', pref)
                 .addClass(params.prefectureClass)
-                .attr('jmap-uniq', uniqClass + "-pref")
-                .attr('jmap-pref', pref.code)
-                .on('click', function(e) {
-                    return params.onSelect.call(this, e, $(this).data('data'));
-                }).on('mouseover', function(e) {
-                    return params.onHover.call(this, e, $(this).data('data'));
-                }).on('mouseout', function(e) {
-                    return params.onMouseout.call(this, e, $(this).data('data'));
-                })
+                .attr('jmap-uniq', pref.code);
 
             // Prefecture Inner
             if (params.showPrefectureName && !option.name) {
@@ -744,9 +803,7 @@
             }
 
             if (params.showTextNoneSkewed && params.skew != 0) {
-                var textDiv = $('<div>').html(prefDiv.html()).css({
-                    'transform': 'skew(%d1deg)'.replace('%d1', params.skew)
-                })
+                var textDiv = $('<div>').html(prefDiv.html());
                 prefDiv.html(textDiv);
             }
 
@@ -756,7 +813,7 @@
             });
         });
 
-        var jmapStyle = $('<style>').attr('type', 'text/css').attr('jmap-uniq', uniqClass + "-css").html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
+        var jmapStyle = $('<style>').attr('type', 'text/css').html(stylers.join("\n") + "\n" + stylersPrimal.join("\n"));
         containerDiv.append(contentDiv)
 
         $(this).empty().append(jmapStyle).append(containerDiv);
@@ -770,7 +827,7 @@
                 'padding': '0 ' + increasedWidth + 'px',
                 'transform': 'skew(-%d1deg)'.replace('%d1', params.skew)
             };
-            var contentSkewSelector = '.%s1[jmap-uniq="%s2"][jmap-skew="true"] '.replace('%s1', params.contentClass).replace('%s2', uniqClass + "-content");
+            var contentSkewSelector = 'div[jmap-id="%s1"] .%s2[jmap-skew="true"] '.replace('%s1', uniqClass).replace('%s2', params.contentClass);
             var contentSkewStyle = JSON.stringify(conteSkewCss).replace(/",/g, '";').replace(/"/g, '');
             stylersPrimal.push(contentSkewSelector + contentSkewStyle);
             jmapStyle.append(contentSkewSelector + contentSkewStyle + "\n");
@@ -780,7 +837,7 @@
                     'margin-left': '-%d1'.replace('%d1', increasedWidth / 2 * 3 + 'px'),
                     'transform': 'skew(%d1deg)'.replace('%d1', params.skew)
                 };
-                var infoboxSkewSelector = '%s1 .%s2[jmap-uniq="%s3"] '.replace('%s1', contentSkewSelector).replace('%s2', params.infoboxClass).replace('%s3', uniqClass + "-infobox");
+                var infoboxSkewSelector = '%s1 .%s2'.replace('%s1', contentSkewSelector).replace('%s2', params.infoboxClass);
                 var infoboxSkewStyle = JSON.stringify(infoboxSkewCss).replace(/",/g, '";').replace(/"/g, '');
                 stylersPrimal.push(infoboxSkewSelector + infoboxSkewStyle);
                 jmapStyle.append(infoboxSkewSelector + infoboxSkewStyle + "\n");
