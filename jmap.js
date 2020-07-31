@@ -348,10 +348,10 @@
             'position': 'relative',
             'width': '100%',
             'height': '100%',
-            'grid-template-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '%' ),
-            'grid-template-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '%' ),
-            '-ms-grid-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '%' ),
-            '-ms-grid-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '%' )
+            'grid-template-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '% ' ),
+            'grid-template-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '% ' ),
+            '-ms-grid-rows': Array(params.gridTotalRows + 1).join( (100 / params.gridTotalRows).toFixed(3) + '% ' ),
+            '-ms-grid-columns': Array(params.gridTotalColumns + 1).join( (100 / params.gridTotalColumns).toFixed(3) + '% ' )
         };
 
         var contentSelector = 'div[jmap-id="%s1"] .%s2 '.replace('%s1', uniqClass).replace('%s2', params.contentClass);
